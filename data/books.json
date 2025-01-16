@@ -1,0 +1,11 @@
+[
+    {
+        "Titulo": "Cien años de soledad",
+        "Autor": "Gabriel Garcia Marquez",
+        "Valoracion": 4.6,
+        "Sinopsis": "Entre la boda de José Arcadio Buendía con Amelia Iguarán hasta la maldición de Aureliano Babilonia transcurre todo un siglo. Cien años de soledad para una estirpe única, fantástica, capaz de fundar una ciudad tan especial como Macondo y de engendrar niños con cola de cerdo. En medio, una larga docena de personajes dejarán su impronta a las generaciones venideras, que tendrán que lidiar con un mundo tan complejo como sencillo.",
+        "Genero": [
+            "Novela", "Realismo magico", "Ficcion epica"
+        ]
+    }
+]
