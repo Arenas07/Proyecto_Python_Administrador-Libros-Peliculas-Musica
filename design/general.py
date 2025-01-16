@@ -1,4 +1,4 @@
-from design.books import seeAllBooksInTables
+from design.books import seeAllBooksInTables, newBook
 from design.movies import seeAllMoviesInTables
 from design.music import seeAllMusicInTables
 
@@ -31,6 +31,10 @@ def menu_principal():
                      4. Regresar al Menú Principal
                      ===========================================
                          Selecciona una opción (1-4):""")
+            selection = input("Seleccione la opción que prefiera --> ")
+            match selection:
+               case "1":
+                  newBook()
          case "2":
             print("""===========================================
                         Ver Todos los Elementos
@@ -113,5 +117,6 @@ def menu_principal():
             break
          case _:
             input("Opción no disponible, presione enter para continuar -->")
+            return menu_principal()
          
 
