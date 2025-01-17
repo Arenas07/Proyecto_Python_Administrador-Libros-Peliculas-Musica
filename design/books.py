@@ -6,7 +6,7 @@ def seeAllBooksInTables():
     print(tabulate(watch, headers="keys", tablefmt="grid", numalign="center", showindex="always"))
     input("--> Presione enter para continuar")
 
-def newBook(): 
+def newBook():  #! NO SIRVEEEEEEEEEEEEEEEEEEEEEEEEEEE (todavia)
     watch = seeBooks() 
     title = input("Ingrese el titulo del libro: ")
     findProducts = list(filter(lambda product: product.get("Titulo") == title, watch)) #Filtro para comparar si el dato ingresado existe
@@ -59,3 +59,16 @@ def filterBooksbyCategory(category):
             dataModify.append(diccionario) 
     print(tabulate(dataModify, headers="keys", tablefmt="grid", numalign="center"))
     input("Presione enter para continuar -->  ")
+
+def showBookCategory():
+    data = seeBooks()
+    dataModify = []
+    
+    for categorias in data:
+        if (categorias.get("Categoria")):
+            categorias.pop("Titulo")
+            categorias.pop("Autor")
+            categorias.pop("Valoracion")
+            categorias.pop("Genero")
+            dataModify.append(categorias)
+    print(tabulate(dataModify, headers="keys", tablefmt="grid", numalign="center"))

@@ -1,4 +1,4 @@
-from design.books import seeAllBooksInTables, newBook, filterBooksbyTitle, filterBooksbyCategory, filterBooksbyAutor
+from design.books import seeAllBooksInTables, newBook, filterBooksbyTitle, filterBooksbyCategory, filterBooksbyAutor, showBookCategory
 from design.movies import seeAllMoviesInTables, filterMoviesbyCategory, filterMoviesByDirector, filterMoviesbyTitle
 from design.music import seeAllMusicInTables, filterMusicbyAutor, filterMusicbyCategory, filterMusicbyTitle
 
@@ -74,7 +74,7 @@ def menu_principal():
                            ¿Cómo deseas buscar?
                     1. Buscar por Título
                     2. Buscar por Autor/Director/Artista
-                    3. Buscar por Género
+                    3. Buscar por Categoria
                     4. Regresar al Menú Principal
                  ===========================================
                     Selecciona una opción (1-4):""")
@@ -89,7 +89,7 @@ def menu_principal():
                     1. Libros
                     2. Peliculas
                     3. Musica
-                    4. Regresar al Menú Principal
+                    4. Regresar a Buscar un elemento
                  ===========================================
                     Selecciona una opción (1-4):"""
                         )
@@ -101,8 +101,58 @@ def menu_principal():
                         filterMoviesbyTitle(input("Ingrese el titulo de la pelicula: "))
                      case "3":
                         filterMusicbyTitle(input("Ingrese el titulo de la cancion: "))
+                     case "4":
+                        break
+               case "2":
+                  print("""
+                 ===========================================
+                     Buscar por Autor/Director/Artista
+                 =========================================== 
+                           ¿Cómo deseas buscar?
+                    1. Libros
+                    2. Peliculas
+                    3. Musica
+                    4. Regresar a Buscar un elemento
+                 ===========================================
+                    Selecciona una opción (1-4):"""
+                        )
+                  menu_selection = input("-->")
+                  match menu_selection:
+                     case "1":
+                        filterBooksbyAutor(input("Ingrese el titulo del libro: "))
+                     case "2":
+                        filterMoviesByDirector(input("Ingrese el director de la pelicula: "))
+                     case "3":
+                        filterMusicbyAutor(input("Ingrese el autor de la cancion: "))
+                     case "4":
+                        break
+               case "3":
+                  print("""
+                 ===========================================
+                           Buscar por Categoria
+                 =========================================== 
+                           ¿Cómo deseas buscar?
+                    1. Libros
+                    2. Peliculas
+                    3. Musica
+                    4. Regresar a Buscar un elemento
+                 ===========================================
+                    Selecciona una opción (1-4):"""
+                        )
+                  menu_selection = input("-->")
+                  match menu_selection:
+                     case "1":
+                        showBookCategory()
+                        filterBooksbyCategory(input("Ingrese la categoria del libro: "))
+                     case "2":
+                        filterMoviesbyCategory(input("Ingrese la categoria de la pelicula: "))
+                     case "3":
+                        filterMusicbyCategory(input("Ingrese la categoria de la cancion: "))
+                     case "4":
+                        break                  
          case "4":
-            print("""===========================================
+            print("""
+                 ===========================================
                             Editar un Elemento
                  ===========================================
                    ¿Qué tipo de cambio deseas realizar?
@@ -114,7 +164,8 @@ def menu_principal():
                  ===========================================
                      Selecciona una opción (1-5):""")
          case "5":
-            print("""===========================================
+            print("""
+                 ===========================================
                            Eliminar un Elemento
                  ===========================================
                           ¿Cómo deseas eliminar?
@@ -124,7 +175,8 @@ def menu_principal():
                  ===========================================
                     Selecciona una opción (1-3):""")
          case "6":
-            print("""===========================================
+            print("""
+                 ===========================================
                        Ver Elementos por Categoría
                  ===========================================
                        ¿Qué categoría deseas ver?
@@ -145,6 +197,7 @@ def menu_principal():
                  ===========================================
                     Selecciona una opción (1-3):""")
          case "8":
+            print("Gracias por usar el programa")
             break
          case _:
             input("Opción no disponible, presione enter para continuar -->")
