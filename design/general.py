@@ -1,9 +1,10 @@
 from design.books import seeAllBooksInTables, newBook, filterBooksbyTitle, filterBooksbyCategory, filterBooksbyAutor, showBookCategory
-from design.movies import seeAllMoviesInTables, filterMoviesbyCategory, filterMoviesByDirector, filterMoviesbyTitle
-from design.music import seeAllMusicInTables, filterMusicbyAutor, filterMusicbyCategory, filterMusicbyTitle
+from design.movies import seeAllMoviesInTables, filterMoviesbyCategory, filterMoviesByDirector, filterMoviesbyTitle, showMoviesCategory
+from design.music import seeAllMusicInTables, filterMusicbyAutor, filterMusicbyCategory, filterMusicbyTitle, showMusicCategory
 
 def menu_principal():
-   print("""===========================================
+   print("""
+            ===========================================
                     Administrador de Colección
             ===========================================
                 1. Añadir un Nuevo Elemento
@@ -21,7 +22,8 @@ def menu_principal():
    
       match opcion_menu:
          case "1":
-            print("""===========================================
+            print("""
+                     ===========================================
                             Añadir un Nuevo Elemento
                      ===========================================
                         ¿Qué tipo de elemento deseas añadir?
@@ -34,7 +36,7 @@ def menu_principal():
             selection = input("Seleccione la opción que prefiera --> ")
             match selection:
                case "1":
-                  newBook()
+                  print("")
                case "2":
                   print("")
                case "3":
@@ -145,8 +147,10 @@ def menu_principal():
                         showBookCategory()
                         filterBooksbyCategory(input("Ingrese la categoria del libro: "))
                      case "2":
+                        showMoviesCategory()
                         filterMoviesbyCategory(input("Ingrese la categoria de la pelicula: "))
                      case "3":
+                        showMusicCategory()
                         filterMusicbyCategory(input("Ingrese la categoria de la cancion: "))
                      case "4":
                         break                  
@@ -187,7 +191,8 @@ def menu_principal():
                  ===========================================
                     Selecciona una opción (1-4):""")
          case "7":
-            print("""===========================================
+            print("""
+                 ===========================================
                         Guardar y Cargar Colección
                  ===========================================
                             ¿Qué deseas hacer?

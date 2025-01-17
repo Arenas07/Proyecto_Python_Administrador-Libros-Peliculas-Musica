@@ -54,7 +54,6 @@ def filterBooksbyAutor(autor):
 def filterBooksbyCategory(category): 
     data = seeBooks() 
     dataModify = []
-
     for diccionario in data: 
         if(diccionario.get("Categoria") == category): 
             dataModify.append(diccionario)
