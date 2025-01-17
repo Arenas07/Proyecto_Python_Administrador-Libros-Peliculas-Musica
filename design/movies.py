@@ -52,3 +52,37 @@ def showMoviesCategory():
             categorias.pop("Fecha de estreno")
             dataModify.append(categorias)
     print(tabulate(dataModify, headers="keys", tablefmt="grid", numalign="center"))
+
+def showMoviesTitles():
+    data = seeMovies()
+    dataModify = []
+    filtro = set()
+    for titles in data:
+        title = titles.get("Titulo")
+        if title and title not in filtro:
+            filtro.add(title)
+            titles.pop("Categoria")
+            titles.pop("Direccion")
+            titles.pop("Producción")
+            titles.pop("Genero")
+            titles.pop("Valoracion")
+            titles.pop("Fecha de estreno")
+            dataModify.append(titles)
+    print(tabulate(dataModify, headers="keys", tablefmt="grid", numalign="center"))
+
+def showMoviesDirector():
+    data = seeMovies()
+    dataModify = []
+    filtro = set()
+    for directors in data:
+        director = directors.get("Direccion")
+        if director and director not in filtro:
+            filtro.add(director)
+            directors.pop("Categoria")
+            directors.pop("Titulo")
+            directors.pop("Producción")
+            directors.pop("Genero")
+            directors.pop("Valoracion")
+            directors.pop("Fecha de estreno")
+            dataModify.append(directors)
+    print(tabulate(dataModify, headers="keys", tablefmt="grid", numalign="center"))

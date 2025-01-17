@@ -6,9 +6,13 @@ def seeBooks():
         convertListOrDict = json.loads(data) #Lo convierte a estructura de datos
         return convertListOrDict
 
-def saveBooks(data):
+def saveBooks(temporalBooks):
+    existingBooks = seeBooks()
+    existingBooks.extend(temporalBooks)
     with open("data/books.json", "w", encoding="utf-8") as file:
-        str(data).encode('utf-8')
-        convertJson = json.dumps(data, indent=4, ensure_ascii=False)
+        str(existingBooks).encode('utf-8')
+        convertJson = json.dumps(existingBooks, indent=4, ensure_ascii=False)
         file.write(convertJson)
-        return "Se modificó el archivo products.json"
+    temporalBooks.clear()
+
+

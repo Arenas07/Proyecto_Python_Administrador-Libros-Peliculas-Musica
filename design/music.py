@@ -51,3 +51,35 @@ def showMusicCategory():
             categorias.pop("Discografica")
             dataModify.append(categorias)
     print(tabulate(dataModify, headers="keys", tablefmt="grid", numalign="center"))
+
+def showMusicAutor():
+    data = seeMusic()
+    dataModify = []
+    filtro = set()
+    for autors in data:
+        autor = autors.get("Autor")
+        if autor and autor not in filtro:
+            filtro.add(autor)
+            autors.pop("Titulo")
+            autors.pop("Categoria")
+            autors.pop("Album")
+            autors.pop("Genero")
+            autors.pop("Discografica")
+            dataModify.append(autors)
+    print(tabulate(dataModify, headers="keys", tablefmt="grid", numalign="center"))
+
+def showMusicTitle():
+    data = seeMusic()
+    dataModify = []
+    filtro = set()
+    for titles in data:
+        title = titles.get("Titulo")
+        if title and title not in filtro:
+            filtro.add(title)
+            titles.pop("Categoria")
+            titles.pop("Autor")
+            titles.pop("Album")
+            titles.pop("Genero")
+            titles.pop("Discografica")
+            dataModify.append(titles)
+    print(tabulate(dataModify, headers="keys", tablefmt="grid", numalign="center"))

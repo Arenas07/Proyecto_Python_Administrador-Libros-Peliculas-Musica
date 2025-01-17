@@ -6,7 +6,8 @@ def seeAllBooksInTables():
     print(tabulate(watch, headers="keys", tablefmt="grid", numalign="center", showindex="always"))
     input("Presione enter para continuar -->")
 
-def newBook():  #! NO SIRVEEEEEEEEEEEEEEEEEEEEEEEEEEE (todavia)
+temporalBooks = []
+def newBook():  
     watch = seeBooks() 
     title = input("Ingrese el titulo del libro: ")
     findProducts = list(filter(lambda product: product.get("Titulo") == title, watch)) #Filtro para comparar si el dato ingresado existe
@@ -14,7 +15,7 @@ def newBook():  #! NO SIRVEEEEEEEEEEEEEEEEEEEEEEEEEEE (todavia)
         newBook = {
             "Titulo": title,
             "Autor": input("Ingrese el nombre del autor: "),
-            "Valoracion": int(input("Ingrese la valoracion de la obra: ")),
+            "Valoracion": float(input("Ingrese la valoracion de la obra: ")),
             "Categoria": input("Ingrese la categoria del libro: "),
             "Genero": []
         }
@@ -25,11 +26,11 @@ def newBook():  #! NO SIRVEEEEEEEEEEEEEEEEEEEEEEEEEEE (todavia)
             else:
                 print("El genero no puede quedar vacio")
             confirmation = input("¿Quiere agregar otro genero? (s/n): ")
-            if confirmation.lower != "s":
-                 break
-        watch.append(newBook)
-        saveBooks(watch)
-        print("Libro registrado con exito")
+            if confirmation.lower() != "s":
+                break
+        temporalBooks.append(newBook)
+        print("Libro registrado con exito, si lo quiere guardar vaya al apartado de guardado")
+        input("Presione enter para continuar -->")
     else: 
         print("El libro ya existe en su coleccion")
 
@@ -80,3 +81,32 @@ def showBookCategory():
             dataModify.append(categorias)
     print(tabulate(dataModify, headers="keys", tablefmt="grid", numalign="center"))
 
+def showBookTitles():
+    data = seeBooks()
+    dataModify = []
+    filtro = set()
+    for titles in data:
+        title = titles.get("Titulo")
+        if title and title not in filtro:
+            filtro.add(title)
+            titles.pop("Categoria")
+            titles.pop("Autor")
+            titles.pop("Valoracion")
+            titles.pop("Genero")
+            dataModify.append(titles)
+    print(tabulate(dataModify, headers="keys", tablefmt="grid", numalign="center"))
+
+def showBookAutors():
+    data = seeBooks()
+    dataModify = []
+    filtro = set()
+    for autors in data:
+        autor = autors.get("Autor")
+        if autor and autor not in filtro:
+            filtro.add(autor)
+            autors.pop("Categoria")
+            autors.pop("Titulo")
+            autors.pop("Valoracion")
+            autors.pop("Genero")
+            dataModify.append(autors)
+    print(tabulate(dataModify, headers="keys", tablefmt="grid", numalign="center"))

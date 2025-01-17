@@ -1,7 +1,7 @@
-from design.books import seeAllBooksInTables, newBook, filterBooksbyTitle, filterBooksbyCategory, filterBooksbyAutor, showBookCategory
-from design.movies import seeAllMoviesInTables, filterMoviesbyCategory, filterMoviesByDirector, filterMoviesbyTitle, showMoviesCategory
-from design.music import seeAllMusicInTables, filterMusicbyAutor, filterMusicbyCategory, filterMusicbyTitle, showMusicCategory
-
+from design.books import seeAllBooksInTables, newBook, filterBooksbyTitle, filterBooksbyCategory, filterBooksbyAutor, showBookCategory, showBookAutors, showBookTitles, temporalBooks
+from design.movies import seeAllMoviesInTables, filterMoviesbyCategory, filterMoviesByDirector, filterMoviesbyTitle, showMoviesCategory, showMoviesDirector, showMoviesTitles
+from design.music import seeAllMusicInTables, filterMusicbyAutor, filterMusicbyCategory, filterMusicbyTitle, showMusicCategory, showMusicAutor, showMusicTitle
+from logic.books import saveBooks
 def menu_principal():
    print("""
             ===========================================
@@ -36,7 +36,7 @@ def menu_principal():
             selection = input("Seleccione la opción que prefiera --> ")
             match selection:
                case "1":
-                  print("")
+                  newBook()
                case "2":
                   print("")
                case "3":
@@ -98,10 +98,13 @@ def menu_principal():
                   menu_selection = input("-->")
                   match menu_selection:
                      case "1":
+                        showBookTitles()
                         filterBooksbyTitle(input("Ingrese el titulo del libro: "))
                      case "2":
+                        showMoviesTitles()
                         filterMoviesbyTitle(input("Ingrese el titulo de la pelicula: "))
                      case "3":
+                        showMusicTitle()
                         filterMusicbyTitle(input("Ingrese el titulo de la cancion: "))
                      case "4":
                         break
@@ -121,10 +124,13 @@ def menu_principal():
                   menu_selection = input("-->")
                   match menu_selection:
                      case "1":
+                        showBookAutors()
                         filterBooksbyAutor(input("Ingrese el titulo del libro: "))
                      case "2":
+                        showMoviesDirector()
                         filterMoviesByDirector(input("Ingrese el director de la pelicula: "))
                      case "3":
+                        showMusicAutor()
                         filterMusicbyAutor(input("Ingrese el autor de la cancion: "))
                      case "4":
                         break
@@ -153,7 +159,11 @@ def menu_principal():
                         showMusicCategory()
                         filterMusicbyCategory(input("Ingrese la categoria de la cancion: "))
                      case "4":
-                        break                  
+                        break        
+               case "4":
+                  break
+               case _:
+                  print("Opción no válida, por favor seleccione una opción válida.")
          case "4":
             print("""
                  ===========================================
@@ -201,6 +211,12 @@ def menu_principal():
                     3. Regresar al Menú Principal
                  ===========================================
                     Selecciona una opción (1-3):""")
+            selection = input("--> ")
+            match selection:
+               case "1":
+                  saveBooks(temporalBooks)
+               case "3":
+                  return menu_principal()
          case "8":
             print("Gracias por usar el programa")
             break
