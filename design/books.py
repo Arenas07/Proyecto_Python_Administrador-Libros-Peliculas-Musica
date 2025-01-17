@@ -24,22 +24,21 @@ def newBook():
         newBook = {
             "Titulo": title,
             "Autor": input("Ingrese el nombre del autor: "),
-            "Valoracion": input("Ingrese la valoracion de la obra (si no desea ponerla solo preicone enter): "),
+            "Valoracion": int(input("Ingrese la valoracion de la obra: ")),
             "Sinopsis": input("Ingrese la sinopsis del libro (si la copia y pega de internet presione Ctrl+Shift+V para pegar en consola): "),
-            "Genero": [input("sadas")]
+            "Genero": []
         }
-    #     while True:
-    #         newBook["Genero"].append({
-    #             input("Ingrese el genero del libro: ")
-    #         })
-    #         saveBooks(watch)
-    #         confirmation = "¿Quiere agregar otro genero? (s/n): "
-    #         if confirmation.lower != "s":
-    #             break 
-        if newBook["Genero"]:
-            watch.append(newBook)
-            saveBooks(watch)
-            print("Libro guardado correctamente")
-
-    # else: 
-    #     print("El libro ya existe en su coleccion")
+        while True:
+            genero = input("Ingrese el genero del libro: ").capitalize()
+            if genero:
+                newBook["Genero"].append(genero)
+            else:
+                print("El genero no puede quedar vacio")
+            confirmation = input("¿Quiere agregar otro genero? (s/n): ")
+            if confirmation.lower != "s":
+                 break
+        watch.append(newBook)
+        saveBooks(watch)
+        print("Libro registrado con exito")
+    else: 
+        print("El libro ya existe en su coleccion")

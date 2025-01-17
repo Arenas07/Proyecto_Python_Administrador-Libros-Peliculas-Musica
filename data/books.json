@@ -1,11 +1,22 @@
 [
     {
-        "Titulo": "Cien años de soledad",
+        "Titulo": "Cien aÃ±os de soledad",
         "Autor": "Gabriel Garcia Marquez",
         "Valoracion": 4.6,
-        "Sinopsis": "Entre la boda de José Arcadio Buendía con Amelia Iguarán hasta la maldición de Aureliano Babilonia transcurre todo un siglo. Cien años de soledad para una estirpe única, fantástica, capaz de fundar una ciudad tan especial como Macondo y de engendrar niños con cola de cerdo. En medio, una larga docena de personajes dejarán su impronta a las generaciones venideras, que tendrán que lidiar con un mundo tan complejo como sencillo.",
+        "Sinopsis": "Entre la boda de Jose Arcadio Buendia con Amelia Iguaron hasta la maldicion de Aureliano Babilonia transcurre todo un siglo. Cien años de soledad para una estirpe Ãºnica, fantÃ¡stica, capaz de fundar una ciudad tan especial como Macondo y de engendrar niÃ±os con cola de cerdo. En medio, una larga docena de personajes dejarÃ¡n su impronta a las generaciones venideras, que tendrÃ¡n que lidiar con un mundo tan complejo como sencillo.",
         "Genero": [
-            "Novela", "Realismo magico", "Ficcion epica"
+            "Novela",
+            "Realismo magico",
+            "Ficcion epica"
+        ]
+    },
+    {
+        "Titulo": "asdasdasd",
+        "Autor": "asdasd",
+        "Valoracion": 4,
+        "Sinopsis": "dsaldkldsaksldkas",
+        "Genero": [
+            "Novela"
         ]
     }
 ]
