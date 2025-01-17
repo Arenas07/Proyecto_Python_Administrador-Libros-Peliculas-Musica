@@ -2,19 +2,9 @@ from tabulate import tabulate
 from logic.books import seeBooks, saveBooks
 
 def seeAllBooksInTables():
-    watch = seeBooks()
-    watchModificated = []
-    mostrar_sinopsis = input("¿Desea ver las sinopsis de los libros? (s/n): ")
-    if mostrar_sinopsis.lower() == "s":
-        print(tabulate(watch, headers="keys", tablefmt="pretty", numalign="center", showindex="always"))
-        input("Presione enter para continuar -->")       
-    else:
-        for modify in watch:
-            modify.pop("Descripcion")
-            watchModificated.append(modify)
-        print(tabulate(watchModificated, headers="keys", tablefmt="pretty", numalign="center", showindex="always"))
-        input("Presione enter para continuar --> ")
-
+    watch = seeBooks()  
+    print(tabulate(watch, headers="keys", tablefmt="grid", numalign="center", showindex="always"))
+    input("--> Presione enter para continuar")
 
 def newBook(): 
     watch = seeBooks() 
@@ -25,7 +15,7 @@ def newBook():
             "Titulo": title,
             "Autor": input("Ingrese el nombre del autor: "),
             "Valoracion": int(input("Ingrese la valoracion de la obra: ")),
-            "Sinopsis": input("Ingrese la sinopsis del libro (si la copia y pega de internet presione Ctrl+Shift+V para pegar en consola): "),
+            "Categoria": input("Ingrese la categoria del libro: "),
             "Genero": []
         }
         while True:
@@ -42,3 +32,30 @@ def newBook():
         print("Libro registrado con exito")
     else: 
         print("El libro ya existe en su coleccion")
+
+def filterBooksbyTitle(title): 
+    data = seeBooks() 
+    dataModify = []
+    for diccionario in data: 
+        if(diccionario.get("Titulo") == title): 
+            dataModify.append(diccionario) 
+    print(tabulate(dataModify, headers="keys", tablefmt="grid", numalign="center"))
+    input("Presione enter para continuar -->  ")
+
+def filterBooksbyAutor(autor): 
+    data = seeBooks() 
+    dataModify = []
+    for diccionario in data: 
+        if(diccionario.get("Autor") == autor): 
+            dataModify.append(diccionario) 
+    print(tabulate(dataModify, headers="keys", tablefmt="grid", numalign="center"))
+    input("Presione enter para continuar -->  ")
+
+def filterBooksbyCategory(category): 
+    data = seeBooks() 
+    dataModify = []
+    for diccionario in data: 
+        if(diccionario.get("Categoria") == category): 
+            dataModify.append(diccionario) 
+    print(tabulate(dataModify, headers="keys", tablefmt="grid", numalign="center"))
+    input("Presione enter para continuar -->  ")

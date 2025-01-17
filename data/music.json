@@ -5,7 +5,48 @@
         "Album": "After Hours",
         "Genero": [
             "Synthwave", "Independiente"
-        ]
+        ],
+        "Categoria": "Synthwave",
+        "Discografica": "XO / Republic Records"
+    },
+    {
+        "Titulo": "Levitating",
+        "Autor": "Dua Lipa",
+        "Album": "Future Nostalgia",
+        "Genero": [
+            "Pop", "Disco", "Dance"
+        ],
+        "Categoria": "Pop",
+        "Discografica": "Warner Records"
+    },
+    {
+        "Titulo": "Save Your Tears",
+        "Autor": "The Weeknd",
+        "Album": "After Hours",
+        "Genero": [
+            "Synthwave", "Pop", "R&B"
+        ],
+        "Categoria": "Pop",
+        "Discografica": "XO / Republic Records"
+    },
+    {
+        "Titulo": "Watermelon Sugar",
+        "Autor": "Harry Styles",
+        "Album": "Fine Line",
+        "Genero": [
+            "Pop", "Indie", "Folk"
+        ],
+        "Categoria": "Pop",
+        "Discografica": "Columbia Records"
+    },
+    {
+        "Titulo": "Good 4 U",
+        "Autor": "Olivia Rodrigo",
+        "Album": "SOUR",
+        "Genero": [
+            "Pop Punk", "Alternative"
+        ],
+        "Categoria": "Pop Punk",
+        "Discografica": "Geffen Records"
     }
-
 ]
