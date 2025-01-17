@@ -4,7 +4,7 @@ from logic.books import seeBooks, saveBooks
 def seeAllBooksInTables():
     watch = seeBooks()  
     print(tabulate(watch, headers="keys", tablefmt="grid", numalign="center", showindex="always"))
-    input("--> Presione enter para continuar")
+    input("Presione enter para continuar -->")
 
 def newBook():  #! NO SIRVEEEEEEEEEEEEEEEEEEEEEEEEEEE (todavia)
     watch = seeBooks() 
@@ -54,21 +54,30 @@ def filterBooksbyAutor(autor):
 def filterBooksbyCategory(category): 
     data = seeBooks() 
     dataModify = []
+
     for diccionario in data: 
         if(diccionario.get("Categoria") == category): 
-            dataModify.append(diccionario) 
-    print(tabulate(dataModify, headers="keys", tablefmt="grid", numalign="center"))
+            dataModify.append(diccionario)
+             
+    if not dataModify:
+        print("No se encontró la categoria")
+    else:    
+        print(tabulate(dataModify, headers="keys", tablefmt="grid", numalign="center"))
+    
     input("Presione enter para continuar -->  ")
 
 def showBookCategory():
     data = seeBooks()
     dataModify = []
-    
+    filtro = set()
     for categorias in data:
-        if (categorias.get("Categoria")):
+        categoria = categorias.get("Categoria")
+        if categoria and categoria not in filtro:
+            filtro.add(categoria)
             categorias.pop("Titulo")
             categorias.pop("Autor")
             categorias.pop("Valoracion")
             categorias.pop("Genero")
             dataModify.append(categorias)
     print(tabulate(dataModify, headers="keys", tablefmt="grid", numalign="center"))
+
