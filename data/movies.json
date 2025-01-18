@@ -1,6 +1,5 @@
 [
     {
-        "ID": "PL-001",
         "Titulo": "Intensamente 2",
         "Direccion": "Kelsey Mann",
         "Producción": "Mark Nielsen",
@@ -12,7 +11,6 @@
         "Categoria": "Animación"
     },
     {
-        "ID": "PL-002",
         "Titulo": "Coco",
         "Direccion": "Lee Unkrich",
         "Producción": "Darla K. Anderson",
@@ -24,7 +22,6 @@
         "Categoria": "Animación"
     },
     {
-        "ID": "PL-003",
         "Titulo": "Frozen II",
         "Direccion": "Chris Buck",
         "Producción": "Peter Del Vecho",
@@ -36,7 +33,6 @@
         "Categoria": "Animación"
     },
     {
-        "ID": "PL-004",
         "Titulo": "Spider-Man: Into the Spider-Verse",
         "Direccion": "Bob Persichetti",
         "Producción": "Avi Arad",
@@ -48,7 +44,6 @@
         "Categoria": "Acción"
     },
     {
-        "ID": "PL-005",
         "Titulo": "Toy Story 4",
         "Direccion": "Josh Cooley",
         "Producción": "Jonas Rivera",

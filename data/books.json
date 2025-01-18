@@ -1,6 +1,5 @@
 [
     {
-        "ID": "LB-001",
         "Titulo": "Cien años de soledad",
         "Autor": "Gabriel Garcia Marquez",
         "Valoracion": 4.6,
@@ -12,7 +11,6 @@
         "Categoria": "Literatura Latinoamericana"
     },
     {
-        "ID": "LB-002",
         "Titulo": "El amor en los tiempos del cólera",
         "Autor": "Gabriel Garcia Marquez",
         "Valoracion": 4.5,
@@ -24,7 +22,6 @@
         "Categoria": "Literatura Latinoamericana"
     },
     {
-        "ID": "LB-003",
         "Titulo": "La casa de los espíritus",
         "Autor": "Isabel Allende",
         "Valoracion": 4.4,
@@ -36,7 +33,6 @@
         "Categoria": "Literatura Latinoamericana"
     },
     {
-        "ID": "LB-004",
         "Titulo": "Ficciones",
         "Autor": "Jorge Luis Borges",
         "Valoracion": 4.8,
@@ -46,5 +42,15 @@
             "Cuentos"
         ],
         "Categoria": "Literatura Argentina"
+    },
+    {
+        "Titulo": "asddas",
+        "Autor": "assadasd",
+        "Valoracion": 4.0,
+        "Categoria": "sdasdadsa",
+        "Genero": [
+            "Adsdsadsa",
+            "Adad"
+        ]
     }
 ]

@@ -1,12 +1,7 @@
 from tabulate import tabulate
 from logic.books import seeBooks, saveBooks
-
-def seeAllBooksInTables():
-    watch = seeBooks()  
-    print(tabulate(watch, headers="keys", tablefmt="grid", numalign="center", showindex="always"))
-    input("Presione enter para continuar -->")
-
 temporalBooks = []
+
 def newBook():  
     watch = seeBooks() 
     title = input("Ingrese el titulo del libro: ")
@@ -34,79 +29,26 @@ def newBook():
     else: 
         print("El libro ya existe en su coleccion")
 
-def filterBooksbyTitle(title): 
-    data = seeBooks() 
-    dataModify = []
-    for diccionario in data: 
-        if(diccionario.get("Titulo") == title): 
-            dataModify.append(diccionario) 
-    print(tabulate(dataModify, headers="keys", tablefmt="grid", numalign="center"))
-    input("Presione enter para continuar -->  ")
+def view_temporal_books():
+    if not temporalBooks:
+        print("No hay libros registrados")
+    else:
+        table = [
+            [
+                book["Titulo"],
+                book["Autor"],
+                book["Valoracion"],
+                book["Categoria"],
+                ", ".join(book["Genero"]),
+            ]
+            for book in temporalBooks
+        ]
+        headers = ["Título", "Autor", "Valoración", "Categoría", "Géneros"]
+        print("\n=== Libros Temporales Registrados ===")
+        print(tabulate(table, headers=headers, tablefmt="fancy_grid"))
 
-def filterBooksbyAutor(autor): 
-    data = seeBooks() 
-    dataModify = []
-    for diccionario in data: 
-        if(diccionario.get("Autor") == autor): 
-            dataModify.append(diccionario) 
-    print(tabulate(dataModify, headers="keys", tablefmt="grid", numalign="center"))
-    input("Presione enter para continuar -->  ")
-
-def filterBooksbyCategory(category): 
-    data = seeBooks() 
-    dataModify = []
-    for diccionario in data: 
-        if(diccionario.get("Categoria") == category): 
-            dataModify.append(diccionario)
-             
-    if not dataModify:
-        print("No se encontró la categoria")
-    else:    
-        print(tabulate(dataModify, headers="keys", tablefmt="grid", numalign="center"))
-    
-    input("Presione enter para continuar -->  ")
-
-def showBookCategory():
-    data = seeBooks()
-    dataModify = []
-    filtro = set()
-    for categorias in data:
-        categoria = categorias.get("Categoria")
-        if categoria and categoria not in filtro:
-            filtro.add(categoria)
-            categorias.pop("Titulo")
-            categorias.pop("Autor")
-            categorias.pop("Valoracion")
-            categorias.pop("Genero")
-            dataModify.append(categorias)
-    print(tabulate(dataModify, headers="keys", tablefmt="grid", numalign="center"))
-
-def showBookTitles():
-    data = seeBooks()
-    dataModify = []
-    filtro = set()
-    for titles in data:
-        title = titles.get("Titulo")
-        if title and title not in filtro:
-            filtro.add(title)
-            titles.pop("Categoria")
-            titles.pop("Autor")
-            titles.pop("Valoracion")
-            titles.pop("Genero")
-            dataModify.append(titles)
-    print(tabulate(dataModify, headers="keys", tablefmt="grid", numalign="center"))
-
-def showBookAutors():
-    data = seeBooks()
-    dataModify = []
-    filtro = set()
-    for autors in data:
-        autor = autors.get("Autor")
-        if autor and autor not in filtro:
-            filtro.add(autor)
-            autors.pop("Categoria")
-            autors.pop("Titulo")
-            autors.pop("Valoracion")
-            autors.pop("Genero")
-            dataModify.append(autors)
-    print(tabulate(dataModify, headers="keys", tablefmt="grid", numalign="center"))
+def loadJSONBooks():
+    load = seeBooks()
+    existing_titles = {book["Titulo"] for book in temporalBooks}
+    books_to_add = [book for book in load if book["Titulo"] not in existing_titles]
+    temporalBooks.extend(books_to_add)

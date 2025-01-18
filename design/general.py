@@ -1,4 +1,4 @@
-from design.books import seeAllBooksInTables, newBook, filterBooksbyTitle, filterBooksbyCategory, filterBooksbyAutor, showBookCategory, showBookAutors, showBookTitles, temporalBooks
+from design.books import seeAllBooksInTables, newBook, filterBooksbyTitle, filterBooksbyCategory, filterBooksbyAutor, showBookCategory, showBookAutors, showBookTitles, temporalBooks, view_temporal_books, loadJSONBooks
 from design.movies import seeAllMoviesInTables, filterMoviesbyCategory, filterMoviesByDirector, filterMoviesbyTitle, showMoviesCategory, showMoviesDirector, showMoviesTitles
 from design.music import seeAllMusicInTables, filterMusicbyAutor, filterMusicbyCategory, filterMusicbyTitle, showMusicCategory, showMusicAutor, showMusicTitle
 from logic.books import saveBooks
@@ -58,7 +58,7 @@ def menu_principal():
             selection = input("Seleccione la opción que prefiera --> ")
             match selection:
                case "1":
-                  seeAllBooksInTables()
+                  view_temporal_books()
                case "2":
                   seeAllMoviesInTables()
                case "3":
@@ -215,7 +215,10 @@ def menu_principal():
             match selection:
                case "1":
                   saveBooks(temporalBooks)
+               case "2":
+                  loadJSONBooks()
                case "3":
+
                   return menu_principal()
          case "8":
             print("Gracias por usar el programa")
