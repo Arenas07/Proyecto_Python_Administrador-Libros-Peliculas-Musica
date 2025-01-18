@@ -1,14 +1,22 @@
 import json
 
 def seeMusic():
-    with open("data/music.json", "r") as file:
-        data = file.read() #Read es para hacerlo un string
-        convertListOrDict = json.loads(data) #Lo convierte a estructura de datos
-        return convertListOrDict
+    with open("data/music.json", "r", encoding="utf-8") as file:
+            return json.load(file)
 
-def saveMusic(data):
-    with open("data/music.json", "w", encoding="utf-8") as file:
-        str(data).encode('utf-8')
-        convertJson = json.dumps(data, indent=4, ensure_ascii=False)
-        file.write(convertJson)
-        return "Se modificó el archivo products.json"
+def saveMusic(temporalSongs):
+    existingSongs = seeMusic()
+    existing_titles = {song["Titulo"] for song in existingSongs}
+    songs_to_add = [
+        movie for movie in temporalSongs if movie["Titulo"] not in existing_titles
+    ]
+    
+    if songs_to_add:
+        existingSongs.extend(songs_to_add)
+        with open("data/music.json", "w", encoding="utf-8") as file:
+            convertJson = json.dumps(existingSongs, indent=4, ensure_ascii=False)
+            file.write(convertJson)
+        print(f"Se han agregado {len(songs_to_add)} canciones nuevas al archivo JSON.")
+    else:
+        print("No se encontraron canciones nuevas para agregar.")
+    temporalSongs.clear()

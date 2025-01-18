@@ -1,7 +1,9 @@
-from design.books import seeAllBooksInTables, newBook, filterBooksbyTitle, filterBooksbyCategory, filterBooksbyAutor, showBookCategory, showBookAutors, showBookTitles, temporalBooks, view_temporal_books, loadJSONBooks
-from design.movies import seeAllMoviesInTables, filterMoviesbyCategory, filterMoviesByDirector, filterMoviesbyTitle, showMoviesCategory, showMoviesDirector, showMoviesTitles
-from design.music import seeAllMusicInTables, filterMusicbyAutor, filterMusicbyCategory, filterMusicbyTitle, showMusicCategory, showMusicAutor, showMusicTitle
+from design.books import  newBook, temporalBooks, view_temporal_books, loadJSONBooks
+from design.movies import newMovie, temporalMovies, view_temporal_movies, loadJSONMovies
+from design.music import newSong,  temporalSongs, view_temporal_songs, loadJSONSongs
 from logic.books import saveBooks
+from logic.movies import saveMovie
+from logic.music import saveMusic
 def menu_principal():
    print("""
             ===========================================
@@ -38,9 +40,9 @@ def menu_principal():
                case "1":
                   newBook()
                case "2":
-                  print("")
+                  newMovie()
                case "3":
-                  print("")
+                  newSong()
                case "4":
                   return menu_principal()
          case "2":
@@ -60,9 +62,9 @@ def menu_principal():
                case "1":
                   view_temporal_books()
                case "2":
-                  seeAllMoviesInTables()
+                  view_temporal_movies()
                case "3":
-                  seeAllMusicInTables()
+                  view_temporal_songs()
                case "4":
                   return menu_principal()
                case _:
@@ -215,10 +217,13 @@ def menu_principal():
             match selection:
                case "1":
                   saveBooks(temporalBooks)
+                  saveMusic(temporalSongs)
+                  saveMovie(temporalMovies)
                case "2":
                   loadJSONBooks()
+                  loadJSONMovies()
+                  loadJSONSongs()
                case "3":
-
                   return menu_principal()
          case "8":
             print("Gracias por usar el programa")

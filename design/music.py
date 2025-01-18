@@ -1,85 +1,63 @@
 from tabulate import tabulate
 from logic.music import seeMusic
 
-def seeAllMusicInTables():
-    watch = seeMusic()
-    print(tabulate(watch, headers="keys", tablefmt="grid", numalign="center", showindex="always"))
-    input("--> Presione enter para continuar")
-
-def filterMusicbyTitle(title): 
-    data = seeMusic() 
-    dataModify = []
-    for diccionario in data: 
-        if(diccionario.get("Titulo") == title): 
-            dataModify.append(diccionario) 
-    print(tabulate(dataModify, headers="keys", tablefmt="grid", numalign="center"))
-    input("Presione enter para continuar -->  ")
-
-def filterMusicbyAutor(autor): 
-    data = seeMusic() 
-    dataModify = []
-    for diccionario in data: 
-        if(diccionario.get("Autor") == autor): 
-            dataModify.append(diccionario) 
-    print(tabulate(dataModify, headers="keys", tablefmt="grid", numalign="center"))
-    input("Presione enter para continuar -->  ")
-
-def filterMusicbyCategory(category): 
-    data = seeMusic() 
-    dataModify = []
-    for diccionario in data: 
-        if(diccionario.get("Categoria") == category): 
-            dataModify.append(diccionario) 
-    if not dataModify:
-        print("No se encontró la categoria")
+temporalSongs = []
+def view_temporal_songs():
+    if not temporalSongs:
+        print("No hay canciones registradas")
     else:
-        print(tabulate(dataModify, headers="keys", tablefmt="grid", numalign="center"))
-    input("Presione enter para continuar -->  ")
+        table = [
+            [
+                song["Titulo"],
+                song["Autor"],
+                song["Album"],
+                ", ".join(song["Genero"]),
+                song["Categoria"],
+                song["Discografica"]
+            ]
+            for song in temporalSongs
+        ]
+        headers = ["Título", "Autor", "Album", "Genero", "Categoria", "Discografia"]
+        print("\n=== Canciones Temporales Registradas ===")
+        print(tabulate(table, headers=headers, tablefmt="fancy_grid"))
 
-def showMusicCategory():
-    data = seeMusic()
-    dataModify = []
-    filtro = set()
-    for categorias in data:
-        categoria = categorias.get("Categoria")
-        if categoria and categoria not in filtro:
-            filtro.add(categoria)
-            categorias.pop("Titulo")
-            categorias.pop("Autor")
-            categorias.pop("Album")
-            categorias.pop("Genero")
-            categorias.pop("Discografica")
-            dataModify.append(categorias)
-    print(tabulate(dataModify, headers="keys", tablefmt="grid", numalign="center"))
+def loadJSONSongs():
+    load = seeMusic()
+    existing_titles = set()  
+    songs_to_add = [] 
+    for song in temporalSongs:
+        existing_titles.add(song["Titulo"])    
 
-def showMusicAutor():
-    data = seeMusic()
-    dataModify = []
-    filtro = set()
-    for autors in data:
-        autor = autors.get("Autor")
-        if autor and autor not in filtro:
-            filtro.add(autor)
-            autors.pop("Titulo")
-            autors.pop("Categoria")
-            autors.pop("Album")
-            autors.pop("Genero")
-            autors.pop("Discografica")
-            dataModify.append(autors)
-    print(tabulate(dataModify, headers="keys", tablefmt="grid", numalign="center"))
+    for song in load:
+        if song["Titulo"] not in existing_titles:
+            songs_to_add.append(song)
+    temporalSongs.extend(songs_to_add)
 
-def showMusicTitle():
-    data = seeMusic()
-    dataModify = []
-    filtro = set()
-    for titles in data:
-        title = titles.get("Titulo")
-        if title and title not in filtro:
-            filtro.add(title)
-            titles.pop("Categoria")
-            titles.pop("Autor")
-            titles.pop("Album")
-            titles.pop("Genero")
-            titles.pop("Discografica")
-            dataModify.append(titles)
-    print(tabulate(dataModify, headers="keys", tablefmt="grid", numalign="center"))
+def newSong():  
+    watch = seeMusic() 
+    title = input("Ingrese el nombre de la cancion: ")
+    findSongs = list(filter(lambda peli: peli.get("Titulo") == title, watch)) 
+    findRepetition = list(filter(lambda peli: peli.get("Titulo") == title, temporalSongs))
+    if(not len(findSongs)) and (not len(findRepetition)): 
+        newSong = {
+                "Titulo": title,
+                "Autor": input("Ingrese el autor de la cancion: "),
+                "Album": input("Ingrese el album de la cancion: "),
+                "Genero": [],
+                "Categoria": input("Ingrese la categoria de la cancion: "),
+                "Discografica": input("Ingrese la discografica de la cancion: ")
+            }
+        while True:
+            genero = input("Ingrese el genero de la cancion: ").capitalize()
+            if genero:
+                newSong["Genero"].append(genero)
+            else:
+                print("El genero no puede quedar vacio")
+            confirmation = input("¿Quiere agregar otro genero? (s/n): ")
+            if confirmation.lower() != "s":
+                break
+        temporalSongs.append(newSong)
+        print("Cancion registrada con exito, si lo quiere guardar vaya al apartado de guardado")
+        input("Presione enter para continuar -->")
+    else: 
+        print("La canción ya existe en su coleccion")

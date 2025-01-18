@@ -42,15 +42,5 @@
             "Cuentos"
         ],
         "Categoria": "Literatura Argentina"
-    },
-    {
-        "Titulo": "asddas",
-        "Autor": "assadasd",
-        "Valoracion": 4.0,
-        "Categoria": "sdasdadsa",
-        "Genero": [
-            "Adsdsadsa",
-            "Adad"
-        ]
     }
 ]

@@ -1,14 +1,22 @@
 import json
 
 def seeMovies():
-    with open("data/movies.json", "r") as file:
-        data = file.read() #Read es para hacerlo un string
-        convertListOrDict = json.loads(data) #Lo convierte a estructura de datos
-        return convertListOrDict
+    with open("data/movies.json", "r", encoding="utf-8") as file:
+            return json.load(file)
 
-def saveMovies(data):
-    with open("data/movies.json", "w", encoding="utf-8") as file:
-        str(data).encode('utf-8')
-        convertJson = json.dumps(data, indent=4, ensure_ascii=False)
-        file.write(convertJson)
-        return "Se modificó el archivo products.json"
+def saveMovie(temporalMovies):
+    existingMovies = seeMovies()
+    existing_titles = {movie["Titulo"] for movie in existingMovies}
+    movies_to_add = [
+        movie for movie in temporalMovies if movie["Titulo"] not in existing_titles
+    ]
+    
+    if movies_to_add:
+        existingMovies.extend(movies_to_add)
+        with open("data/movies.json", "w", encoding="utf-8") as file:
+            convertJson = json.dumps(existingMovies, indent=4, ensure_ascii=False)
+            file.write(convertJson)
+        print(f"Se han agregado {len(movies_to_add)} libros nuevos al archivo JSON.")
+    else:
+        print("No se encontraron libros nuevos para agregar.")
+    temporalMovies.clear()

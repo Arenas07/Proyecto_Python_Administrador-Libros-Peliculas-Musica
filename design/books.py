@@ -5,8 +5,9 @@ temporalBooks = []
 def newBook():  
     watch = seeBooks() 
     title = input("Ingrese el titulo del libro: ")
-    findProducts = list(filter(lambda product: product.get("Titulo") == title, watch)) #Filtro para comparar si el dato ingresado existe
-    if(not len(findProducts)): 
+    findBooks = list(filter(lambda libro: libro.get("Titulo") == title, watch)) 
+    findRepetition = list(filter(lambda repe: repe.get("Titulo") == title, temporalBooks))
+    if(not len(findBooks)) and (not len(findRepetition)): 
         newBook = {
             "Titulo": title,
             "Autor": input("Ingrese el nombre del autor: "),
@@ -49,6 +50,13 @@ def view_temporal_books():
 
 def loadJSONBooks():
     load = seeBooks()
-    existing_titles = {book["Titulo"] for book in temporalBooks}
-    books_to_add = [book for book in load if book["Titulo"] not in existing_titles]
+    existing_titles = set()
+    books_to_add = []
+    for book in temporalBooks:
+        existing_titles.add(book["Titulo"])    
+ 
+    for book in load:
+        if book["Titulo"] not in existing_titles:
+            books_to_add.append(book)
     temporalBooks.extend(books_to_add)
+

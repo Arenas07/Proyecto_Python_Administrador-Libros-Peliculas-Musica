@@ -1,88 +1,65 @@
 from tabulate import tabulate
 from logic.movies import seeMovies
-
-def seeAllMoviesInTables():
-    watch = seeMovies()  
-    print(tabulate(watch, headers="keys", tablefmt="grid", numalign="center", showindex="always"))
-    input("--> Presione enter para continuar")
-    
-def filterMoviesbyTitle(title): 
-    data = seeMovies() 
-    dataModify = []
-    for diccionario in data: 
-        if(diccionario.get("Titulo") == title): 
-            dataModify.append(diccionario) 
-    print(tabulate(dataModify, headers="keys", tablefmt="grid", numalign="center"))
-    input("Presione enter para continuar -->  ")
-
-def filterMoviesByDirector(director): 
-    data = seeMovies() 
-    dataModify = []
-    for diccionario in data: 
-        if(diccionario.get("Direccion") == director): 
-            dataModify.append(diccionario) 
-    print(tabulate(dataModify, headers="keys", tablefmt="grid", numalign="center"))
-    input("Presione enter para continuar -->  ")
-
-def filterMoviesbyCategory(category): 
-    data = seeMovies() 
-    dataModify = []
-    for diccionario in data: 
-        if(diccionario.get("Categoria") == category): 
-            dataModify.append(diccionario) 
-    if not dataModify:
-        print("No se encontró la categoria")
+temporalMovies = []
+def view_temporal_movies():
+    if not temporalMovies:
+        print("No hay peliculas registradas")
     else:
-        print(tabulate(dataModify, headers="keys", tablefmt="grid", numalign="center"))
-    input("Presione enter para continuar -->  ")
+        table = [
+            [
+                movie["Titulo"],
+                movie["Direccion"],
+                movie["Producción"],
+                movie["Valoracion"],
+                ", ".join(movie["Genero"]),
+                movie["Fecha de estreno"],
+                movie["Categoria"]
+            ]
+            for movie in temporalMovies
+        ]
+        headers = ["Título", "Direccion", "Produccion", "Valoración", "Genero", "Fecha de estreno", "Categoria"]
+        print("\n=== Peliculas Temporales Registradas ===")
+        print(tabulate(table, headers=headers, tablefmt="fancy_grid"))
 
-def showMoviesCategory():
-    data = seeMovies()
-    dataModify = []
-    filtro = set()
-    for categorias in data:
-        categoria = categorias.get("Categoria")
-        if categoria and categoria not in filtro:
-            filtro.add(categoria)
-            categorias.pop("Titulo")
-            categorias.pop("Direccion")
-            categorias.pop("Producción")
-            categorias.pop("Genero")
-            categorias.pop("Valoracion")
-            categorias.pop("Fecha de estreno")
-            dataModify.append(categorias)
-    print(tabulate(dataModify, headers="keys", tablefmt="grid", numalign="center"))
+def loadJSONMovies():
+    load = seeMovies()
+    existing_titles = set()  
+    movies_to_add = [] 
+    for movie in temporalMovies:
+        existing_titles.add(movie["Titulo"])    
 
-def showMoviesTitles():
-    data = seeMovies()
-    dataModify = []
-    filtro = set()
-    for titles in data:
-        title = titles.get("Titulo")
-        if title and title not in filtro:
-            filtro.add(title)
-            titles.pop("Categoria")
-            titles.pop("Direccion")
-            titles.pop("Producción")
-            titles.pop("Genero")
-            titles.pop("Valoracion")
-            titles.pop("Fecha de estreno")
-            dataModify.append(titles)
-    print(tabulate(dataModify, headers="keys", tablefmt="grid", numalign="center"))
+    for movie in load:
+        if movie["Titulo"] not in existing_titles:
+            movies_to_add.append(movie)
+    temporalMovies.extend(movies_to_add)
 
-def showMoviesDirector():
-    data = seeMovies()
-    dataModify = []
-    filtro = set()
-    for directors in data:
-        director = directors.get("Direccion")
-        if director and director not in filtro:
-            filtro.add(director)
-            directors.pop("Categoria")
-            directors.pop("Titulo")
-            directors.pop("Producción")
-            directors.pop("Genero")
-            directors.pop("Valoracion")
-            directors.pop("Fecha de estreno")
-            dataModify.append(directors)
-    print(tabulate(dataModify, headers="keys", tablefmt="grid", numalign="center"))
+def newMovie():  
+    watch = seeMovies() 
+    title = input("Ingrese el titulo de la pelicula: ")
+    findMovies = list(filter(lambda peli: peli.get("Titulo") == title, watch)) 
+    findRepetition = list(filter(lambda peli: peli.get("Titulo") == title, temporalMovies))
+    if(not len(findMovies)) and (not len(findRepetition)): 
+        newMovie = {
+            "Titulo": title,
+            "Direccion": input("Ingrese el director de la pelicula: "),
+            "Producción": input("Ingrese la producción de la pelicula: "),
+            "Valoracion": input("Ingrese la valoración de la pelicula: "),
+            "Genero": [],
+            "Fecha de estreno": input("Ingrese la fecha de estreno de la pelicula: "),
+            "Categoria": input("Ingrese la categoria de la pelicula: ")
+            
+        }
+        while True:
+            genero = input("Ingrese el genero de la pelicula: ").capitalize()
+            if genero:
+                newMovie["Genero"].append(genero)
+            else:
+                print("El genero no puede quedar vacio")
+            confirmation = input("¿Quiere agregar otro genero? (s/n): ")
+            if confirmation.lower() != "s":
+                break
+        temporalMovies.append(newMovie)
+        print("Pelicula registrada con exito, si lo quiere guardar vaya al apartado de guardado")
+        input("Presione enter para continuar -->")
+    else: 
+        print("La pelicula ya existe en su coleccion")
