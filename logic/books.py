@@ -31,24 +31,69 @@ def editTitleJSON(temporalbooks):
                     with open("data/books.json", "w", encoding="utf-8") as file:
                         convertJson = json.dumps(jsondata, indent=4, ensure_ascii=False)  
                         file.write(convertJson) 
-                    print(f"Se ha actualizado el título del libro con ID: {temporalbook['ID']}")
+                    print(f"Se ha actualizado el título del libro ")
                     break  
-        
 
+def editAutorJSON(temporalbooks):
+    jsondata = seeBooks()  
+    for temporalbook in temporalbooks:
+        for lookcode in jsondata:
+            if lookcode["ID"] == temporalbook["ID"]: 
+                if lookcode["Autor"] != temporalbook["Autor"]: 
+                    lookcode["Autor"] = temporalbook["Autor"] 
+                    with open("data/books.json", "w", encoding="utf-8") as file:
+                        convertJson = json.dumps(jsondata, indent=4, ensure_ascii=False)  
+                        file.write(convertJson) 
+                    print(f"Se ha actualizado el autor del libro")
+                    break  
 
+def editGenreJSON(temporalbooks):
+    jsondata = seeBooks()  
+    for temporalbook in temporalbooks:
+        for lookcode in jsondata:
+            if lookcode["ID"] == temporalbook["ID"]: 
+                if lookcode["Genero"] != temporalbook["Genero"]: 
+                    lookcode["Genero"] = temporalbook["Genero"] 
+                    with open("data/books.json", "w", encoding="utf-8") as file:
+                        convertJson = json.dumps(jsondata, indent=4, ensure_ascii=False)  
+                        file.write(convertJson) 
+                    print(f"Se ha actualizado el genero del libro")
+                    break  
+
+def editRateJSON(temporalbooks):
+    jsondata = seeBooks()  
+    for temporalbook in temporalbooks:
+        for lookcode in jsondata:
+            if lookcode["ID"] == temporalbook["ID"]: 
+                if lookcode["Valoracion"] != temporalbook["Valoracion"]: 
+                    lookcode["Valoracion"] = temporalbook["Valoracion"] 
+                    with open("data/books.json", "w", encoding="utf-8") as file:
+                        convertJson = json.dumps(jsondata, indent=4, ensure_ascii=False)  
+                        file.write(convertJson) 
+                    print(f"Se ha actualizado el título del libro")
+                    break 
+
+def editCategoryJSON(temporalbooks):
+    jsondata = seeBooks()  
+    for temporalbook in temporalbooks:
+        for lookcode in jsondata:
+            if lookcode["ID"] == temporalbook["ID"]: 
+                if lookcode["Categoria"] != temporalbook["Categoria"]: 
+                    lookcode["Categoria"] = temporalbook["Categoria"] 
+                    with open("data/books.json", "w", encoding="utf-8") as file:
+                        convertJson = json.dumps(jsondata, indent=4, ensure_ascii=False)  
+                        file.write(convertJson) 
+                    print(f"Se ha actualizado el título del libro con ID: {temporalbook['ID']}")
+                    break   
 
 def editBooksTitle(book_id, new_book): 
     from design.books import temporalBooks
-    bookFound = False
     for book in temporalBooks:
         if book["ID"] == book_id:
             book["Titulo"] = new_book  
-            bookFound = True
-            print(f"Se ha actualizado el título en la lista temporal ")
+            print("Se ha actualizado el título en la lista temporal ")
             break
-    
-    if not bookFound:
-        print("Titulo del libro no encontrado") 
+
 
             
 

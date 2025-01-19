@@ -1,8 +1,8 @@
 from design.books import  newBook, temporalBooks, view_temporal_books, loadJSONBooks, showBookTitles, filterBooksbyTitle, showBookAutor, showBookCategory, filterBooksbyAutor, filterBooksbyCategory
 from design.movies import newMovie, temporalMovies, view_temporal_movies, loadJSONMovies, showMovieTitles, filterMoviesbyTitle, showMovieCategory, showMovieDirector, filterMoviesbyDirector, filterMoviebyCategory
 from design.music import newSong,  temporalSongs, view_temporal_songs, loadJSONSongs, showMusicTitles, filterMusicbyTitle, showMusicAutor, showMusicCategory, filterMusicbyCategory, filterMusicsbyAutor
-from logic.books import saveBooks, editBooksTitle, editTitleJSON
-from logic.movies import saveMovie
+from logic.books import saveBooks, editBooksTitle, editTitleJSON, editAutorJSON, editCategoryJSON, editGenreJSON, editRateJSON
+from logic.movies import saveMovie, editMoviesTitle, editTitleJSONmovies
 from logic.music import saveMusic
 def menu_principal():
    print("""
@@ -203,7 +203,12 @@ def menu_principal():
                         id = input("Ingrese la ID del libro para buscar: ")
                         newTitle = input("Ingrese el titulo por el que lo quiere reemplazar: ")
                         editBooksTitle(id, newTitle)
-                     case "5":
+                     case "2":
+                        showMovieTitles()
+                        id = input("Ingrese la ID de la pelicula para buscar: ")
+                        newTitle = input("Ingrese el titulo por el que lo quiere reemplazar: ")
+                        editMoviesTitle(id, newTitle)
+                     case "4":
                         return menu_principal()
                case "5":
                   return menu_principal()
@@ -259,6 +264,11 @@ def menu_principal():
             match selection:
                case "1":
                   editTitleJSON(temporalBooks)
+                  editAutorJSON(temporalBooks)
+                  editRateJSON(temporalBooks)
+                  editGenreJSON(temporalBooks)
+                  editCategoryJSON(temporalBooks)
+                  editTitleJSONmovies(temporalMovies)
                   saveBooks(temporalBooks)
                   saveMusic(temporalSongs)
                   saveMovie(temporalMovies)
