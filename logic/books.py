@@ -94,6 +94,13 @@ def editBooksTitle(book_id, new_book):
             print("Se ha actualizado el título en la lista temporal ")
             break
 
+def editBooksAutor(book_id, new_autor): 
+    from design.books import temporalBooks
+    for book in temporalBooks:
+        if book["ID"] == book_id:
+            book["Autor"] = new_autor  
+            print("Se ha actualizado el autor en la lista temporal ")
+            break
 
             
 
