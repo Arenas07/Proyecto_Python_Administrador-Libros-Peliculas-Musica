@@ -20,3 +20,24 @@ def saveMusic(temporalSongs):
     else:
         print("No se encontraron canciones nuevas para agregar.")
     temporalSongs.clear()
+
+def editTitleJSONmusic(temporalsongs):
+    jsondata = seeMusic()  
+    for temporalsong in temporalsongs:
+        for lookcode in jsondata:
+            if lookcode["ID"] == temporalsong["ID"]: 
+                if lookcode["Titulo"] != temporalsong["Titulo"]: 
+                    lookcode["Titulo"] = temporalsong["Titulo"] 
+                    with open("data/books.json", "w", encoding="utf-8") as file:
+                        convertJson = json.dumps(jsondata, indent=4, ensure_ascii=False)  
+                        file.write(convertJson) 
+                    print(f"Se ha actualizado el título de la cancion")
+                    break 
+
+def editMusicTitle(music_id, new_title): 
+    from design.music import temporalSongs
+    for song in temporalSongs:
+        if song["ID"] == music_id:
+            song["Titulo"] = new_title  
+            print("Se ha actualizado el título en la lista temporal")
+            break
