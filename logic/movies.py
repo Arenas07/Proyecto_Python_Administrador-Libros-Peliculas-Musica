@@ -42,3 +42,12 @@ def editMoviesTitle(movie_id, new_title):
             print("Se ha actualizado el título en la lista temporal")
             break
 
+def editMovieDirection(movie_id, direction): 
+    from design.movies import temporalMovies
+    for movie in temporalMovies:
+        if movie["ID"] == movie_id:
+            movie["Direccion"] = direction  
+
+            print("Se ha actualizado el director en la lista temporal")
+            break
+

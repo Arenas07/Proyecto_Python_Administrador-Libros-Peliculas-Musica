@@ -2,7 +2,7 @@ from design.books import  newBook, temporalBooks, view_temporal_books, loadJSONB
 from design.movies import newMovie, temporalMovies, view_temporal_movies, loadJSONMovies, showMovieTitles, filterMoviesbyTitle, showMovieCategory, showMovieDirector, filterMoviesbyDirector, filterMoviebyCategory
 from design.music import newSong,  temporalSongs, view_temporal_songs, loadJSONSongs, showMusicTitles, filterMusicbyTitle, showMusicAutor, showMusicCategory, filterMusicbyCategory, filterMusicsbyAutor
 from logic.books import saveBooks, editBooksTitle, editTitleJSON, editAutorJSON, editCategoryJSON, editGenreJSON, editRateJSON, editBooksAutor
-from logic.movies import saveMovie, editMoviesTitle, editTitleJSONmovies
+from logic.movies import saveMovie, editMoviesTitle, editTitleJSONmovies, editMovieDirection
 from logic.music import saveMusic, editMusicTitle, editTitleJSONmusic
 def menu_principal():
    print("""
@@ -186,7 +186,7 @@ def menu_principal():
                case "1":
                   print("""
                   ===========================================
-                            Editar por Titulo
+                            Editar Titulo
                   =========================================== 
                            ¿Cómo deseas Editar?
                     1. Libros
@@ -218,7 +218,7 @@ def menu_principal():
                case "2":
                   print("""
                   ===========================================
-                            Editar por Titulo
+                           Editar Autor/Director
                   =========================================== 
                            ¿Cómo deseas Editar?
                     1. Libros
@@ -235,6 +235,11 @@ def menu_principal():
                         id = input("Ingrese la ID del libro para buscar: ")
                         newAutor = input("Ingrese el Autor por el que lo quiere reemplazar: ")
                         editBooksAutor(id, newAutor)
+                     case "2":
+                        showMovieDirector()
+                        id = input("Ingrese la ID de la pelicula para buscar: ")
+                        newAutor = input("Ingrese el Autor por el que lo quiere reemplazar: ")
+                        editMovieDirection(id, newAutor)
                case "5":
                   return menu_principal()
          case "5":
