@@ -1,7 +1,7 @@
 from design.books import  newBook, temporalBooks, view_temporal_books, loadJSONBooks, showBookTitles, filterBooksbyTitle, showBookAutor, showBookCategory, filterBooksbyAutor, filterBooksbyCategory
 from design.movies import newMovie, temporalMovies, view_temporal_movies, loadJSONMovies, showMovieTitles, filterMoviesbyTitle, showMovieCategory, showMovieDirector, filterMoviesbyDirector, filterMoviebyCategory
 from design.music import newSong,  temporalSongs, view_temporal_songs, loadJSONSongs, showMusicTitles, filterMusicbyTitle, showMusicAutor, showMusicCategory, filterMusicbyCategory, filterMusicsbyAutor
-from logic.books import saveBooks
+from logic.books import saveBooks, editBooks
 from logic.movies import saveMovie
 from logic.music import saveMusic
 def menu_principal():
@@ -181,6 +181,10 @@ def menu_principal():
                   5. Regresar al Menú Principal
                  ===========================================
                      Selecciona una opción (1-5):""")
+            selection = input("Ingrese la opcion -->")
+            match selection:
+               case "1":
+                  editBooks(input("Ingrese el titulo del libro: "))
          case "5":
             print("""
                  ===========================================

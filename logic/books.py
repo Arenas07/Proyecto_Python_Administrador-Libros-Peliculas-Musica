@@ -1,5 +1,6 @@
 import json
 
+from tabulate import tabulate
 def seeBooks():
     with open("data/books.json", "r", encoding="utf-8") as file:
             return json.load(file)
@@ -21,4 +22,40 @@ def saveBooks(temporalBooks):
         print("No se encontraron libros nuevos para agregar.")
     temporalBooks.clear()
 
+def editBooks(book_name): 
+    from design.books import temporalBooks
+    if temporalBooks:
+        books = temporalBooks
+        for iterate in books: 
+            if iterate.get("Titulo") == book_name:   
+                print(f"Detalles actuales del pedido {book_name}:\n")
+                print(tabulate(iterate, headers="keys", tablefmt="fancy_grid"))
+
+                book_detail = {
+                    "Titulo": input("Escriba el nombre del titulo (si está mal escrito) sino vuelva a escribir el titulo: ").capitalize(),
+                    "Autor": input("Escriba el nombre del autor: ").capitalize(),
+                    "Genero": [],
+                    "Categoria": input("Escriba la categoria nueva: ").capitalize()
+                }
+            while True:
+                genero = input("Ingrese el genero del libro: ").capitalize()
+                if genero:
+                    book_detail["Genero"].append(genero)
+                else:
+                    print("El genero no puede quedar vacio")
+                confirmation = input("¿Quiere agregar otro genero? (s/n): ")
+                if confirmation.lower() != "s":
+                    break
+                    
+
+                iterate.update(book_detail)
+                print(f"El libro '{book_name}' ha sido actualizado.")
+                break
+        else:
+            print(f"No se encontró el libro con el título '{book_name}'.")
+    else:
+        print("No hay libros temporales para editar.")
+
+
+            
 
