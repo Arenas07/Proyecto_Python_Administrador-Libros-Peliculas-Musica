@@ -1,6 +1,6 @@
-from design.books import  newBook, temporalBooks, view_temporal_books, loadJSONBooks
-from design.movies import newMovie, temporalMovies, view_temporal_movies, loadJSONMovies
-from design.music import newSong,  temporalSongs, view_temporal_songs, loadJSONSongs
+from design.books import  newBook, temporalBooks, view_temporal_books, loadJSONBooks, showBookTitles, filterBooksbyTitle, showBookAutor, showBookCategory, filterBooksbyAutor, filterBooksbyCategory
+from design.movies import newMovie, temporalMovies, view_temporal_movies, loadJSONMovies, showMovieTitles, filterMoviesbyTitle, showMovieCategory, showMovieDirector, filterMoviesbyDirector, filterMoviebyCategory
+from design.music import newSong,  temporalSongs, view_temporal_songs, loadJSONSongs, showMusicTitles, filterMusicbyTitle, showMusicAutor, showMusicCategory, filterMusicbyCategory, filterMusicsbyAutor
 from logic.books import saveBooks
 from logic.movies import saveMovie
 from logic.music import saveMusic
@@ -101,15 +101,17 @@ def menu_principal():
                   match menu_selection:
                      case "1":
                         showBookTitles()
-                        filterBooksbyTitle(input("Ingrese el titulo del libro: "))
+                        filterBooksbyTitle(input("Ingrese el titulo del libro: ").capitalize())
                      case "2":
-                        showMoviesTitles()
-                        filterMoviesbyTitle(input("Ingrese el titulo de la pelicula: "))
+                        showMovieTitles()
+                        filterMoviesbyTitle(input("Ingrese el titulo de la pelicula: ").capitalize())
                      case "3":
-                        showMusicTitle()
-                        filterMusicbyTitle(input("Ingrese el titulo de la cancion: "))
+                        showMusicTitles()
+                        filterMusicbyTitle(input("Ingrese el titulo de la cancion: ").capitalize())
                      case "4":
-                        break
+                        return menu_principal()
+                     case _:
+                        print("Opcion no encontrada")
                case "2":
                   print("""
                  ===========================================
@@ -126,14 +128,14 @@ def menu_principal():
                   menu_selection = input("-->")
                   match menu_selection:
                      case "1":
-                        showBookAutors()
-                        filterBooksbyAutor(input("Ingrese el titulo del libro: "))
+                        showBookAutor()
+                        filterBooksbyAutor(input("Ingrese el titulo del libro: ").capitalize())
                      case "2":
-                        showMoviesDirector()
-                        filterMoviesByDirector(input("Ingrese el director de la pelicula: "))
+                        showMovieDirector()
+                        filterMoviesbyDirector(input("Ingrese el director de la pelicula: ".capitalize()))
                      case "3":
                         showMusicAutor()
-                        filterMusicbyAutor(input("Ingrese el autor de la cancion: "))
+                        filterMusicsbyAutor(input("Ingrese el autor de la cancion: ").capitalize()  )
                      case "4":
                         break
                case "3":
@@ -153,17 +155,17 @@ def menu_principal():
                   match menu_selection:
                      case "1":
                         showBookCategory()
-                        filterBooksbyCategory(input("Ingrese la categoria del libro: "))
+                        filterBooksbyCategory(input("Ingrese la categoria del libro: ").capitalize())
                      case "2":
-                        showMoviesCategory()
-                        filterMoviesbyCategory(input("Ingrese la categoria de la pelicula: "))
+                        showMovieCategory()
+                        filterMoviebyCategory(input("Ingrese la categoria de la pelicula: ").capitalize())
                      case "3":
                         showMusicCategory()
-                        filterMusicbyCategory(input("Ingrese la categoria de la cancion: "))
+                        filterMusicbyCategory(input("Ingrese la categoria de la cancion: ").capitalize())
                      case "4":
                         break        
                case "4":
-                  break
+                  return menu_principal()
                case _:
                   print("Opción no válida, por favor seleccione una opción válida.")
          case "4":
@@ -219,10 +221,13 @@ def menu_principal():
                   saveBooks(temporalBooks)
                   saveMusic(temporalSongs)
                   saveMovie(temporalMovies)
+                  input("Presione enter para continuar")
                case "2":
                   loadJSONBooks()
                   loadJSONMovies()
                   loadJSONSongs()
+                  input("Presione enter para continuar")
+
                case "3":
                   return menu_principal()
          case "8":

@@ -63,3 +63,103 @@ def newMovie():
         input("Presione enter para continuar -->")
     else: 
         print("La pelicula ya existe en su coleccion")
+
+def filterMoviesbyTitle(title): 
+    data = temporalMovies
+    dataModify = []
+    for diccionario in data: 
+        if(diccionario.get("Titulo") == title): 
+            dataModify.append(diccionario) 
+    if dataModify:    
+        print(tabulate(dataModify, headers="keys", tablefmt="grid", numalign="center"))
+    else:
+        print("No se encontró la cancion")
+    input("Presione enter para continuar -->  ")
+
+def showMovieTitles():
+    if temporalMovies:
+        data = temporalMovies
+        dataModify = []
+        filtro = set()
+        for titles in data:
+            title = titles.get("Titulo")
+            if title and title not in filtro:
+                filtro.add(title)
+                movie_copy = titles.copy()
+                movie_copy.pop("Categoria", None)   
+                movie_copy.pop("Direccion", None)
+                movie_copy.pop("Valoracion", None)
+                movie_copy.pop("Genero", None)
+                movie_copy.pop("Producción", None)
+                movie_copy.pop("Fecha de estreno", None)
+                movie_copy.pop("Categoria", None)
+                dataModify.append(movie_copy)
+        print(tabulate(dataModify, headers="keys", tablefmt="grid", numalign="center"))
+    else:
+        print("No se encontraron títulos registrados")
+
+def showMovieDirector():
+    if temporalMovies:
+        data = temporalMovies
+        dataModify = []
+        filtro = set()
+        for titles in data:
+            title = titles.get("Direccion")
+            if title and title not in filtro:
+                filtro.add(title)
+                movie_copy = titles.copy()  
+                movie_copy.pop("Titulo")
+                movie_copy.pop("Valoracion")
+                movie_copy.pop("Genero")
+                movie_copy.pop("Producción")
+                movie_copy.pop("Fecha de estreno")
+                movie_copy.pop("Categoria")
+                dataModify.append(movie_copy)
+        print(tabulate(dataModify, headers="keys", tablefmt="grid", numalign="center"))
+    else:
+        print("No se encontraron títulos registrados")
+
+def filterMoviesbyDirector(director): 
+    data = temporalMovies 
+    dataModify = []
+    for diccionario in data: 
+        if(diccionario.get("Producción") == director): 
+            dataModify.append(diccionario) 
+    if dataModify:    
+        print(tabulate(dataModify, headers="keys", tablefmt="grid", numalign="center"))
+    else:
+        print("No se encontró el libro")
+    input("Presione enter para continuar -->  ")
+
+def showMovieCategory():
+    if temporalMovies:
+        data = temporalMovies
+        dataModify = []
+        filtro = set()
+        for titles in data:
+            title = titles.get("Categoria")
+            if title and title not in filtro:
+                filtro.add(title)
+                movie_copy = titles.copy()  
+                movie_copy.pop("Titulo")
+                movie_copy.pop("Valoracion")
+                movie_copy.pop("Genero")
+                movie_copy.pop("Producción")
+                movie_copy.pop("Fecha de estreno")
+                movie_copy.pop("Direccion")
+                dataModify.append(movie_copy)
+        print(tabulate(dataModify, headers="keys", tablefmt="grid", numalign="center"))
+    else:
+        print("No se encontraron títulos registrados")
+
+def filterMoviebyCategory(category): 
+    data = temporalMovies
+    dataModify = []
+    for diccionario in data: 
+        if(diccionario.get("Categoria") == category): 
+            dataModify.append(diccionario) 
+    if dataModify:    
+        print(tabulate(dataModify, headers="keys", tablefmt="grid", numalign="center"))
+    else:
+        print("No se encontró el libro")
+    input("Presione enter para continuar -->  ")

@@ -61,3 +61,99 @@ def newSong():
         input("Presione enter para continuar -->")
     else: 
         print("La canción ya existe en su coleccion")
+
+def filterMusicbyTitle(title): 
+    data = temporalSongs
+    dataModify = []
+    for diccionario in data: 
+        if(diccionario.get("Titulo") == title): 
+            dataModify.append(diccionario) 
+    if dataModify:    
+        print(tabulate(dataModify, headers="keys", tablefmt="grid", numalign="center"))
+    else:
+        print("No se encontró la cancion")
+    input("Presione enter para continuar -->  ")
+
+def showMusicTitles():
+    if temporalSongs:
+        data = temporalSongs
+        dataModify = []
+        filtro = set()
+        for titles in data:
+            title = titles.get("Titulo")
+            if title and title not in filtro:
+                filtro.add(title)
+                music_copy = titles.copy()
+                music_copy.pop("Autor", None)   
+                music_copy.pop("Album", None)
+                music_copy.pop("Discografica", None)
+                music_copy.pop("Genero", None)
+                music_copy.pop("Categoria", None)
+                dataModify.append(music_copy)
+        print(tabulate(dataModify, headers="keys", tablefmt="grid", numalign="center"))
+    else:
+        print("No se encontraron títulos registrados")
+
+def filterMusicsbyAutor(autor): 
+    data = temporalSongs
+    dataModify = []
+    for diccionario in data: 
+        if(diccionario.get("Autor") == autor): 
+            dataModify.append(diccionario) 
+    if dataModify:    
+        print(tabulate(dataModify, headers="keys", tablefmt="grid", numalign="center"))
+    else:
+        print("No se encontró el libro")
+    input("Presione enter para continuar -->  ")
+
+def showMusicAutor():
+    if temporalSongs:
+        data = temporalSongs
+        dataModify = []
+        filtro = set()
+        for titles in data:
+            title = titles.get("Autor")
+            if title and title not in filtro:
+                filtro.add(title)
+                music_copy = titles.copy()
+                music_copy.pop("Titulo", None)   
+                music_copy.pop("Album", None)
+                music_copy.pop("Discografica", None)
+                music_copy.pop("Genero", None)
+                music_copy.pop("Categoria", None)
+                dataModify.append(music_copy)
+        print(tabulate(dataModify, headers="keys", tablefmt="grid", numalign="center"))
+    else:
+        print("No se encontraron títulos registrados")
+
+def filterMusicbyCategory(category): 
+    data = temporalSongs
+    dataModify = []
+    for diccionario in data: 
+        if(diccionario.get("Categoria") == category): 
+            dataModify.append(diccionario) 
+    if dataModify:    
+        print(tabulate(dataModify, headers="keys", tablefmt="grid", numalign="center"))
+    else:
+        print("No se encontró el libro")
+    input("Presione enter para continuar -->  ")
+
+def showMusicCategory():
+    if temporalSongs:
+        data = temporalSongs
+        dataModify = []
+        filtro = set()
+        for titles in data:
+            title = titles.get("Categoria")
+            if title and title not in filtro:
+                filtro.add(title)
+                music_copy = titles.copy()
+                music_copy.pop("Autor")   
+                music_copy.pop("Album")
+                music_copy.pop("Discografica")
+                music_copy.pop("Genero")
+                music_copy.pop("Titulo")
+                dataModify.append(music_copy)
+        print(tabulate(dataModify, headers="keys", tablefmt="grid", numalign="center"))
+    else:
+        print("No se encontraron títulos registrados")

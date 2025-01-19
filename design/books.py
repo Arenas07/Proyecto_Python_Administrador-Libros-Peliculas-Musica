@@ -49,14 +49,107 @@ def view_temporal_books():
         print(tabulate(table, headers=headers, tablefmt="fancy_grid"))
 
 def loadJSONBooks():
-    load = seeBooks()
-    existing_titles = set()
-    books_to_add = []
+    load = seeBooks() 
+    existing_titles = set()  
+    books_to_add = [] 
     for book in temporalBooks:
-        existing_titles.add(book["Titulo"])    
- 
+        existing_titles.add(book["Titulo"])
+
     for book in load:
         if book["Titulo"] not in existing_titles:
             books_to_add.append(book)
+
     temporalBooks.extend(books_to_add)
 
+
+def filterBooksbyTitle(title): 
+    data = temporalBooks 
+    dataModify = []
+    for diccionario in data: 
+        if(diccionario.get("Titulo") == title): 
+            dataModify.append(diccionario) 
+    if dataModify:    
+        print(tabulate(dataModify, headers="keys", tablefmt="grid", numalign="center"))
+    else:
+        print("No se encontró el libro")
+    input("Presione enter para continuar -->  ")
+def showBookTitles():
+    if temporalBooks:
+        data = temporalBooks
+        dataModify = []
+        filtro = set()
+        for titles in data:
+            title = titles.get("Titulo")
+            if title and title not in filtro:
+                filtro.add(title)
+                book_copy = titles.copy()
+                book_copy.pop("Categoria")   
+                book_copy.pop("Autor")
+                book_copy.pop("Valoracion")
+                book_copy.pop("Genero")
+                dataModify.append(book_copy)
+        print(tabulate(dataModify, headers="keys", tablefmt="grid", numalign="center"))
+    else:
+        print("No se encontraron títulos registrados")
+
+def showBookAutor():
+    if temporalBooks:
+        data = temporalBooks
+        dataModify = []
+        filtro = set()
+        for titles in data:
+            title = titles.get("Autor")
+            if title and title not in filtro:
+                filtro.add(title)
+                book_copy = titles.copy()
+                book_copy.pop("Categoria")   
+                book_copy.pop("Titulo")
+                book_copy.pop("Valoracion")
+                book_copy.pop("Genero")
+                dataModify.append(book_copy)
+        print(tabulate(dataModify, headers="keys", tablefmt="grid", numalign="center"))
+    else:
+        print("No se encontraron títulos registrados")
+
+def filterBooksbyAutor(autor): 
+    data = temporalBooks 
+    dataModify = []
+    for diccionario in data: 
+        if(diccionario.get("Autor") == autor): 
+            dataModify.append(diccionario) 
+    if dataModify:    
+        print(tabulate(dataModify, headers="keys", tablefmt="grid", numalign="center"))
+    else:
+        print("No se encontró el libro")
+    input("Presione enter para continuar -->  ")
+    
+def showBookCategory():
+    if temporalBooks:
+        data = temporalBooks
+        dataModify = []
+        filtro = set()
+        for titles in data:
+            title = titles.get("Categoria")
+            if title and title not in filtro:
+                filtro.add(title)
+                book_copy = titles.copy()
+                book_copy.pop("Autor")   
+                book_copy.pop("Titulo")
+                book_copy.pop("Valoracion")
+                book_copy.pop("Genero")
+                dataModify.append(book_copy)
+        print(tabulate(dataModify, headers="keys", tablefmt="grid", numalign="center"))
+    else:
+        print("No se encontraron títulos registrados")
+
+def filterBooksbyCategory(category): 
+    data = temporalBooks 
+    dataModify = []
+    for diccionario in data: 
+        if(diccionario.get("Categoria") == category): 
+            dataModify.append(diccionario) 
+    if dataModify:    
+        print(tabulate(dataModify, headers="keys", tablefmt="grid", numalign="center"))
+    else:
+        print("No se encontró el libro")
+    input("Presione enter para continuar -->  ")
