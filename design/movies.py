@@ -7,6 +7,7 @@ def view_temporal_movies():
     else:
         table = [
             [
+                movie["ID"],
                 movie["Titulo"],
                 movie["Direccion"],
                 movie["Producción"],
@@ -17,7 +18,7 @@ def view_temporal_movies():
             ]
             for movie in temporalMovies
         ]
-        headers = ["Título", "Direccion", "Produccion", "Valoración", "Genero", "Fecha de estreno", "Categoria"]
+        headers = ["ID", "Título", "Direccion", "Produccion", "Valoración", "Genero", "Fecha de estreno", "Categoria"]
         print("\n=== Peliculas Temporales Registradas ===")
         print(tabulate(table, headers=headers, tablefmt="fancy_grid"))
 
@@ -38,8 +39,15 @@ def newMovie():
     title = input("Ingrese el titulo de la pelicula: ")
     findMovies = list(filter(lambda peli: peli.get("Titulo") == title, watch)) 
     findRepetition = list(filter(lambda peli: peli.get("Titulo") == title, temporalMovies))
+    allIDS = []
+    for code in watch:
+        if "ID" in code:
+            allIDS.append(code["ID"])
+    lastId = allIDS[-1] if allIDS else "LB-001"
+    newID = f"PL-{int(lastId.split("-")[1] + 1)}"
     if(not len(findMovies)) and (not len(findRepetition)): 
         newMovie = {
+            "ID": newID,
             "Titulo": title,
             "Direccion": input("Ingrese el director de la pelicula: "),
             "Producción": input("Ingrese la producción de la pelicula: "),

@@ -7,8 +7,15 @@ def newBook():
     title = input("Ingrese el titulo del libro: ")
     findBooks = list(filter(lambda libro: libro.get("Titulo") == title, watch)) 
     findRepetition = list(filter(lambda repe: repe.get("Titulo") == title, temporalBooks))
+    allIDS = []
+    for code in watch:
+        if "ID" in code:
+            allIDS.append(code["ID"])
+    lastId = allIDS[-1] if allIDS else "LB-001"
+    newID = f"LB-{int(lastId.split('-')[1]) + 1}"
     if(not len(findBooks)) and (not len(findRepetition)): 
         newBook = {
+            "ID": newID,
             "Titulo": title,
             "Autor": input("Ingrese el nombre del autor: "),
             "Valoracion": float(input("Ingrese la valoracion de la obra: ")),
@@ -26,7 +33,7 @@ def newBook():
                 break
         temporalBooks.append(newBook)
         print("Libro registrado con exito, si lo quiere guardar vaya al apartado de guardado")
-        input("Presione enter para continuar -->")
+        input("Presione enter para continuar --> ")
     else: 
         print("El libro ya existe en su coleccion")
 
@@ -36,6 +43,7 @@ def view_temporal_books():
     else:
         table = [
             [
+                book["ID"],
                 book["Titulo"],
                 book["Autor"],
                 book["Valoracion"],
@@ -44,7 +52,7 @@ def view_temporal_books():
             ]
             for book in temporalBooks
         ]
-        headers = ["Título", "Autor", "Valoración", "Categoría", "Géneros"]
+        headers = ["ID", "Título", "Autor", "Valoración", "Categoría", "Géneros"]
         print("\n=== Libros Temporales Registrados ===")
         print(tabulate(table, headers=headers, tablefmt="fancy_grid"))
 

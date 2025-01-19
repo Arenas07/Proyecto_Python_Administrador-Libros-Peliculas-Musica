@@ -8,6 +8,7 @@ def view_temporal_songs():
     else:
         table = [
             [
+                song["ID"],
                 song["Titulo"],
                 song["Autor"],
                 song["Album"],
@@ -38,8 +39,15 @@ def newSong():
     title = input("Ingrese el nombre de la cancion: ")
     findSongs = list(filter(lambda peli: peli.get("Titulo") == title, watch)) 
     findRepetition = list(filter(lambda peli: peli.get("Titulo") == title, temporalSongs))
+    allIDS = []
+    for code in watch:
+        if "ID" in code:
+            allIDS.append(code["ID"])
+    lastId = allIDS[-1] if allIDS else "LB-001"
+    newID = f"LB-{int(lastId.split("-")[1] + 1)}"
     if(not len(findSongs)) and (not len(findRepetition)): 
         newSong = {
+                "ID": newID,
                 "Titulo": title,
                 "Autor": input("Ingrese el autor de la cancion: "),
                 "Album": input("Ingrese el album de la cancion: "),

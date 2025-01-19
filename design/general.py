@@ -1,7 +1,7 @@
 from design.books import  newBook, temporalBooks, view_temporal_books, loadJSONBooks, showBookTitles, filterBooksbyTitle, showBookAutor, showBookCategory, filterBooksbyAutor, filterBooksbyCategory
 from design.movies import newMovie, temporalMovies, view_temporal_movies, loadJSONMovies, showMovieTitles, filterMoviesbyTitle, showMovieCategory, showMovieDirector, filterMoviesbyDirector, filterMoviebyCategory
 from design.music import newSong,  temporalSongs, view_temporal_songs, loadJSONSongs, showMusicTitles, filterMusicbyTitle, showMusicAutor, showMusicCategory, filterMusicbyCategory, filterMusicsbyAutor
-from logic.books import saveBooks, editBooks
+from logic.books import saveBooks, editBooksTitle, editTitleJSON
 from logic.movies import saveMovie
 from logic.music import saveMusic
 def menu_principal():
@@ -78,7 +78,7 @@ def menu_principal():
                            ¿Cómo deseas buscar?
                     1. Buscar por Título
                     2. Buscar por Autor/Director/Artista
-                    3. Buscar por Categoria
+                    3. Buscar por Genero
                     4. Regresar al Menú Principal
                  ===========================================
                     Selecciona una opción (1-4):""")
@@ -141,7 +141,7 @@ def menu_principal():
                case "3":
                   print("""
                  ===========================================
-                           Buscar por Categoria
+                           Buscar por Genero
                  =========================================== 
                            ¿Cómo deseas buscar?
                     1. Libros
@@ -181,10 +181,32 @@ def menu_principal():
                   5. Regresar al Menú Principal
                  ===========================================
                      Selecciona una opción (1-5):""")
-            selection = input("Ingrese la opcion -->")
+            selection = input("Ingrese la opcion --> ")
             match selection:
                case "1":
-                  editBooks(input("Ingrese el titulo del libro: "))
+                  print("""
+                  ===========================================
+                            Editar por Titulo
+                  =========================================== 
+                           ¿Cómo deseas Editar?
+                    1. Libros
+                    2. Peliculas
+                    3. Musica
+                    4. Regresar a Buscar un elemento
+                  ===========================================
+                    Selecciona una opción (1-4):"""
+                        )
+                  selection = input("Seleccione una opcion --> ")
+                  match selection:
+                     case "1":
+                        showBookTitles()
+                        id = input("Ingrese la ID del libro para buscar: ")
+                        newTitle = input("Ingrese el titulo por el que lo quiere reemplazar: ")
+                        editBooksTitle(id, newTitle)
+                     case "5":
+                        return menu_principal()
+               case "5":
+                  return menu_principal()
          case "5":
             print("""
                  ===========================================
@@ -208,6 +230,20 @@ def menu_principal():
                     4. Regresar al Menú Principal
                  ===========================================
                     Selecciona una opción (1-4):""")
+            selection = input("Ingrese la opcion --> ")
+            match selection:
+               case "1":
+                  showBookCategory()
+                  filterBooksbyCategory(input("Ingrese la categoria del libro: ").capitalize())
+               case "2":
+                  showMovieCategory()
+                  filterMoviebyCategory(input("Ingrese la categoria de la pelicula: ").capitalize())
+               case "3":
+                  showMusicCategory()
+                  filterMusicbyCategory(input("Ingrese la categoria de la cancion: ").capitalize())
+               case "4":
+                  break        
+
          case "7":
             print("""
                  ===========================================
@@ -222,15 +258,17 @@ def menu_principal():
             selection = input("--> ")
             match selection:
                case "1":
+                  editTitleJSON(temporalBooks)
                   saveBooks(temporalBooks)
                   saveMusic(temporalSongs)
                   saveMovie(temporalMovies)
-                  input("Presione enter para continuar")
+                  
+                  input("Presione enter para continuar -->")
                case "2":
                   loadJSONBooks()
                   loadJSONMovies()
                   loadJSONSongs()
-                  input("Presione enter para continuar")
+                  input("Presione enter para continuar -->")
 
                case "3":
                   return menu_principal()
@@ -240,5 +278,6 @@ def menu_principal():
          case _:
             input("Opción no disponible, presione enter para continuar -->")
             return menu_principal()
+
          
 
