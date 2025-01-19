@@ -41,3 +41,11 @@ def editMusicTitle(music_id, new_title):
             song["Titulo"] = new_title  
             print("Se ha actualizado el título en la lista temporal")
             break
+
+def editMusicAutor(music_id, new_autor): 
+    from design.music import temporalSongs
+    for song in temporalSongs:
+        if song["ID"] == music_id:
+            song["Autor"] = new_autor 
+            print("Se ha actualizado el autor en la lista temporal")
+            break

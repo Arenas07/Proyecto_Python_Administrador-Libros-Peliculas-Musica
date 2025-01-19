@@ -3,7 +3,7 @@ from design.movies import newMovie, temporalMovies, view_temporal_movies, loadJS
 from design.music import newSong,  temporalSongs, view_temporal_songs, loadJSONSongs, showMusicTitles, filterMusicbyTitle, showMusicAutor, showMusicCategory, filterMusicbyCategory, filterMusicsbyAutor
 from logic.books import saveBooks, editBooksTitle, editTitleJSON, editAutorJSON, editCategoryJSON, editGenreJSON, editRateJSON, editBooksAutor
 from logic.movies import saveMovie, editMoviesTitle, editTitleJSONmovies, editMovieDirection
-from logic.music import saveMusic, editMusicTitle, editTitleJSONmusic
+from logic.music import saveMusic, editMusicTitle, editTitleJSONmusic, editMusicAutor
 def menu_principal():
    print("""
             ===========================================
@@ -240,6 +240,11 @@ def menu_principal():
                         id = input("Ingrese la ID de la pelicula para buscar: ")
                         newAutor = input("Ingrese el Autor por el que lo quiere reemplazar: ")
                         editMovieDirection(id, newAutor)
+                     case "3":
+                        showMusicAutor()
+                        id = input("Ingrese la ID de la cancion para buscar: ")
+                        newAutor = input("Ingrese el Autor por el que lo quiere reemplazar: ")
+                        editMusicAutor(id, newAutor)
                case "5":
                   return menu_principal()
          case "5":
