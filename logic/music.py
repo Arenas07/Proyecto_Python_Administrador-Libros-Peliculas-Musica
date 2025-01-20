@@ -49,3 +49,44 @@ def editMusicAutor(music_id, new_autor):
             song["Autor"] = new_autor 
             print("Se ha actualizado el autor en la lista temporal")
             break
+
+def editMusicAlbum(music_id, album): 
+    from design.music import temporalSongs
+    for song in temporalSongs:
+        if song["ID"] == music_id:
+            song["Album"] = album 
+            print("Se ha actualizado el album en la lista temporal")
+            break
+
+def editMusicGenre(music_id): 
+    from design.music import temporalSongs
+
+    for music in temporalSongs:
+        if music["ID"] == music_id:
+            new_genre = []
+            while True:
+                opcion = input("Ingrese el genero nuevo: ")
+                new_genre.append(opcion)
+                opc = input("Quiere agregar otro genero? (s/n): ")
+                if opc.lower() != "s":
+                    break
+                if new_genre:
+                    music["Genero"] = new_genre
+                else:
+                    print("No se han ingresado generos")
+
+def editMusicCAT(music_id, cat): 
+    from design.music import temporalSongs
+    for song in temporalSongs:
+        if song["ID"] == music_id:
+            song["Categoria"] = cat 
+            print("Se ha actualizado la categoria en la lista temporal")
+            break
+
+def editMusicDisc(music_id, disc): 
+    from design.music import temporalSongs
+    for song in temporalSongs:
+        if song["ID"] == music_id:
+            song["Discografica"] = disc
+            print("Se ha actualizado la discografica en la lista temporal")
+            break

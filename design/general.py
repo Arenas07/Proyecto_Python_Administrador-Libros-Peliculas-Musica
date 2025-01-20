@@ -3,7 +3,7 @@ from design.movies import newMovie, temporalMovies, view_temporal_movies, loadJS
 from design.music import newSong,  temporalSongs, view_temporal_songs, loadJSONSongs, showMusicTitles, filterMusicbyTitle, showMusicAutor, showMusicCategory, filterMusicbyCategory, filterMusicsbyAutor
 from logic.books import saveBooks, editBooksTitle, editTitleJSON, editAutorJSON, editCategoryJSON, editGenreJSON, editRateJSON, editBooksAutor, editBooksGenre, editBooksRate, editBooksCAT
 from logic.movies import saveMovie, editMoviesTitle, editTitleJSONmovies, editMovieDirection, editMovieGenre, editMovieProduction, editMovieRate, editMovieCAT
-from logic.music import saveMusic, editMusicTitle, editTitleJSONmusic, editMusicAutor
+from logic.music import saveMusic, editMusicTitle, editTitleJSONmusic, editMusicAutor, editMusicAlbum, editMusicGenre, editMusicCAT, editMusicDisc
 def menu_principal():
    print("""
             ===========================================
@@ -295,18 +295,40 @@ def menu_principal():
                   selection = input("Ingrese la opcion --> ")
                   match selection:
                      case "1":
-                        view_temporal_books()
-                        id = input("Ingrese la ID de la pelicula para buscar: ")
-                        editBooksGenre(id)
+                        view_temporal_songs()
+                        id = input("Ingrese la ID de la cancion para buscar: ")
+                        title = input("Ingrese el nuevo nombre de la canción: ")
+                        editMusicTitle(id, title)
                      case "2":
-                        view_temporal_movies()
-                        id = input("Ingrese la ID de la pelicula para buscar: ")
-                        editMovieGenre(id)
+                        view_temporal_songs()
+                        id = input("Ingrese la ID de la cancion para buscar: ")
+                        autor = input("Ingrese el autor de la cancion: ")
+                        editMusicAutor(id, autor)
                      case "3":
                         view_temporal_songs()
-                        id = input("Ingrese la ID de la pelicula para buscar: ")
-                        newRate = float(input("Ingrese la nueva valoración del libro"))
-               case "6":
+                        id = input("Ingrese la ID de la cancion para buscar: ")
+                        album = input("Ingrese el album de la cancion: ")
+                        editMusicAlbum(id, album)
+                     case "4":   
+                        view_temporal_songs()
+                        id = input("Ingrese la ID de la cancion")
+                        editMusicGenre(id)
+                     case "5":
+                        view_temporal_songs()
+                        id = input("Ingrese la ID de la cancion para buscar: ")
+                        cat = input("Ingrese la categoria de la cancion: ")
+                        editMusicCAT(id, cat)
+                     case "6":
+                        view_temporal_songs()
+                        id = input("Ingrese la ID de la cancion para buscar: ")
+                        disc = input("Ingrese la discografica de la cancion: ")
+                        editMusicDisc(id, disc)
+                     case "7":
+                        return menu_principal()
+                     case _:
+                        print("La opcion ingresada no se encuentra disponible")
+                        input("Presione enter para continuar --> ")
+               case "4":
                   return menu_principal()
          case "5":
             print("""
