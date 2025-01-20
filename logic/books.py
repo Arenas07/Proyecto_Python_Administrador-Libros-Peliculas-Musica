@@ -102,5 +102,24 @@ def editBooksAutor(book_id, new_autor):
             print("Se ha actualizado el autor en la lista temporal ")
             break
 
+def editBooksGenre(book_id): 
+    from design.books import temporalBooks
+
+    for book in temporalBooks:
+        if book["ID"] == book_id:
+            new_genre = []
+            while True:
+                opcion = input("Ingrese el genero nuevo: ")
+                new_genre.append(opcion)
+                opc = input("Quiere agregar otro genero? (s/n): ")
+                if opc.lower() != "s":
+                    break
+                if new_genre:
+                    book["Genero"] = new_genre
+                    print(temporalBooks)
+                else:
+                    print("No se han ingresado generos")
+
+
             
 

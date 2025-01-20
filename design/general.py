@@ -1,7 +1,7 @@
 from design.books import  newBook, temporalBooks, view_temporal_books, loadJSONBooks, showBookTitles, filterBooksbyTitle, showBookAutor, showBookCategory, filterBooksbyAutor, filterBooksbyCategory
 from design.movies import newMovie, temporalMovies, view_temporal_movies, loadJSONMovies, showMovieTitles, filterMoviesbyTitle, showMovieCategory, showMovieDirector, filterMoviesbyDirector, filterMoviebyCategory
 from design.music import newSong,  temporalSongs, view_temporal_songs, loadJSONSongs, showMusicTitles, filterMusicbyTitle, showMusicAutor, showMusicCategory, filterMusicbyCategory, filterMusicsbyAutor
-from logic.books import saveBooks, editBooksTitle, editTitleJSON, editAutorJSON, editCategoryJSON, editGenreJSON, editRateJSON, editBooksAutor
+from logic.books import saveBooks, editBooksTitle, editTitleJSON, editAutorJSON, editCategoryJSON, editGenreJSON, editRateJSON, editBooksAutor, editBooksGenre
 from logic.movies import saveMovie, editMoviesTitle, editTitleJSONmovies, editMovieDirection
 from logic.music import saveMusic, editMusicTitle, editTitleJSONmusic, editMusicAutor
 def menu_principal():
@@ -199,17 +199,17 @@ def menu_principal():
                   selection = input("Seleccione una opcion --> ")
                   match selection:
                      case "1":
-                        showBookTitles()
+                        view_temporal_books()
                         id = input("Ingrese la ID del libro para buscar: ")
                         newTitle = input("Ingrese el titulo por el que lo quiere reemplazar: ")
                         editBooksTitle(id, newTitle)
                      case "2":
-                        showMovieTitles()
+                        view_temporal_movies()
                         id = input("Ingrese la ID de la pelicula para buscar: ")
                         newTitle = input("Ingrese el titulo por el que lo quiere reemplazar: ")
                         editMoviesTitle(id, newTitle)
                      case "3":
-                        showMusicTitles()
+                        view_temporal_songs()
                         id = input("Ingrese la ID de la cancion para buscar: ")
                         newTitle = input("Ingrese el titulo por el que lo quiere reemplazar: ")
                         editMusicTitle(id, newTitle)
@@ -231,20 +231,43 @@ def menu_principal():
                   selection = input("Seleccione una opcion --> ")
                   match selection:
                      case "1":
-                        showBookAutor()
+                        view_temporal_books()
                         id = input("Ingrese la ID del libro para buscar: ")
                         newAutor = input("Ingrese el Autor por el que lo quiere reemplazar: ")
                         editBooksAutor(id, newAutor)
                      case "2":
-                        showMovieDirector()
+                        view_temporal_movies()
                         id = input("Ingrese la ID de la pelicula para buscar: ")
                         newAutor = input("Ingrese el Autor por el que lo quiere reemplazar: ")
                         editMovieDirection(id, newAutor)
                      case "3":
-                        showMusicAutor()
+                        view_temporal_songs()
                         id = input("Ingrese la ID de la cancion para buscar: ")
                         newAutor = input("Ingrese el Autor por el que lo quiere reemplazar: ")
                         editMusicAutor(id, newAutor)
+                     case "4":
+                        return menu_principal()
+                     case _:
+                        input("Opcion ingresada no existe, presione enter para continuar -->")
+               case "3":
+                  print("""
+                  ===========================================
+                           Editar Generos
+                  =========================================== 
+                           ¿Cómo deseas Editar?
+                    1. Libros
+                    2. Peliculas
+                    3. Musica
+                    4. Regresar a Buscar un elemento
+                  ===========================================
+                    Selecciona una opción (1-4):"""
+                        )
+                  selection = input("Seleccione una opcion --> ")
+                  match selection:
+                     case "1":
+                        view_temporal_books()
+                        id = input("Ingrese la ID del libro para buscar: ")
+                        editBooksGenre(id)
                case "5":
                   return menu_principal()
          case "5":
