@@ -119,8 +119,23 @@ def editBooksGenre(book_id):
                 else:
                     print("No se han ingresado generos")
 
+def editBooksRate(book_id, newRate): 
+    from design.books import temporalBooks
 
+    for book in temporalBooks:
+        if book["ID"] == book_id:
+            book["Valoracion"] = newRate
+            print("Se ha actualizado la valoracion en la lista temporal ")
+            break
 
+def editBooksCAT(book_id, newCAT): 
+    from design.books import temporalBooks
+
+    for book in temporalBooks:
+        if book["ID"] == book_id:
+            book["Categoria"] = newCAT
+            print("Se ha actualizado la categoria en la lista temporal ")
+            break
 
             
 

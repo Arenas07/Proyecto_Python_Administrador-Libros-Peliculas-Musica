@@ -68,4 +68,27 @@ def editMovieGenre(movie_id):
                 else:
                     print("No se han ingresado generos")
 
+def editMovieProduction(movie_id, production): 
+    from design.movies import temporalMovies
+    for movie in temporalMovies:
+        if movie["ID"] == movie_id:
+            movie["Producción"] = production  
 
+            print("Se ha actualizado la producción en la lista temporal")
+            break
+
+def editMovieRate(movie_id, rate): 
+    from design.movies import temporalMovies
+    for movie in temporalMovies:
+        if movie["ID"] == movie_id:
+            movie["Valoracion"] = rate  
+            print("Se ha actualizado la valoracion en la lista temporal")
+            break
+
+def editMovieCAT(movie_id, CAT): 
+    from design.movies import temporalMovies
+    for movie in temporalMovies:
+        if movie["ID"] == movie_id:
+            movie["Categoria"] = CAT  
+            print("Se ha actualizado la categoria en la lista temporal")
+            break
