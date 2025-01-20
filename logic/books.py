@@ -165,5 +165,22 @@ def deleteTEMPORAL(id):
                 input("Operación cancelada, presione enter para continuar: ")
                 break
     print("No se encontró el codigo")
-    input("Presione enter para continuar -->")        
+    input("Presione enter para continuar -->")  
+
+def deleteTEMPORALBookByName(title): 
+    from design.books import temporalBooks
+    info = temporalBooks
+    
+    for code in info: 
+        if title == code.get("Titulo"): 
+            security = input("¿Está seguro de eliminar el libro? (s/n): ".strip())
+            if security.lower() == "s":  
+                info.remove(code)  
+                print("Libro eliminado correctamente")
+                break
+            else:
+                input("Operación cancelada, presione enter para continuar: ")
+                break
+    print("No se encontró el titulo")
+    input("Presione enter para continuar -->")      
 

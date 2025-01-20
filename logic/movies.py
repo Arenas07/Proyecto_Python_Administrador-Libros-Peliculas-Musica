@@ -3,6 +3,13 @@ import json
 def seeMovies():
     with open("data/movies.json", "r", encoding="utf-8") as file:
             return json.load(file)
+    
+def updateJsonWhenSaveMovies():
+    from design.movies import temporalMovies
+    list = temporalMovies
+    with open("data/books.json", "w", encoding="utf-8") as file:
+        convertJson = json.dumps(list, indent=4, ensure_ascii=False)
+        file.write(convertJson)
 
 def saveMovie(temporalMovies):
     existingMovies = seeMovies()
@@ -177,3 +184,20 @@ def deleteTEMPORALMovie(id):
                 break
     print("No se encontró el codigo")
     input("Presione enter para continuar -->")     
+
+def deleteTEMPORALMoviebyName(title): 
+    from design.movies import temporalMovies
+    info = temporalMovies
+    
+    for code in info: 
+        if title == code.get("Titulo"): 
+            security = input("¿Está seguro de eliminar la pelicula? (s/n): ".strip())
+            if security.lower() == "s":  
+                info.remove(code)  
+                print("Pelicula eliminada correctamente")
+                break
+            else:
+                input("Operación cancelada, presione enter para continuar: ")
+                break
+    print("No se encontró el titulo")
+    input("Presione enter para continuar -->")  

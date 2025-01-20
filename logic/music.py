@@ -3,6 +3,12 @@ import json
 def seeMusic():
     with open("data/music.json", "r", encoding="utf-8") as file:
             return json.load(file)
+def updateJsonWhenSaveMusic():
+    from design.music import temporalSongs
+    list = temporalSongs
+    with open("data/books.json", "w", encoding="utf-8") as file:
+        convertJson = json.dumps(list, indent=4, ensure_ascii=False)
+        file.write(convertJson)
 
 def saveMusic(temporalSongs):
     existingSongs = seeMusic()
@@ -177,4 +183,21 @@ def deleteTEMPORALSong(id):
                 input("Operación cancelada, presione enter para continuar: ")
                 break
     print("No se encontró el codigo")
+    input("Presione enter para continuar -->")  
+
+def deleteTEMPORALSongbyName(title): 
+    from design.music import temporalSongs
+    info = temporalSongs
+    
+    for code in info: 
+        if title == code.get("Titulo"): 
+            security = input("¿Está seguro de eliminar la cancion? (s/n): ".strip())
+            if security.lower() == "s":  
+                info.remove(code)  
+                print("Cancion eliminada correctamente")
+                break
+            else:
+                input("Operación cancelada, presione enter para continuar: ")
+                break
+    print("No se encontró el titulo")
     input("Presione enter para continuar -->")  

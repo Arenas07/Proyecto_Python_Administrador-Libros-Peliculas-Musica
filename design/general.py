@@ -1,9 +1,9 @@
-from design.books import  newBook, temporalBooks, view_temporal_books, loadJSONBooks, showBookTitles, filterBooksbyTitle, showBookAutor, showBookCategory, filterBooksbyAutor, filterBooksbyCategory
-from design.movies import newMovie, temporalMovies, view_temporal_movies, loadJSONMovies, showMovieTitles, filterMoviesbyTitle, showMovieCategory, showMovieDirector, filterMoviesbyDirector, filterMoviebyCategory
-from design.music import newSong,  temporalSongs, view_temporal_songs, loadJSONSongs, showMusicTitles, filterMusicbyTitle, showMusicAutor, showMusicCategory, filterMusicbyCategory, filterMusicsbyAutor
-from logic.books import saveBooks, editBooksTitle, editTitleJSON, editAutorJSON, editCategoryJSON, editGenreJSON, editRateJSON, editBooksAutor, editBooksGenre, editBooksRate, editBooksCAT, deleteTEMPORAL, updateJsonWhenSave
-from logic.movies import saveMovie, editMoviesTitle, editTitleJSONmovies, editMovieDirection, editMovieGenre, editMovieProduction, editMovieRate, editMovieCAT, editDirectionJSONmovies, editProductionJSONmovies, editRateJSONmovies, editCATJSONmovies, editGenreJSONmovies, deleteTEMPORALMovie
-from logic.music import saveMusic, editMusicTitle, editTitleJSONmusic, editMusicAutor, editMusicAlbum, editMusicGenre, editMusicCAT, editMusicDisc, editAutorJSONmusic, editAlbumJSONmusic, editGeneroJSONmusic, editCATJSONmusic, editDiscJSONmusic, deleteTEMPORALSong
+from design.books import  newBook, temporalBooks, view_temporal_books, loadJSONBooks, showBookTitles, filterBooksbyTitle, showBookAutor, showBookCategory, filterBooksbyAutor, filterBooksbyCategory, showBookGenre, filterBooksbyGenre
+from design.movies import newMovie, temporalMovies, view_temporal_movies, loadJSONMovies, showMovieTitles, filterMoviesbyTitle, showMovieCategory, showMovieDirector, filterMoviesbyDirector, filterMoviebyCategory, showMovieGenre, filterMoviebyGenre
+from design.music import newSong,  temporalSongs, view_temporal_songs, loadJSONSongs, showMusicTitles, filterMusicbyTitle, showMusicAutor, showMusicCategory, filterMusicbyCategory, filterMusicsbyAutor, showMusicGenre, filterMusicbyGenre
+from logic.books import saveBooks, editBooksTitle, editTitleJSON, editAutorJSON, editCategoryJSON, editGenreJSON, editRateJSON, editBooksAutor, editBooksGenre, editBooksRate, editBooksCAT, deleteTEMPORAL, updateJsonWhenSave, deleteTEMPORALBookByName
+from logic.movies import saveMovie, editMoviesTitle, editTitleJSONmovies, editMovieDirection, editMovieGenre, editMovieProduction, editMovieRate, editMovieCAT, editDirectionJSONmovies, editProductionJSONmovies, editRateJSONmovies, editCATJSONmovies, editGenreJSONmovies, deleteTEMPORALMovie, deleteTEMPORALMoviebyName
+from logic.music import saveMusic, editMusicTitle, editTitleJSONmusic, editMusicAutor, editMusicAlbum, editMusicGenre, editMusicCAT, editMusicDisc, editAutorJSONmusic, editAlbumJSONmusic, editGeneroJSONmusic, editCATJSONmusic, editDiscJSONmusic, deleteTEMPORALSong, deleteTEMPORALSongbyName
 def menu_principal():
    print("""
             ===========================================
@@ -21,7 +21,7 @@ def menu_principal():
                 Selecciona una opción (1-8):""")
    opcion_menu = input("--> ")
    while True:
-   
+      
       match opcion_menu:
          case "1":
             print("""
@@ -154,14 +154,14 @@ def menu_principal():
                   menu_selection = input("-->")
                   match menu_selection:
                      case "1":
-                        showBookCategory()
-                        filterBooksbyCategory(input("Ingrese la categoria del libro: ").capitalize())
+                        showBookGenre()
+                        filterBooksbyGenre(input("Ingrese el genero del libro: ").capitalize())
                      case "2":
-                        showMovieCategory()
-                        filterMoviebyCategory(input("Ingrese la categoria de la pelicula: ").capitalize())
+                        showMovieGenre()
+                        filterMoviebyGenre(input("Ingrese el genero de la pelicula: ").capitalize())
                      case "3":
-                        showMusicCategory()
-                        filterMusicbyCategory(input("Ingrese la categoria de la cancion: ").capitalize())
+                        showMusicGenre()
+                        filterMusicbyGenre(input("Ingrese el genero de la cancion: ").capitalize())
                      case "4":
                         break        
                case "4":
@@ -360,15 +360,15 @@ def menu_principal():
                      case "1":
                         view_temporal_books()
                         title = input("Seleccione el titulo del libro a eliminar: ")
-                        deleteTEMPORAL(title)
+                        deleteTEMPORALBookByName(title)
                      case "2":
                         view_temporal_movies()
                         title = input("Seleccione el titulo de la pelicula a eliminar: ")
-                        deleteTEMPORALMovie(title)
+                        deleteTEMPORALMoviebyName(title)
                      case "3":
                         view_temporal_songs()
                         title = input("Seleccione el titulo de la cancion a eliminar: ")
-                        deleteTEMPORALSong(title)
+                        deleteTEMPORALSongbyName(title)
                case "2":
                   print("""
                  ===========================================

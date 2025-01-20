@@ -161,3 +161,40 @@ def filterBooksbyCategory(category):
         print("No se encontró el libro")
     input("Presione enter para continuar -->  ")
 
+def showBookGenre():
+    if temporalBooks:
+        data = temporalBooks
+        dataModify = []
+        filtro = set()
+        for titles in data:
+            generos = titles.get("Genero")
+            for genero in generos:
+                if genero and genero not in filtro:
+                    filtro.add(genero)
+                    book_copy = titles.copy()
+                    book_copy.pop("Autor")
+                    book_copy.pop("Titulo")
+                    book_copy.pop("Valoracion")
+                    book_copy.pop("Categoria")
+                    book_copy["Genero"] = genero
+                    dataModify.append(book_copy)
+        if dataModify:
+            print(tabulate(dataModify, headers="keys", tablefmt="grid", numalign="center"))
+        else:
+            print("No se encontraron géneros registrados")
+    else:
+        print("No se encontraron títulos registrados")
+
+def filterBooksbyGenre(genero): 
+    data = temporalBooks
+    dataModify = [] 
+    for diccionario in data:
+        if genero in diccionario.get("Genero"):
+            dataModify.append(diccionario)
+    
+    if dataModify:    
+        print(tabulate(dataModify, headers="keys", tablefmt="grid", numalign="center"))
+    else:
+        print("No se encontró el libro con ese género")
+    
+    input("Presione enter para continuar -->  ")

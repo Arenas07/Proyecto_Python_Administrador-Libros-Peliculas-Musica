@@ -170,3 +170,41 @@ def filterMoviebyCategory(category):
     else:
         print("No se encontró el libro")
     input("Presione enter para continuar -->  ")
+
+def showMovieGenre():
+    if temporalMovies:
+        data = temporalMovies
+        dataModify = []
+        filtro = set()
+        for titles in data:
+            generos = titles.get("Genero")
+            for genero in generos:
+                if genero and genero not in filtro:
+                    filtro.add(genero)
+                    movie_copy = titles.copy()
+                    movie_copy.pop("Autor")
+                    movie_copy.pop("Titulo")
+                    movie_copy.pop("Valoracion")
+                    movie_copy.pop("Categoria")
+                    movie_copy["Genero"] = genero
+                    dataModify.append(movie_copy)
+        if dataModify:
+            print(tabulate(dataModify, headers="keys", tablefmt="grid", numalign="center"))
+        else:
+            print("No se encontraron géneros registrados")
+    else:
+        print("No se encontraron títulos registrados")
+
+def filterMoviebyGenre(genero): 
+    data = temporalMovies
+    dataModify = [] 
+    for diccionario in data:
+        if genero in diccionario.get("Genero"):
+            dataModify.append(diccionario)
+    
+    if dataModify:    
+        print(tabulate(dataModify, headers="keys", tablefmt="grid", numalign="center"))
+    else:
+        print("No se encontró el libro con ese género")
+    
+    input("Presione enter para continuar -->  ")
