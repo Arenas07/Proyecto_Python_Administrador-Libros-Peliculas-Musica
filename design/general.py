@@ -2,8 +2,8 @@ from design.books import  newBook, temporalBooks, view_temporal_books, loadJSONB
 from design.movies import newMovie, temporalMovies, view_temporal_movies, loadJSONMovies, showMovieTitles, filterMoviesbyTitle, showMovieCategory, showMovieDirector, filterMoviesbyDirector, filterMoviebyCategory, showMovieGenre, filterMoviebyGenre
 from design.music import newSong,  temporalSongs, view_temporal_songs, loadJSONSongs, showMusicTitles, filterMusicbyTitle, showMusicAutor, showMusicCategory, filterMusicbyCategory, filterMusicsbyAutor, showMusicGenre, filterMusicbyGenre
 from logic.books import saveBooks, editBooksTitle, editTitleJSON, editAutorJSON, editCategoryJSON, editGenreJSON, editRateJSON, editBooksAutor, editBooksGenre, editBooksRate, editBooksCAT, deleteTEMPORAL, updateJsonWhenSave, deleteTEMPORALBookByName
-from logic.movies import saveMovie, editMoviesTitle, editTitleJSONmovies, editMovieDirection, editMovieGenre, editMovieProduction, editMovieRate, editMovieCAT, editDirectionJSONmovies, editProductionJSONmovies, editRateJSONmovies, editCATJSONmovies, editGenreJSONmovies, deleteTEMPORALMovie, deleteTEMPORALMoviebyName
-from logic.music import saveMusic, editMusicTitle, editTitleJSONmusic, editMusicAutor, editMusicAlbum, editMusicGenre, editMusicCAT, editMusicDisc, editAutorJSONmusic, editAlbumJSONmusic, editGeneroJSONmusic, editCATJSONmusic, editDiscJSONmusic, deleteTEMPORALSong, deleteTEMPORALSongbyName
+from logic.movies import saveMovie, editMoviesTitle, editTitleJSONmovies, editMovieDirection, editMovieGenre, editMovieProduction, editMovieRate, editMovieCAT, editDirectionJSONmovies, editProductionJSONmovies, editRateJSONmovies, editCATJSONmovies, editGenreJSONmovies, deleteTEMPORALMovie, deleteTEMPORALMoviebyName, updateJsonWhenSaveMovies
+from logic.music import saveMusic, editMusicTitle, editTitleJSONmusic, editMusicAutor, editMusicAlbum, editMusicGenre, editMusicCAT, editMusicDisc, editAutorJSONmusic, editAlbumJSONmusic, editGeneroJSONmusic, editCATJSONmusic, editDiscJSONmusic, deleteTEMPORALSong, deleteTEMPORALSongbyName, updateJsonWhenSaveMusic
 def menu_principal():
    print("""
             ===========================================
@@ -45,6 +45,8 @@ def menu_principal():
                   newSong()
                case "4":
                   return menu_principal()
+               case _:
+                  input("Opcion no valida, presione enter para continuar -->")
          case "2":
             print("""
                  ===========================================
@@ -137,7 +139,9 @@ def menu_principal():
                         showMusicAutor()
                         filterMusicsbyAutor(input("Ingrese el autor de la cancion: ").capitalize()  )
                      case "4":
-                        break
+                        return menu_principal()
+                     case _:
+                        input("Opcion no disponible, presione enter para continuar -->")
                case "3":
                   print("""
                  ===========================================
@@ -163,7 +167,9 @@ def menu_principal():
                         showMusicGenre()
                         filterMusicbyGenre(input("Ingrese el genero de la cancion: ").capitalize())
                      case "4":
-                        break        
+                        return menu_principal()
+                     case _:
+                        input("Opcion no disponible, presione enter para continuar --> ")  
                case "4":
                   return menu_principal()
                case _:
@@ -215,18 +221,18 @@ def menu_principal():
                      case "4":
                         view_temporal_books()
                         id = input("Ingrese la ID del libro para buscar: ")
-                        newRate = float(input("Ingrese la nueva valoración del libro"))
+                        newRate = float(input("Ingrese la nueva valoración del libro: "))
                         editBooksRate(id, newRate)
                      case "5":
                         view_temporal_books()
                         id = input("Ingrese la ID del libro para buscar: ")
-                        newCAT = input("Ingrese la nueva categoria del libro")
+                        newCAT = input("Ingrese la nueva categoria del libro ")
                         editBooksCAT(id, newCAT)
                      case "6":
                         return menu_principal()
                      case _:
                         print("Opcion no disponible")
-                        input("Presione enter para continuar -->")
+                        input("Presione enter para continuar --> ")
                case "2":
                   print("""
                  ===========================================
@@ -271,7 +277,7 @@ def menu_principal():
                      case "6":
                         view_temporal_movies()
                         id = input("Ingrese la ID de la pelicula para buscar: ")
-                        newCAT = input("Ingrese la nueva categoria")
+                        newCAT = input("Ingrese la nueva categoria: ")
                         editMovieCAT(id, newCAT)
                      case "7":
                         return menu_principal()
@@ -330,6 +336,8 @@ def menu_principal():
                         input("Presione enter para continuar --> ")
                case "4":
                   return menu_principal()
+               case _:
+                  input("Opcion no disponible, presione enter para continuar -->")
          case "5":
             print("""
                  ===========================================
@@ -369,6 +377,10 @@ def menu_principal():
                         view_temporal_songs()
                         title = input("Seleccione el titulo de la cancion a eliminar: ")
                         deleteTEMPORALSongbyName(title)
+                     case "4":
+                        return menu_principal()
+                     case _:
+                        input("Opcion no disponible, presione enter para continuar -->")
                case "2":
                   print("""
                  ===========================================
@@ -401,6 +413,8 @@ def menu_principal():
                         input("Opcion no disponible, preisone enter para continuar --> ")
                case "3":
                   return menu_principal()
+               case _:
+                  input("Opcion no disponible, presione enter para continuar -->")
          case "6":
             print("""
                  ===========================================
@@ -425,7 +439,9 @@ def menu_principal():
                   showMusicCategory()
                   filterMusicbyCategory(input("Ingrese la categoria de la cancion: ").capitalize())
                case "4":
-                  break        
+                  return menu_principal()
+               case _:
+                  input("Opcion no disponible, presione enter para continuar -->")        
 
          case "7":
             print("""
@@ -442,6 +458,8 @@ def menu_principal():
             match selection:
                case "1":
                   updateJsonWhenSave()
+                  updateJsonWhenSaveMovies()
+                  updateJsonWhenSaveMusic()
                   editTitleJSON(temporalBooks)
                   editAutorJSON(temporalBooks)
                   editRateJSON(temporalBooks)
@@ -475,6 +493,8 @@ def menu_principal():
 
                case "3":
                   return menu_principal()
+               case _:
+                  input("Opcion no disponible, presione enter para continuar -->")
          case "8":
             print("Gracias por usar el programa")
             break

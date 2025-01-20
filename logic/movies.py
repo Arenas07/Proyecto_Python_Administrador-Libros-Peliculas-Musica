@@ -7,7 +7,7 @@ def seeMovies():
 def updateJsonWhenSaveMovies():
     from design.movies import temporalMovies
     list = temporalMovies
-    with open("data/books.json", "w", encoding="utf-8") as file:
+    with open("data/movies.json", "w", encoding="utf-8") as file:
         convertJson = json.dumps(list, indent=4, ensure_ascii=False)
         file.write(convertJson)
 
@@ -38,7 +38,7 @@ def editTitleJSONmovies(temporalmovies):
             if lookcode["ID"] == temporalmovie["ID"]: 
                 if lookcode["Titulo"] != temporalmovie["Titulo"]: 
                     lookcode["Titulo"] = temporalmovie["Titulo"] 
-                    with open("data/books.json", "w", encoding="utf-8") as file:
+                    with open("data/movies.json", "w", encoding="utf-8") as file:
                         convertJson = json.dumps(jsondata, indent=4, ensure_ascii=False)  
                         file.write(convertJson) 
                     print(f"Se ha actualizado el título de la pelicula")
@@ -110,7 +110,7 @@ def editDirectionJSONmovies(temporalmovies):
             if lookcode["ID"] == temporalmovie["ID"]: 
                 if lookcode["Direccion"] != temporalmovie["Direccion"]: 
                     lookcode["Direccion"] = temporalmovie["Direccion"] 
-                    with open("data/books.json", "w", encoding="utf-8") as file:
+                    with open("data/movies.json", "w", encoding="utf-8") as file:
                         convertJson = json.dumps(jsondata, indent=4, ensure_ascii=False)  
                         file.write(convertJson) 
                     print(f"Se ha actualizado el director de la pelicula")
@@ -123,7 +123,7 @@ def editProductionJSONmovies(temporalmovies):
             if lookcode["ID"] == temporalmovie["ID"]: 
                 if lookcode["Producción"] != temporalmovie["Producción"]: 
                     lookcode["Producción"] = temporalmovie["Producción"] 
-                    with open("data/books.json", "w", encoding="utf-8") as file:
+                    with open("data/movies.json", "w", encoding="utf-8") as file:
                         convertJson = json.dumps(jsondata, indent=4, ensure_ascii=False)  
                         file.write(convertJson) 
                     print(f"Se ha actualizado el productor de la pelicula")
@@ -136,7 +136,7 @@ def editRateJSONmovies(temporalmovies):
             if lookcode["ID"] == temporalmovie["ID"]: 
                 if lookcode["Valoracion"] != temporalmovie["Valoracion"]: 
                     lookcode["Valoracion"] = temporalmovie["Valoracion"] 
-                    with open("data/books.json", "w", encoding="utf-8") as file:
+                    with open("data/movies.json", "w", encoding="utf-8") as file:
                         convertJson = json.dumps(jsondata, indent=4, ensure_ascii=False)  
                         file.write(convertJson) 
                     print(f"Se ha actualizado la valoracion de la pelicula")
@@ -149,7 +149,7 @@ def editGenreJSONmovies(temporalmovies):
             if lookcode["ID"] == temporalmovie["ID"]: 
                 if lookcode["Genero"] != temporalmovie["Genero"]: 
                     lookcode["Genero"] = temporalmovie["Genero"] 
-                    with open("data/books.json", "w", encoding="utf-8") as file:
+                    with open("data/movies.json", "w", encoding="utf-8") as file:
                         convertJson = json.dumps(jsondata, indent=4, ensure_ascii=False)  
                         file.write(convertJson) 
                     print(f"Se ha actualizado el genero de la pelicula")
@@ -162,7 +162,7 @@ def editCATJSONmovies(temporalmovies):
             if lookcode["ID"] == temporalmovie["ID"]: 
                 if lookcode["Categoria"] != temporalmovie["Categoria"]: 
                     lookcode["Categoria"] = temporalmovie["Categoria"] 
-                    with open("data/books.json", "w", encoding="utf-8") as file:
+                    with open("data/movies.json", "w", encoding="utf-8") as file:
                         convertJson = json.dumps(jsondata, indent=4, ensure_ascii=False)  
                         file.write(convertJson) 
                     print(f"Se ha actualizado la categoria de la pelicula")
