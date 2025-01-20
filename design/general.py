@@ -3,7 +3,7 @@ from design.movies import newMovie, temporalMovies, view_temporal_movies, loadJS
 from design.music import newSong,  temporalSongs, view_temporal_songs, loadJSONSongs, showMusicTitles, filterMusicbyTitle, showMusicAutor, showMusicCategory, filterMusicbyCategory, filterMusicsbyAutor
 from logic.books import saveBooks, editBooksTitle, editTitleJSON, editAutorJSON, editCategoryJSON, editGenreJSON, editRateJSON, editBooksAutor, editBooksGenre, editBooksRate, editBooksCAT, deleteTEMPORAL, updateJsonWhenSave
 from logic.movies import saveMovie, editMoviesTitle, editTitleJSONmovies, editMovieDirection, editMovieGenre, editMovieProduction, editMovieRate, editMovieCAT, editDirectionJSONmovies, editProductionJSONmovies, editRateJSONmovies, editCATJSONmovies, editGenreJSONmovies
-from logic.music import saveMusic, editMusicTitle, editTitleJSONmusic, editMusicAutor, editMusicAlbum, editMusicGenre, editMusicCAT, editMusicDisc
+from logic.music import saveMusic, editMusicTitle, editTitleJSONmusic, editMusicAutor, editMusicAlbum, editMusicGenre, editMusicCAT, editMusicDisc, editAutorJSONmusic, editAlbumJSONmusic, editGeneroJSONmusic, editCATJSONmusic, editDiscJSONmusic
 def menu_principal():
    print("""
             ===========================================
@@ -434,6 +434,11 @@ def menu_principal():
                   editCATJSONmovies(temporalMovies)
                   #separacion
                   editTitleJSONmusic(temporalSongs)
+                  editAutorJSONmusic(temporalSongs)
+                  editAlbumJSONmusic(temporalSongs)
+                  editGeneroJSONmusic(temporalSongs)
+                  editCATJSONmusic(temporalSongs)
+                  editDiscJSONmusic(temporalSongs)
 
                   saveBooks(temporalBooks)
                   saveMusic(temporalSongs)

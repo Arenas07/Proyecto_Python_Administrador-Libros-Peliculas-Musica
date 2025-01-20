@@ -96,3 +96,68 @@ def editMusicDisc(music_id, disc):
             song["Discografica"] = disc
             print("Se ha actualizado la discografica en la lista temporal")
             break
+
+def editAutorJSONmusic(temporalsongs):
+    jsondata = seeMusic()  
+    for temporalsong in temporalsongs:
+        for lookcode in jsondata:
+            if lookcode["ID"] == temporalsong["ID"]: 
+                if lookcode["Autor"] != temporalsong["Autor"]: 
+                    lookcode["Autor"] = temporalsong["Autor"] 
+                    with open("data/books.json", "w", encoding="utf-8") as file:
+                        convertJson = json.dumps(jsondata, indent=4, ensure_ascii=False)  
+                        file.write(convertJson) 
+                    print(f"Se ha actualizado el autor de la cancion")
+                    break 
+
+def editAlbumJSONmusic(temporalsongs):
+    jsondata = seeMusic()  
+    for temporalsong in temporalsongs:
+        for lookcode in jsondata:
+            if lookcode["ID"] == temporalsong["ID"]: 
+                if lookcode["Album"] != temporalsong["Album"]: 
+                    lookcode["Album"] = temporalsong["Album"] 
+                    with open("data/books.json", "w", encoding="utf-8") as file:
+                        convertJson = json.dumps(jsondata, indent=4, ensure_ascii=False)  
+                        file.write(convertJson) 
+                    print(f"Se ha actualizado el album de la cancion")
+                    break 
+
+def editGeneroJSONmusic(temporalsongs):
+    jsondata = seeMusic()  
+    for temporalsong in temporalsongs:
+        for lookcode in jsondata:
+            if lookcode["ID"] == temporalsong["ID"]: 
+                if lookcode["Genero"] != temporalsong["Genero"]: 
+                    lookcode["Genero"] = temporalsong["Genero"] 
+                    with open("data/books.json", "w", encoding="utf-8") as file:
+                        convertJson = json.dumps(jsondata, indent=4, ensure_ascii=False)  
+                        file.write(convertJson) 
+                    print(f"Se ha actualizado el genero de la cancion")
+                    break 
+
+def editCATJSONmusic(temporalsongs):
+    jsondata = seeMusic()  
+    for temporalsong in temporalsongs:
+        for lookcode in jsondata:
+            if lookcode["ID"] == temporalsong["ID"]: 
+                if lookcode["Categoria"] != temporalsong["Categoria"]: 
+                    lookcode["Categoria"] = temporalsong["Categoria"] 
+                    with open("data/books.json", "w", encoding="utf-8") as file:
+                        convertJson = json.dumps(jsondata, indent=4, ensure_ascii=False)  
+                        file.write(convertJson) 
+                    print(f"Se ha actualizado la categoria de la cancion")
+                    break 
+
+def editDiscJSONmusic(temporalsongs):
+    jsondata = seeMusic()  
+    for temporalsong in temporalsongs:
+        for lookcode in jsondata:
+            if lookcode["ID"] == temporalsong["ID"]: 
+                if lookcode["Discografica"] != temporalsong["Discografica"]: 
+                    lookcode["Discografica"] = temporalsong["Discografica"] 
+                    with open("data/books.json", "w", encoding="utf-8") as file:
+                        convertJson = json.dumps(jsondata, indent=4, ensure_ascii=False)  
+                        file.write(convertJson) 
+                    print(f"Se ha actualizado la discografica de la cancion")
+                    break 
