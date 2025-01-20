@@ -157,8 +157,8 @@ lo mismo ocurre con el archivo para eliminar una coleccion, que está separado p
                             Eliminar un Elemento
                  ===========================================
                    ¿Qué tipo de cambio deseas realizar?
-                  1. Editar Libro
-                  2. Editar Peliculas
-                  3. Editar Canciones
+                  1. Eliminar Libro
+                  2. Eliminar Peliculas
+                  3. Eliminar Canciones
                   4. Regresar al Menú Principal
                  ===========================================

@@ -160,3 +160,20 @@ def editCATJSONmovies(temporalmovies):
                         file.write(convertJson) 
                     print(f"Se ha actualizado la categoria de la pelicula")
                     break 
+
+def deleteTEMPORALMovie(id): 
+    from design.movies import temporalMovies
+    info = temporalMovies
+    
+    for code in info: 
+        if id == code.get("ID"): 
+            security = input("¿Está seguro de eliminar la pelicula? (s/n): ".strip())
+            if security.lower() == "s":  
+                info.remove(code)  
+                print("Pelicula eliminada correctamente")
+                break
+            else:
+                input("Operación cancelada, presione enter para continuar: ")
+                break
+    print("No se encontró el codigo")
+    input("Presione enter para continuar -->")     

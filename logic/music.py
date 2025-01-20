@@ -161,3 +161,20 @@ def editDiscJSONmusic(temporalsongs):
                         file.write(convertJson) 
                     print(f"Se ha actualizado la discografica de la cancion")
                     break 
+
+def deleteTEMPORALSong(id): 
+    from design.music import temporalSongs
+    info = temporalSongs
+    
+    for code in info: 
+        if id == code.get("ID"): 
+            security = input("¿Está seguro de eliminar la cancion? (s/n): ".strip())
+            if security.lower() == "s":  
+                info.remove(code)  
+                print("Cancion eliminada correctamente")
+                break
+            else:
+                input("Operación cancelada, presione enter para continuar: ")
+                break
+    print("No se encontró el codigo")
+    input("Presione enter para continuar -->")  

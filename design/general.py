@@ -2,8 +2,8 @@ from design.books import  newBook, temporalBooks, view_temporal_books, loadJSONB
 from design.movies import newMovie, temporalMovies, view_temporal_movies, loadJSONMovies, showMovieTitles, filterMoviesbyTitle, showMovieCategory, showMovieDirector, filterMoviesbyDirector, filterMoviebyCategory
 from design.music import newSong,  temporalSongs, view_temporal_songs, loadJSONSongs, showMusicTitles, filterMusicbyTitle, showMusicAutor, showMusicCategory, filterMusicbyCategory, filterMusicsbyAutor
 from logic.books import saveBooks, editBooksTitle, editTitleJSON, editAutorJSON, editCategoryJSON, editGenreJSON, editRateJSON, editBooksAutor, editBooksGenre, editBooksRate, editBooksCAT, deleteTEMPORAL, updateJsonWhenSave
-from logic.movies import saveMovie, editMoviesTitle, editTitleJSONmovies, editMovieDirection, editMovieGenre, editMovieProduction, editMovieRate, editMovieCAT, editDirectionJSONmovies, editProductionJSONmovies, editRateJSONmovies, editCATJSONmovies, editGenreJSONmovies
-from logic.music import saveMusic, editMusicTitle, editTitleJSONmusic, editMusicAutor, editMusicAlbum, editMusicGenre, editMusicCAT, editMusicDisc, editAutorJSONmusic, editAlbumJSONmusic, editGeneroJSONmusic, editCATJSONmusic, editDiscJSONmusic
+from logic.movies import saveMovie, editMoviesTitle, editTitleJSONmovies, editMovieDirection, editMovieGenre, editMovieProduction, editMovieRate, editMovieCAT, editDirectionJSONmovies, editProductionJSONmovies, editRateJSONmovies, editCATJSONmovies, editGenreJSONmovies, deleteTEMPORALMovie
+from logic.music import saveMusic, editMusicTitle, editTitleJSONmusic, editMusicAutor, editMusicAlbum, editMusicGenre, editMusicCAT, editMusicDisc, editAutorJSONmusic, editAlbumJSONmusic, editGeneroJSONmusic, editCATJSONmusic, editDiscJSONmusic, deleteTEMPORALSong
 def menu_principal():
    print("""
             ===========================================
@@ -349,25 +349,35 @@ def menu_principal():
                             Eliminar un Elemento
                  ===========================================
                    ¿Qué tipo de cambio deseas realizar?
-                  1. Editar Libro
-                  2. Editar Peliculas
-                  3. Editar Canciones
+                  1. Eliminar Libro
+                  2. Eliminar Peliculas
+                  3. Eliminar Canciones
                   4. Regresar al Menú Principal
                  ===========================================
                      Selecciona una opción (1-4):""")
                   selection = input("Ingrese la opcion --> ")
                   match selection:
                      case "1":
-                        print("")
+                        view_temporal_books()
+                        title = input("Seleccione el titulo del libro a eliminar: ")
+                        deleteTEMPORAL(title)
+                     case "2":
+                        view_temporal_movies()
+                        title = input("Seleccione el titulo de la pelicula a eliminar: ")
+                        deleteTEMPORALMovie(title)
+                     case "3":
+                        view_temporal_songs()
+                        title = input("Seleccione el titulo de la cancion a eliminar: ")
+                        deleteTEMPORALSong(title)
                case "2":
                   print("""
                  ===========================================
                             Eliminar un Elemento
                  ===========================================
                    ¿Qué tipo de cambio deseas realizar?
-                  1. Editar Libro
-                  2. Editar Peliculas
-                  3. Editar Canciones
+                  1. Eliminar Libro
+                  2. Eliminar Peliculas
+                  3. Eliminar Canciones
                   4. Regresar al Menú Principal
                  ===========================================
                      Selecciona una opción (1-4):""")
@@ -376,7 +386,19 @@ def menu_principal():
                      case "1":
                         view_temporal_books()
                         id = input("Seleccione la ID del libro a eliminar: ")
-                        
+                        deleteTEMPORAL(id)
+                     case "2":
+                        view_temporal_movies()
+                        id = input("Seleccione la ID de la pelicula a eliminar: ")
+                        deleteTEMPORALMovie(id)
+                     case "3":
+                        view_temporal_songs()
+                        id = input("Seleccione la ID de la cancion a eliminar: ")
+                        deleteTEMPORALSong(id)
+                     case "4":
+                        return menu_principal()
+                     case _:
+                        input("Opcion no disponible, preisone enter para continuar --> ")
                case "3":
                   return menu_principal()
          case "6":
