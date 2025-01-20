@@ -43,11 +43,10 @@ def newMovie():
     for code in watch:
         if "ID" in code:
             allIDS.append(code["ID"])
-    lastId = allIDS[-1] if allIDS else "LB-001"
-    newID = f"PL-{int(lastId.split("-")[1] + 1)}"
+    lastId = allIDS[-1] if allIDS else "PL-1"
     if(not len(findMovies)) and (not len(findRepetition)): 
         newMovie = {
-            "ID": newID,
+            "ID": input(f"Ingrese el codigo del libro (ultimo codigo {lastId}, recomiendo sumarle 1 a ese): "),
             "Titulo": title,
             "Direccion": input("Ingrese el director de la pelicula: "),
             "Producción": input("Ingrese la producción de la pelicula: "),

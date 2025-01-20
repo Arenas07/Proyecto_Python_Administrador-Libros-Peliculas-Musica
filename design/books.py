@@ -11,11 +11,10 @@ def newBook():
     for code in watch:
         if "ID" in code:
             allIDS.append(code["ID"])
-    lastId = allIDS[-1] if allIDS else "LB-001"
-    newID = f"LB-{int(lastId.split('-')[1]) + 1}"
+    lastId = allIDS[-1] if allIDS else "LB-1"
     if(not len(findBooks)) and (not len(findRepetition)): 
         newBook = {
-            "ID": newID,
+            "ID": input(f"Ingrese el codigo del libro (ultimo codigo {lastId}, recomiendo sumarle 1 a ese): "),
             "Titulo": title,
             "Autor": input("Ingrese el nombre del autor: "),
             "Valoracion": float(input("Ingrese la valoracion de la obra: ")),
