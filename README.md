@@ -90,3 +90,75 @@ Selecciona una opción (1-8):
    - Permite guardar la colección actual en un archivo JSON o cargar la colección guardada previamente.
 8. **Salir**
    - Cierra la aplicación.
+
+------CAMBIOS-------
+   ===========================================
+             Editar un Elemento
+   ===========================================
+       ¿Qué tipo de cambio deseas realizar?
+     1. Editar Libro
+     2. Editar Peliculas
+     3. Editar Canciones
+     4. Regresar al Menú Principal
+   ===========================================
+
+dentro de las opciones se separó en cada opcion posible (libro, peliculas y canciones) para así dentro de ellos poder tener un mejor manejo en la edicion
+interna de cada cosa con los siguientes menus:
+                  ===========================================
+                            Editar un Elemento
+                 ===========================================
+                   ¿Qué tipo de cambio deseas realizar?
+                  1. Editar Título
+                  2. Editar Autor
+                  3. Editar Género
+                  4. Editar Valoración
+                  5. Editar Categoria
+                  6. Regresar al Menú Principal
+                 ===========================================
+
+                 ===========================================
+                            Editar un Elemento
+                 ===========================================
+                   ¿Qué tipo de cambio deseas realizar?
+                  1. Editar Título
+                  2. Editar Direccion
+                  3. Editar Produccion
+                  4. Editar Valoración
+                  5. Editar Genero
+                  6. Editar Categoria
+                  7. Regresar al Menú Principal
+                 ===========================================
+
+                 ===========================================
+                            Editar un Elemento
+                 ===========================================
+                   ¿Qué tipo de cambio deseas realizar?
+                  1. Editar Título
+                  2. Editar Autor
+                  3. Editar Album
+                  4. Editar Genero
+                  5. Editar Categoria
+                  6. Editar Discografica
+                  7. Regresar al Menú Principal
+                 ===========================================
+
+lo mismo ocurre con el archivo para eliminar una coleccion, que está separado por cada coleccion especifica
+
+               ===========================================
+                           Eliminar un Elemento
+                 ===========================================
+                          ¿Cómo deseas eliminar?
+                    1. Eliminar por Título
+                    2. Eliminar por Identificador Único
+                    3. Regresar al Menú Principal
+                 ===========================================
+
+                 ===========================================
+                            Eliminar un Elemento
+                 ===========================================
+                   ¿Qué tipo de cambio deseas realizar?
+                  1. Editar Libro
+                  2. Editar Peliculas
+                  3. Editar Canciones
+                  4. Regresar al Menú Principal
+                 ===========================================

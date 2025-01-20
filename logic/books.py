@@ -3,13 +3,26 @@ import json
 def seeBooks():
     with open("data/books.json", "r", encoding="utf-8") as file:
             return json.load(file)
+    
+def updateJsonWhenSave():
+    from design.books import temporalBooks
+    list = temporalBooks
+    with open("data/books.json", "w", encoding="utf-8") as file:
+        convertJson = json.dumps(list, indent=4, ensure_ascii=False)
+        file.write(convertJson)
 
 def saveBooks(temporalBooks):
+
     existingBooks = seeBooks()
-    existing_titles = {book["Titulo"] for book in existingBooks}
-    books_to_add = [
-        book for book in temporalBooks if book["Titulo"] not in existing_titles
-    ]
+    existing_titles = set()
+    for book in existingBooks:
+        existing_titles.add(book["Titulo"])
+
+    books_to_add = []
+    for book in temporalBooks:
+        if book["Titulo"] not in existing_titles:
+            books_to_add.append(book)
+
     
     if books_to_add:
         existingBooks.extend(books_to_add)
@@ -146,8 +159,11 @@ def deleteTEMPORAL(id):
             security = input("¿Está seguro de eliminar el libro? (s/n): ".strip())
             if security.lower() == "s":  
                 info.remove(code)  
-                return "libro eliminado correctamente."
+                print("Libro eliminado correctamente")
+                break
             else:
-                return input("Operación cancelada, presione enter para continuar: ")
-    print("El codigo no existe")           
+                input("Operación cancelada, presione enter para continuar: ")
+                break
+    print("No se encontró el codigo")
+    input("Presione enter para continuar -->")        
 

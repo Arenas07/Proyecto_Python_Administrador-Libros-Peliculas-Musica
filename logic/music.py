@@ -6,10 +6,16 @@ def seeMusic():
 
 def saveMusic(temporalSongs):
     existingSongs = seeMusic()
-    existing_titles = {song["Titulo"] for song in existingSongs}
-    songs_to_add = [
-        movie for movie in temporalSongs if movie["Titulo"] not in existing_titles
-    ]
+    existing_titles = set()
+    for song in existingSongs:
+        existing_titles.add(song["Titulo"])
+
+
+    songs_to_add = []
+    for song in temporalSongs:
+        if song["Titulo"] not in existing_titles:
+            songs_to_add.append(song)
+
     
     if songs_to_add:
         existingSongs.extend(songs_to_add)

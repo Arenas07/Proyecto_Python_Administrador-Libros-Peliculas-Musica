@@ -6,10 +6,13 @@ def seeMovies():
 
 def saveMovie(temporalMovies):
     existingMovies = seeMovies()
-    existing_titles = {movie["Titulo"] for movie in existingMovies}
-    movies_to_add = [
-        movie for movie in temporalMovies if movie["Titulo"] not in existing_titles
-    ]
+    existing_titles = set()
+    for movie in existingMovies:
+        existing_titles.add(movie["Titulo"])
+    movies_to_add = []
+    for movie in temporalMovies: 
+        if movie["Titulo"] not in existing_titles:
+            movies_to_add.append(movie)        
     
     if movies_to_add:
         existingMovies.extend(movies_to_add)
