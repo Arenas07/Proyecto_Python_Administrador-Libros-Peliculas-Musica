@@ -2,7 +2,7 @@ from design.books import  newBook, temporalBooks, view_temporal_books, loadJSONB
 from design.movies import newMovie, temporalMovies, view_temporal_movies, loadJSONMovies, showMovieTitles, filterMoviesbyTitle, showMovieCategory, showMovieDirector, filterMoviesbyDirector, filterMoviebyCategory
 from design.music import newSong,  temporalSongs, view_temporal_songs, loadJSONSongs, showMusicTitles, filterMusicbyTitle, showMusicAutor, showMusicCategory, filterMusicbyCategory, filterMusicsbyAutor
 from logic.books import saveBooks, editBooksTitle, editTitleJSON, editAutorJSON, editCategoryJSON, editGenreJSON, editRateJSON, editBooksAutor, editBooksGenre, editBooksRate, editBooksCAT, deleteTEMPORAL, updateJsonWhenSave
-from logic.movies import saveMovie, editMoviesTitle, editTitleJSONmovies, editMovieDirection, editMovieGenre, editMovieProduction, editMovieRate, editMovieCAT
+from logic.movies import saveMovie, editMoviesTitle, editTitleJSONmovies, editMovieDirection, editMovieGenre, editMovieProduction, editMovieRate, editMovieCAT, editDirectionJSONmovies, editProductionJSONmovies, editRateJSONmovies, editCATJSONmovies, editGenreJSONmovies
 from logic.music import saveMusic, editMusicTitle, editTitleJSONmusic, editMusicAutor, editMusicAlbum, editMusicGenre, editMusicCAT, editMusicDisc
 def menu_principal():
    print("""
@@ -419,14 +419,19 @@ def menu_principal():
             selection = input("--> ")
             match selection:
                case "1":
+                  updateJsonWhenSave()
                   editTitleJSON(temporalBooks)
                   editAutorJSON(temporalBooks)
                   editRateJSON(temporalBooks)
                   editGenreJSON(temporalBooks)
                   editCategoryJSON(temporalBooks)
-                  updateJsonWhenSave()
                   #separacion
-                  editTitleJSONmovies(temporalMovies) 
+                  editTitleJSONmovies(temporalMovies)
+                  editDirectionJSONmovies(temporalMovies)
+                  editProductionJSONmovies(temporalMovies) 
+                  editRateJSONmovies(temporalMovies)
+                  editGenreJSONmovies(temporalMovies)
+                  editCATJSONmovies(temporalMovies)
                   #separacion
                   editTitleJSONmusic(temporalSongs)
 
