@@ -2,7 +2,7 @@ from design.books import  newBook, temporalBooks, view_temporal_books, loadJSONB
 from design.movies import newMovie, temporalMovies, view_temporal_movies, loadJSONMovies, showMovieTitles, filterMoviesbyTitle, showMovieCategory, showMovieDirector, filterMoviesbyDirector, filterMoviebyCategory
 from design.music import newSong,  temporalSongs, view_temporal_songs, loadJSONSongs, showMusicTitles, filterMusicbyTitle, showMusicAutor, showMusicCategory, filterMusicbyCategory, filterMusicsbyAutor
 from logic.books import saveBooks, editBooksTitle, editTitleJSON, editAutorJSON, editCategoryJSON, editGenreJSON, editRateJSON, editBooksAutor, editBooksGenre
-from logic.movies import saveMovie, editMoviesTitle, editTitleJSONmovies, editMovieDirection
+from logic.movies import saveMovie, editMoviesTitle, editTitleJSONmovies, editMovieDirection, editMovieGenre
 from logic.music import saveMusic, editMusicTitle, editTitleJSONmusic, editMusicAutor
 def menu_principal():
    print("""
@@ -178,9 +178,10 @@ def menu_principal():
                   2. Editar Autor/Director/Artista
                   3. Editar Género
                   4. Editar Valoración
-                  5. Regresar al Menú Principal
+                  5. Editar Categoria
+                  6. Regresar al Menú Principal
                  ===========================================
-                     Selecciona una opción (1-5):""")
+                     Selecciona una opción (1-6):""")
             selection = input("Ingrese la opcion --> ")
             match selection:
                case "1":
@@ -268,7 +269,14 @@ def menu_principal():
                         view_temporal_books()
                         id = input("Ingrese la ID del libro para buscar: ")
                         editBooksGenre(id)
-               case "5":
+                     case "2":
+                        view_temporal_movies()
+                        id = input("Ingrese la ID de la pelicula para buscar: ")
+                        editMovieGenre(id)
+                     case "3":
+                        view_temporal_songs()
+                        id = input("Ingrese la ID de la cancion: ")
+               case "6":
                   return menu_principal()
          case "5":
             print("""

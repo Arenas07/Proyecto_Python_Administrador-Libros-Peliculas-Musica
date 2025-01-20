@@ -51,4 +51,21 @@ def editMovieDirection(movie_id, direction):
             print("Se ha actualizado el director en la lista temporal")
             break
 
+def editMovieGenre(movie_id): 
+    from design.movies import temporalMovies
+
+    for movie in temporalMovies:
+        if movie["ID"] == movie_id:
+            new_genre = []
+            while True:
+                opcion = input("Ingrese el genero nuevo: ")
+                new_genre.append(opcion)
+                opc = input("Quiere agregar otro genero? (s/n): ")
+                if opc.lower() != "s":
+                    break
+                if new_genre:
+                    movie["Genero"] = new_genre
+                else:
+                    print("No se han ingresado generos")
+
 

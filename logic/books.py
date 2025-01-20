@@ -116,9 +116,10 @@ def editBooksGenre(book_id):
                     break
                 if new_genre:
                     book["Genero"] = new_genre
-                    print(temporalBooks)
                 else:
                     print("No se han ingresado generos")
+
+
 
 
             
