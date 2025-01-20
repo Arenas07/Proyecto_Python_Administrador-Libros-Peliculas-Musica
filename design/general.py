@@ -1,7 +1,7 @@
 from design.books import  newBook, temporalBooks, view_temporal_books, loadJSONBooks, showBookTitles, filterBooksbyTitle, showBookAutor, showBookCategory, filterBooksbyAutor, filterBooksbyCategory
 from design.movies import newMovie, temporalMovies, view_temporal_movies, loadJSONMovies, showMovieTitles, filterMoviesbyTitle, showMovieCategory, showMovieDirector, filterMoviesbyDirector, filterMoviebyCategory
 from design.music import newSong,  temporalSongs, view_temporal_songs, loadJSONSongs, showMusicTitles, filterMusicbyTitle, showMusicAutor, showMusicCategory, filterMusicbyCategory, filterMusicsbyAutor
-from logic.books import saveBooks, editBooksTitle, editTitleJSON, editAutorJSON, editCategoryJSON, editGenreJSON, editRateJSON, editBooksAutor, editBooksGenre, editBooksRate, editBooksCAT
+from logic.books import saveBooks, editBooksTitle, editTitleJSON, editAutorJSON, editCategoryJSON, editGenreJSON, editRateJSON, editBooksAutor, editBooksGenre, editBooksRate, editBooksCAT, deleteTEMPORAL
 from logic.movies import saveMovie, editMoviesTitle, editTitleJSONmovies, editMovieDirection, editMovieGenre, editMovieProduction, editMovieRate, editMovieCAT
 from logic.music import saveMusic, editMusicTitle, editTitleJSONmusic, editMusicAutor, editMusicAlbum, editMusicGenre, editMusicCAT, editMusicDisc
 def menu_principal():
@@ -341,6 +341,15 @@ def menu_principal():
                     3. Regresar al Menú Principal
                  ===========================================
                     Selecciona una opción (1-3):""")
+            selection = input("Seleccione una opcion --> ")
+            match selection:
+               case "1":
+                  print("saddas")
+               case "2":
+                  sad = input()
+                  deleteTEMPORAL(sad)
+               case "3":
+                  return menu_principal()
          case "6":
             print("""
                  ===========================================

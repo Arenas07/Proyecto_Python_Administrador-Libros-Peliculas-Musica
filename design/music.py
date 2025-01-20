@@ -43,7 +43,7 @@ def newSong():
     for code in watch:
         if "ID" in code:
             allIDS.append(code["ID"])
-    lastId = allIDS[-1] if allIDS else "MS-1"
+    lastId = allIDS[-1] if allIDS else "MS-0"
     if(not len(findSongs)) and (not len(findRepetition)): 
         newSong = {
                 "ID": input(f"Ingrese el codigo del libro (ultimo codigo {lastId}, recomiendo sumarle 1 a ese): "),

@@ -92,3 +92,29 @@ def editMovieCAT(movie_id, CAT):
             movie["Categoria"] = CAT  
             print("Se ha actualizado la categoria en la lista temporal")
             break
+
+def editDirectionJSONmovies(temporalmovies):
+    jsondata = seeMovies()  
+    for temporalmovie in temporalmovies:
+        for lookcode in jsondata:
+            if lookcode["ID"] == temporalmovie["ID"]: 
+                if lookcode["Direccion"] != temporalmovie["Direccion"]: 
+                    lookcode["Direccion"] = temporalmovie["Direccion"] 
+                    with open("data/books.json", "w", encoding="utf-8") as file:
+                        convertJson = json.dumps(jsondata, indent=4, ensure_ascii=False)  
+                        file.write(convertJson) 
+                    print(f"Se ha actualizado el título de la pelicula")
+                    break 
+
+def editProductionJSONmovies(temporalmovies):
+    jsondata = seeMovies()  
+    for temporalmovie in temporalmovies:
+        for lookcode in jsondata:
+            if lookcode["ID"] == temporalmovie["ID"]: 
+                if lookcode["Producción"] != temporalmovie["Producción"]: 
+                    lookcode["Producción"] = temporalmovie["Producción"] 
+                    with open("data/books.json", "w", encoding="utf-8") as file:
+                        convertJson = json.dumps(jsondata, indent=4, ensure_ascii=False)  
+                        file.write(convertJson) 
+                    print(f"Se ha actualizado el título de la pelicula")
+                    break 

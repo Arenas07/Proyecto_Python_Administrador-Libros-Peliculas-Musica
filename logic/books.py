@@ -137,5 +137,17 @@ def editBooksCAT(book_id, newCAT):
             print("Se ha actualizado la categoria en la lista temporal ")
             break
 
-            
+def deleteTEMPORAL(id): 
+    from design.books import temporalBooks
+    info = temporalBooks
+    
+    for code in info: 
+        if id == code.get("ID"): 
+            security = input("¿Está seguro de eliminar el libro? (s/n): ".strip())
+            if security.lower() == "s":  
+                info.remove(code)  
+                return "libro eliminado correctamente."
+            else:
+                return input("Operación cancelada, presione enter para continuar: ")
+    print("El codigo no existe")           
 
