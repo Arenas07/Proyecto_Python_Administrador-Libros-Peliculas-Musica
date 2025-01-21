@@ -43,7 +43,7 @@ def newBook(): #Formulario nuevo libro
         print("El libro o codigo ya existe en su coleccion") #Validacion
         input("Presione enter para continuar --> ")
 
-def view_temporal_books(): #Vew libros en la lista temporal
+def view_temporal_books(): #Ver libros en la lista temporal
     if not temporalBooks: #Si la lista temporal esta vacia
         print("No hay libros registrados")
     else:
@@ -87,7 +87,7 @@ def filterBooksbyTitle(title): #Ver libro por titulo
     else:
         print("No se encontró el libro")
     input("Presione enter para continuar -->  ")
-    
+
 def showBookTitles(): #Mostrar titulos de libro
     if temporalBooks:
         data = temporalBooks 
