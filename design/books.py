@@ -12,12 +12,15 @@ def newBook():
         if "ID" in code:
             allIDS.append(code["ID"])
     lastId = allIDS[-1] if allIDS else "LB-0"
-    if(not len(findBooks)) and (not len(findRepetition)): 
+    id = input(f"Ingrese el ID del libro (ultimo codigo: {lastId}): ")
+    findid = list(filter(lambda libro: libro.get("ID") == id, watch)) 
+    findRepetitionid = list(filter(lambda repe: repe.get("ID") == id, temporalBooks))
+    if(not len(findBooks)) and (not len(findRepetition)) and (not len(findid) and (not len(findRepetitionid))): 
         newBook = {
-            "ID": input(f"Ingrese el codigo del libro (ultimo codigo {lastId}, recomiendo sumarle 1 a ese): "),
+            "ID": id,
             "Titulo": title,
             "Autor": input("Ingrese el nombre del autor: "),
-            "Valoracion": float(input("Ingrese la valoracion de la obra: ")),
+            "Valoracion": (input("Ingrese la valoracion de la obra: ")),
             "Categoria": input("Ingrese la categoria del libro: "),
             "Genero": []
         }
@@ -34,7 +37,8 @@ def newBook():
         print("Libro registrado con exito, si lo quiere guardar vaya al apartado de guardado")
         input("Presione enter para continuar --> ")
     else: 
-        print("El libro ya existe en su coleccion")
+        print("El libro o codigo ya existe en su coleccion")
+        input("Presione enter para continuar --> ")
 
 def view_temporal_books():
     if not temporalBooks:

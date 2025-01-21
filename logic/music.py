@@ -15,14 +15,11 @@ def saveMusic(temporalSongs):
     existing_titles = set()
     for song in existingSongs:
         existing_titles.add(song["Titulo"])
-
-
     songs_to_add = []
     for song in temporalSongs:
         if song["Titulo"] not in existing_titles:
             songs_to_add.append(song)
 
-    
     if songs_to_add:
         existingSongs.extend(songs_to_add)
         with open("data/music.json", "w", encoding="utf-8") as file:

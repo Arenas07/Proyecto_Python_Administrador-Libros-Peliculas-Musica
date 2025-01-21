@@ -44,9 +44,12 @@ def newSong():
         if "ID" in code:
             allIDS.append(code["ID"])
     lastId = allIDS[-1] if allIDS else "MS-0"
-    if(not len(findSongs)) and (not len(findRepetition)): 
+    id = input(f"Ingrese el ID del libro (ultimo codigo: {lastId}): ")
+    findid = list(filter(lambda peli: peli.get("ID") == id, watch)) 
+    findRepetitionid = list(filter(lambda repe: repe.get("ID") == id, temporalSongs))
+    if(not len(findSongs)) and (not len(findRepetition)) and (not len(findid) and (not len(findRepetitionid))):
         newSong = {
-                "ID": input(f"Ingrese el codigo del libro (ultimo codigo {lastId}, recomiendo sumarle 1 a ese): "),
+                "ID": id,
                 "Titulo": title,
                 "Autor": input("Ingrese el autor de la cancion: "),
                 "Album": input("Ingrese el album de la cancion: "),
