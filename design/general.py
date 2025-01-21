@@ -253,10 +253,13 @@ def menu_principal():
                                     id = input("Ingrese la ID del libro para buscar: ")
                                     editBooksGenre(id)
                                  case "4":
-                                    view_temporal_books()
-                                    id = input("Ingrese la ID del libro para buscar: ")
-                                    newRate = float(input("Ingrese la nueva valoración del libro: "))
-                                    editBooksRate(id, newRate)
+                                    try:
+                                       view_temporal_books()
+                                       id = input("Ingrese la ID del libro para buscar: ")
+                                       newRate = float(input("Ingrese la nueva valoración del libro: "))
+                                       editBooksRate(id, newRate)
+                                    except ValueError:
+                                       input("Rango no disponible, porfavor use numeros")
                                  case "5":
                                     view_temporal_books()
                                     id = input("Ingrese la ID del libro para buscar: ")
@@ -305,10 +308,13 @@ def menu_principal():
                                     newPro = input("Ingrese el productor por el que lo quiere reemplazar: ")
                                     editMovieProduction(id, newPro)
                                  case "4":
-                                    view_temporal_movies()
-                                    id = input("Ingrese la ID de la pelicula para buscar: ")
-                                    newRate = float(input("Ingrese la valoracion por la que lo quiere reemplazar: "))
-                                    editMovieRate(id, newRate)
+                                    try:
+                                       view_temporal_movies()
+                                       id = input("Ingrese la ID de la pelicula para buscar: ")
+                                       newRate = float(input("Ingrese la valoracion por la que lo quiere reemplazar: "))
+                                       editMovieRate(id, newRate)
+                                    except ValueError:
+                                       input("Rango no disponible, porfavor use numeros")
                                  case "5":
                                     view_temporal_movies()
                                     id = input("Ingrese la ID de la pelicula para buscar: ")
