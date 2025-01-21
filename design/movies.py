@@ -2,7 +2,7 @@ from tabulate import tabulate
 from logic.movies import seeMovies
 temporalMovies = []
 def view_temporal_movies(): #Ver peliculas en la lista temporal
-    if not temporalMovies:
+    if not temporalMovies: #Si no encuentra nada en la lista
         print("No hay peliculas registradas")
     else:
         table = [
@@ -16,8 +16,8 @@ def view_temporal_movies(): #Ver peliculas en la lista temporal
                 movie["Fecha de estreno"],
                 movie["Categoria"]
             ]
-            for movie in temporalMovies
-        ]
+            for movie in temporalMovies #Ciclo para ir viendo cada valor de las peliculas
+        ] #Tabular esa informacion
         headers = ["ID", "Título", "Direccion", "Produccion", "Valoración", "Genero", "Fecha de estreno", "Categoria"]
         print("\n=== Peliculas Temporales Registradas ===")
         print(tabulate(table, headers=headers, tablefmt="fancy_grid"))
@@ -26,28 +26,31 @@ def loadJSONMovies(): #Cargar peliculas a la lista temporal
     load = seeMovies()
     existing_titles = set()  
     movies_to_add = [] 
-    for movie in temporalMovies:
-        existing_titles.add(movie["Titulo"])    
+    for movie in temporalMovies: #Mira todas las peliculas de la lista
+        existing_titles.add(movie["Titulo"]) #Revisa el titulo que tienen
 
-    for movie in load:
-        if movie["Titulo"] not in existing_titles:
-            movies_to_add.append(movie)
-    temporalMovies.extend(movies_to_add)
+    for movie in load: #Mira todas las peliculas cargadas en el json
+        if movie["Titulo"] not in existing_titles: #Compara si no son repetidas
+            movies_to_add.append(movie) 
+    temporalMovies.extend(movies_to_add) #Las mete al archivo temporal
 
 def newMovie(): #Formulario nueva pelicula
-    watch = seeMovies() 
+    watch = seeMovies() #Toma la información actual del JSON
     title = input("Ingrese el titulo de la pelicula: ")
-    findMovies = list(filter(lambda peli: peli.get("Titulo") == title, watch)) 
-    findRepetition = list(filter(lambda peli: peli.get("Titulo") == title, temporalMovies))
+    findMovies = list(filter(lambda peli: peli.get("Titulo") == title, watch)) #Filtro para saber todos los titulos 
+    findRepetition = list(filter(lambda peli: peli.get("Titulo") == title, temporalMovies)) #Filtro para saber los titulos temporales
     allIDS = []
     for code in watch:
         if "ID" in code:
             allIDS.append(code["ID"])
+            #Pone todos los codigos en la lista allIDS
     lastId = allIDS[-1] if allIDS else "PL-0"
+    #Revisa el ultimo codigo registrado en la lista
     id = input(f"Ingrese el ID de la pelicula (ultimo codigo: {lastId}): ")
-    findid = list(filter(lambda peli: peli.get("ID") == id.strip(), watch)) 
-    findRepetitionid = list(filter(lambda repe: repe.get("ID") == id.strip(), temporalMovies))
+    findid = list(filter(lambda peli: peli.get("ID") == id.strip(), watch)) #Filtro buscar IDS
+    findRepetitionid = list(filter(lambda repe: repe.get("ID") == id.strip(), temporalMovies)) #Buscar ids en la lista temporal
     if(not len(findMovies)) and (not len(findRepetition)) and (not len(findid) and (not len(findRepetitionid))):
+        #Si no hay repeticion prosiga con el formulario
         newMovie = {
             "ID": id,
             "Titulo": title,
@@ -59,7 +62,7 @@ def newMovie(): #Formulario nueva pelicula
             "Categoria": input("Ingrese la categoria de la pelicula: ")
             
         }
-        while True:
+        while True: #Ciclo para agregar mas de un genero al libro
             genero = input("Ingrese el genero de la pelicula: ").capitalize()
             if genero:
                 newMovie["Genero"].append(genero)
@@ -68,18 +71,18 @@ def newMovie(): #Formulario nueva pelicula
             confirmation = input("¿Quiere agregar otro genero? (s/n): ").strip()
             if confirmation.lower() != "s":
                 break
-        temporalMovies.append(newMovie)
+        temporalMovies.append(newMovie) #Toda la info la guarda como nuevo libro en la lista temporal
         print("Pelicula registrada con exito, si lo quiere guardar vaya al apartado de guardado")
         input("Presione enter para continuar -->")
     else: 
-        print("La pelicula ya existe en su coleccion")
+        print("La pelicula ya existe en su coleccion") #Validacion
 
 def filterMoviesbyTitle(title): #Ver peliculas por titulo
-    data = temporalMovies
+    data = temporalMovies #Tomamos todos los titulos
     dataModify = []
     for diccionario in data: 
-        if(diccionario.get("Titulo") == title): 
-            dataModify.append(diccionario) 
+        if(diccionario.get("Titulo") == title): #Si el titulo ingresado se encuentra entre los disponibles
+            dataModify.append(diccionario) #Append para mostrar toda su informacion y despues tabular
     if dataModify:    
         print(tabulate(dataModify, headers="keys", tablefmt="grid", numalign="center"))
     else:
@@ -91,14 +94,14 @@ def showMovieTitles(): #Ver titulos de las peliculas
         data = temporalMovies
         dataModify = []
         filtro = set()
-        for titles in data:
-            title = titles.get("Titulo")
-            if title and title not in filtro:
-                filtro.add(title)
-                movie_copy = titles.copy()
+        for titles in data: #Recorre todos los libros
+            title = titles.get("Titulo") #Title almacena todos los titulos registrados
+            if title and title not in filtro: #Si existen titulos y no se encuentra repetido
+                filtro.add(title) #Añade el titulo al filtro para que no se repita
+                movie_copy = titles.copy() #saco una copia para no modificar la lista original
                 movie_copy.pop("Categoria")   
                 movie_copy.pop("Direccion")
-                movie_copy.pop("Valoracion")
+                movie_copy.pop("Valoracion") #borro toda la info que no es necesaria
                 movie_copy.pop("Genero")
                 movie_copy.pop("Producción")
                 movie_copy.pop("Fecha de estreno")
@@ -113,14 +116,14 @@ def showMovieDirector(): #Ver director de las peliculas
         dataModify = []
         filtro = set()
         for titles in data:
-            title = titles.get("Direccion")
-            if title and title not in filtro:
-                filtro.add(title)
-                movie_copy = titles.copy()  
+            title = titles.get("Direccion") #Recorre todas las peliculas
+            if title and title not in filtro: #Title almacena todos los autores registrados
+                filtro.add(title) #Añade el titulo al filtro para que no se repita
+                movie_copy = titles.copy() #saco una copia para no modificar la lista original
                 movie_copy.pop("Titulo")
                 movie_copy.pop("Valoracion")
                 movie_copy.pop("Genero")
-                movie_copy.pop("Producción")
+                movie_copy.pop("Producción") #borro toda la info que no es necesaria
                 movie_copy.pop("Fecha de estreno")
                 movie_copy.pop("Categoria")
                 dataModify.append(movie_copy)
@@ -132,9 +135,9 @@ def filterMoviesbyDirector(director): #Ver peliculas por director
     data = temporalMovies 
     dataModify = []
     for diccionario in data: 
-        if(diccionario.get("Direccion") == director): 
-            dataModify.append(diccionario) 
-    if dataModify:    
+        if(diccionario.get("Direccion") == director): #Si el input del director es el mismo al del json
+            dataModify.append(diccionario) #Muestra toda la informacion de la lista
+    if dataModify:   
         print(tabulate(dataModify, headers="keys", tablefmt="grid", numalign="center"))
     else:
         print("No se encontró el director")
@@ -146,15 +149,15 @@ def showMovieCategory(): #Ver categorias peliculas
         dataModify = []
         filtro = set()
         for titles in data:
-            title = titles.get("Categoria")
-            if title and title not in filtro:
-                filtro.add(title)
-                movie_copy = titles.copy()  
+            title = titles.get("Categoria") #Recorre todas las peliculas
+            if title and title not in filtro:#Title almacena todos los autores registrados
+                filtro.add(title) #Añade el titulo al filtro para que no se repita
+                movie_copy = titles.copy()  #saco una copia para no modificar la lista original
                 movie_copy.pop("Titulo")
                 movie_copy.pop("Valoracion")
                 movie_copy.pop("Genero")
                 movie_copy.pop("Producción")
-                movie_copy.pop("Fecha de estreno")
+                movie_copy.pop("Fecha de estreno") #borro toda la info que no es necesaria
                 movie_copy.pop("Direccion")
                 dataModify.append(movie_copy)
         print(tabulate(dataModify, headers="keys", tablefmt="grid", numalign="center"))
@@ -165,8 +168,8 @@ def filterMoviebyCategory(category):  #Ver peliculas por categorias
     data = temporalMovies
     dataModify = []
     for diccionario in data: 
-        if(diccionario.get("Categoria") == category): 
-            dataModify.append(diccionario) 
+        if(diccionario.get("Categoria") == category): #Si el input del director es el mismo al del json
+            dataModify.append(diccionario) #Muestra toda la informacion de la lista
     if dataModify:    
         print(tabulate(dataModify, headers="keys", tablefmt="grid", numalign="center"))
     else:
@@ -179,16 +182,16 @@ def showMovieGenre(): #Ver generos de las peliculas
         dataModify = []
         filtro = set()
         for titles in data:
-            generos = titles.get("Genero")
-            for genero in generos:
-                if genero and genero not in filtro:
-                    filtro.add(genero)
-                    movie_copy = titles.copy()
+            generos = titles.get("Genero") #Recorre todas las peliculas
+            for genero in generos: #Recorre todos los generos dentro de la lista
+                if genero and genero not in filtro: #Title almacena todos los autores registrados
+                    filtro.add(genero) #Añade el titulo al filtro para que no se repita
+                    movie_copy = titles.copy() #saco una copia para no modificar la lista original
                     movie_copy.pop("Direccion")
                     movie_copy.pop("Titulo")
                     movie_copy.pop("Valoracion")
                     movie_copy.pop("Producción")
-                    movie_copy.pop("Fecha de estreno")
+                    movie_copy.pop("Fecha de estreno") #borro toda la info que no es necesaria
                     movie_copy.pop("Categoria")
                     movie_copy["Genero"] = genero
                     dataModify.append(movie_copy)
@@ -203,8 +206,8 @@ def filterMoviebyGenre(genero):  #Ver peliculas por genero
     data = temporalMovies
     dataModify = [] 
     for diccionario in data:
-        if genero in diccionario.get("Genero"):
-            dataModify.append(diccionario)
+        if genero in diccionario.get("Genero"): #Si el input del director es el mismo al del json
+            dataModify.append(diccionario) #Muestra toda la informacion de la lista
     
     if dataModify:    
         print(tabulate(dataModify, headers="keys", tablefmt="grid", numalign="center"))

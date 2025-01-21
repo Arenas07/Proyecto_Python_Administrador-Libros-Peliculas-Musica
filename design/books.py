@@ -87,6 +87,7 @@ def filterBooksbyTitle(title): #Ver libro por titulo
     else:
         print("No se encontró el libro")
     input("Presione enter para continuar -->  ")
+    
 def showBookTitles(): #Mostrar titulos de libro
     if temporalBooks:
         data = temporalBooks 
