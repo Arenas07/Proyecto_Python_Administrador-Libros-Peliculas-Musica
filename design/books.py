@@ -13,8 +13,8 @@ def newBook(): #Formulario nuevo libro
             allIDS.append(code["ID"])
     lastId = allIDS[-1] if allIDS else "LB-0"
     id = input(f"Ingrese el ID del libro (ultimo codigo: {lastId}): ")
-    findid = list(filter(lambda libro: libro.get("ID") == id, watch)) 
-    findRepetitionid = list(filter(lambda repe: repe.get("ID") == id, temporalBooks))
+    findid = list(filter(lambda libro: libro.get("ID") == id.strip(), watch)) 
+    findRepetitionid = list(filter(lambda repe: repe.get("ID") == id.strip(), temporalBooks))
     if(not len(findBooks)) and (not len(findRepetition)) and (not len(findid) and (not len(findRepetitionid))): 
         newBook = {
             "ID": id,
@@ -30,7 +30,7 @@ def newBook(): #Formulario nuevo libro
                 newBook["Genero"].append(genero)
             else:
                 print("El genero no puede quedar vacio")
-            confirmation = input("¿Quiere agregar otro genero? (s/n): ")
+            confirmation = input("¿Quiere agregar otro genero? (s/n): ").strip()
             if confirmation.lower() != "s":
                 break
         temporalBooks.append(newBook)

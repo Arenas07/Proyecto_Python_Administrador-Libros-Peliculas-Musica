@@ -2,7 +2,7 @@ from tabulate import tabulate
 from logic.music import seeMusic
 
 temporalSongs = []
-def view_temporal_songs():
+def view_temporal_songs(): #Ver canciones en archivo temporal
     if not temporalSongs:
         print("No hay canciones registradas")
     else:
@@ -22,7 +22,7 @@ def view_temporal_songs():
         print("\n=== Canciones Temporales Registradas ===")
         print(tabulate(table, headers=headers, tablefmt="fancy_grid"))
 
-def loadJSONSongs():
+def loadJSONSongs(): #Cargar archivos a la lista temporal
     load = seeMusic()
     existing_titles = set()  
     songs_to_add = [] 
@@ -34,7 +34,7 @@ def loadJSONSongs():
             songs_to_add.append(song)
     temporalSongs.extend(songs_to_add)
 
-def newSong():  
+def newSong():  #Formulario nueva cancion
     watch = seeMusic() 
     title = input("Ingrese el nombre de la cancion: ")
     findSongs = list(filter(lambda peli: peli.get("Titulo") == title, watch)) 
@@ -45,8 +45,8 @@ def newSong():
             allIDS.append(code["ID"])
     lastId = allIDS[-1] if allIDS else "MS-0"
     id = input(f"Ingrese el ID del libro (ultimo codigo: {lastId}): ")
-    findid = list(filter(lambda peli: peli.get("ID") == id, watch)) 
-    findRepetitionid = list(filter(lambda repe: repe.get("ID") == id, temporalSongs))
+    findid = list(filter(lambda peli: peli.get("ID") == id.strip(), watch)) 
+    findRepetitionid = list(filter(lambda repe: repe.get("ID") == id.strip(), temporalSongs))
     if(not len(findSongs)) and (not len(findRepetition)) and (not len(findid) and (not len(findRepetitionid))):
         newSong = {
                 "ID": id,
@@ -72,7 +72,7 @@ def newSong():
     else: 
         print("La canción ya existe en su coleccion")
 
-def filterMusicbyTitle(title): 
+def filterMusicbyTitle(title): #Ver canciones por titulo
     data = temporalSongs
     dataModify = []
     for diccionario in data: 
@@ -84,7 +84,7 @@ def filterMusicbyTitle(title):
         print("No se encontró la cancion")
     input("Presione enter para continuar -->  ")
 
-def showMusicTitles():
+def showMusicTitles(): #Ver titulos de canciones
     if temporalSongs:
         data = temporalSongs
         dataModify = []
@@ -94,17 +94,17 @@ def showMusicTitles():
             if title and title not in filtro:
                 filtro.add(title)
                 music_copy = titles.copy()
-                music_copy.pop("Autor", None)   
-                music_copy.pop("Album", None)
-                music_copy.pop("Discografica", None)
-                music_copy.pop("Genero", None)
-                music_copy.pop("Categoria", None)
+                music_copy.pop("Autor")   
+                music_copy.pop("Album")
+                music_copy.pop("Discografica")
+                music_copy.pop("Genero")
+                music_copy.pop("Categoria")
                 dataModify.append(music_copy)
         print(tabulate(dataModify, headers="keys", tablefmt="grid", numalign="center"))
     else:
         print("No se encontraron títulos registrados")
 
-def filterMusicsbyAutor(autor): 
+def filterMusicsbyAutor(autor): #Ver canciones por autor
     data = temporalSongs
     dataModify = []
     for diccionario in data: 
@@ -116,7 +116,7 @@ def filterMusicsbyAutor(autor):
         print("No se encontró el libro")
     input("Presione enter para continuar -->  ")
 
-def showMusicAutor():
+def showMusicAutor(): #Ver autores de cancion
     if temporalSongs:
         data = temporalSongs
         dataModify = []
@@ -126,17 +126,17 @@ def showMusicAutor():
             if title and title not in filtro:
                 filtro.add(title)
                 music_copy = titles.copy()
-                music_copy.pop("Titulo", None)   
-                music_copy.pop("Album", None)
-                music_copy.pop("Discografica", None)
-                music_copy.pop("Genero", None)
-                music_copy.pop("Categoria", None)
+                music_copy.pop("Titulo")   
+                music_copy.pop("Album")
+                music_copy.pop("Discografica")
+                music_copy.pop("Genero")
+                music_copy.pop("Categoria")
                 dataModify.append(music_copy)
         print(tabulate(dataModify, headers="keys", tablefmt="grid", numalign="center"))
     else:
         print("No se encontraron títulos registrados")
 
-def filterMusicbyCategory(category): 
+def filterMusicbyCategory(category):  #Ver canciones por categoria
     data = temporalSongs
     dataModify = []
     for diccionario in data: 
@@ -148,7 +148,7 @@ def filterMusicbyCategory(category):
         print("No se encontró el libro")
     input("Presione enter para continuar -->  ")
 
-def showMusicCategory():
+def showMusicCategory(): #Ver categoria de canciones
     if temporalSongs:
         data = temporalSongs
         dataModify = []
@@ -168,7 +168,7 @@ def showMusicCategory():
     else:
         print("No se encontraron títulos registrados")
 
-def showMusicGenre():
+def showMusicGenre(): #Ver generos de canciones
     if temporalSongs:
         data = temporalSongs
         dataModify = []
@@ -192,7 +192,7 @@ def showMusicGenre():
     else:
         print("No se encontraron títulos registrados")
 
-def filterMusicbyGenre(genero): 
+def filterMusicbyGenre(genero):  #Ver canciones por genero
     data = temporalSongs
     dataModify = [] 
     for diccionario in data:

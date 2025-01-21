@@ -45,8 +45,8 @@ def newMovie(): #Formulario nueva pelicula
             allIDS.append(code["ID"])
     lastId = allIDS[-1] if allIDS else "PL-0"
     id = input(f"Ingrese el ID del libro (ultimo codigo: {lastId}): ")
-    findid = list(filter(lambda libro: libro.get("ID") == id, watch)) 
-    findRepetitionid = list(filter(lambda repe: repe.get("ID") == id, temporalMovies))
+    findid = list(filter(lambda libro: libro.get("ID") == id.strip(), watch)) 
+    findRepetitionid = list(filter(lambda repe: repe.get("ID") == id.strip(), temporalMovies))
     if(not len(findMovies)) and (not len(findRepetition)) and (not len(findid) and (not len(findRepetitionid))):
         newMovie = {
             "ID": id,
@@ -65,7 +65,7 @@ def newMovie(): #Formulario nueva pelicula
                 newMovie["Genero"].append(genero)
             else:
                 print("El genero no puede quedar vacio")
-            confirmation = input("¿Quiere agregar otro genero? (s/n): ")
+            confirmation = input("¿Quiere agregar otro genero? (s/n): ").strip()
             if confirmation.lower() != "s":
                 break
         temporalMovies.append(newMovie)
@@ -96,13 +96,13 @@ def showMovieTitles(): #Ver titulos de las peliculas
             if title and title not in filtro:
                 filtro.add(title)
                 movie_copy = titles.copy()
-                movie_copy.pop("Categoria", None)   
-                movie_copy.pop("Direccion", None)
-                movie_copy.pop("Valoracion", None)
-                movie_copy.pop("Genero", None)
-                movie_copy.pop("Producción", None)
-                movie_copy.pop("Fecha de estreno", None)
-                movie_copy.pop("Categoria", None)
+                movie_copy.pop("Categoria")   
+                movie_copy.pop("Direccion")
+                movie_copy.pop("Valoracion")
+                movie_copy.pop("Genero")
+                movie_copy.pop("Producción")
+                movie_copy.pop("Fecha de estreno")
+                movie_copy.pop("Categoria")
                 dataModify.append(movie_copy)
         print(tabulate(dataModify, headers="keys", tablefmt="grid", numalign="center"))
     else:
