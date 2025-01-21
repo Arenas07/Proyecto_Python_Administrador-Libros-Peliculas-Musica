@@ -431,13 +431,13 @@ def menu_principal():
             match selection:
                case "1":
                   showBookCategory()
-                  filterBooksbyCategory(input("Ingrese la categoria del libro: ").capitalize())
+                  filterBooksbyCategory(input("Ingrese la categoria del libro: "))
                case "2":
                   showMovieCategory()
-                  filterMoviebyCategory(input("Ingrese la categoria de la pelicula: ").capitalize())
+                  filterMoviebyCategory(input("Ingrese la categoria de la pelicula: "))
                case "3":
                   showMusicCategory()
-                  filterMusicbyCategory(input("Ingrese la categoria de la cancion: ").capitalize())
+                  filterMusicbyCategory(input("Ingrese la categoria de la cancion: "))
                case "4":
                   return menu_principal()
                case _:
