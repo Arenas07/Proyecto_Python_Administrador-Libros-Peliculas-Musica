@@ -1,6 +1,6 @@
-from design.books import  newBook, temporalBooks, view_temporal_books, loadJSONBooks, showBookTitles, filterBooksbyTitle, showBookAutor, showBookCategory, filterBooksbyAutor, filterBooksbyCategory, showBookGenre, filterBooksbyGenre
-from design.movies import newMovie, temporalMovies, view_temporal_movies, loadJSONMovies, showMovieTitles, filterMoviesbyTitle, showMovieCategory, showMovieDirector, filterMoviesbyDirector, filterMoviebyCategory, showMovieGenre, filterMoviebyGenre
-from design.music import newSong,  temporalSongs, view_temporal_songs, loadJSONSongs, showMusicTitles, filterMusicbyTitle, showMusicAutor, showMusicCategory, filterMusicbyCategory, filterMusicsbyAutor, showMusicGenre, filterMusicbyGenre
+from design.books import  newBook, view_temporal_books, loadJSONBooks, showBookTitles, filterBooksbyTitle, showBookAutor, showBookCategory, filterBooksbyAutor, filterBooksbyCategory, showBookGenre, filterBooksbyGenre
+from design.movies import newMovie, view_temporal_movies, loadJSONMovies, showMovieTitles, filterMoviesbyTitle, showMovieCategory, showMovieDirector, filterMoviesbyDirector, filterMoviebyCategory, showMovieGenre, filterMoviebyGenre
+from design.music import newSong, view_temporal_songs, loadJSONSongs, showMusicTitles, filterMusicbyTitle, showMusicAutor, showMusicCategory, filterMusicbyCategory, filterMusicsbyAutor, showMusicGenre, filterMusicbyGenre
 from logic.books import  editBooksTitle,  editBooksAutor, editBooksGenre, editBooksRate, editBooksCAT, deleteTEMPORAL, updateJsonWhenSave, deleteTEMPORALBookByName
 from logic.movies import editMoviesTitle, editMovieDirection, editMovieGenre, editMovieProduction, editMovieRate, editMovieCAT, deleteTEMPORALMovie, deleteTEMPORALMoviebyName, updateJsonWhenSaveMovies
 from logic.music import editMusicTitle, editMusicAutor, editMusicAlbum, editMusicGenre, editMusicCAT, editMusicDisc,   deleteTEMPORALSong, deleteTEMPORALSongbyName, updateJsonWhenSaveMusic
