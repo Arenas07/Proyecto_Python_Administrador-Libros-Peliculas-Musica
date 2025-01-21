@@ -103,13 +103,13 @@ def menu_principal():
                   match menu_selection:
                      case "1":
                         showBookTitles()
-                        filterBooksbyTitle(input("Ingrese el titulo del libro: ").capitalize())
+                        filterBooksbyTitle(input("Ingrese el titulo del libro: "))
                      case "2":
                         showMovieTitles()
-                        filterMoviesbyTitle(input("Ingrese el titulo de la pelicula: ").capitalize())
+                        filterMoviesbyTitle(input("Ingrese el titulo de la pelicula: "))
                      case "3":
                         showMusicTitles()
-                        filterMusicbyTitle(input("Ingrese el titulo de la cancion: ").capitalize())
+                        filterMusicbyTitle(input("Ingrese el titulo de la cancion: "))
                      case "4":
                         return menu_principal()
                      case _:
@@ -131,13 +131,13 @@ def menu_principal():
                   match menu_selection:
                      case "1":
                         showBookAutor()
-                        filterBooksbyAutor(input("Ingrese el titulo del libro: ").capitalize())
+                        filterBooksbyAutor(input("Ingrese el titulo del libro: "))
                      case "2":
                         showMovieDirector()
-                        filterMoviesbyDirector(input("Ingrese el director de la pelicula: ".capitalize()))
+                        filterMoviesbyDirector(input("Ingrese el director de la pelicula: "))
                      case "3":
                         showMusicAutor()
-                        filterMusicsbyAutor(input("Ingrese el autor de la cancion: ").capitalize()  )
+                        filterMusicsbyAutor(input("Ingrese el autor de la cancion: "))
                      case "4":
                         return menu_principal()
                      case _:
@@ -159,13 +159,13 @@ def menu_principal():
                   match menu_selection:
                      case "1":
                         showBookGenre()
-                        filterBooksbyGenre(input("Ingrese el genero del libro: ").capitalize())
+                        filterBooksbyGenre(input("Ingrese el genero del libro: "))
                      case "2":
                         showMovieGenre()
-                        filterMoviebyGenre(input("Ingrese el genero de la pelicula: ").capitalize())
+                        filterMoviebyGenre(input("Ingrese el genero de la pelicula: "))
                      case "3":
                         showMusicGenre()
-                        filterMusicbyGenre(input("Ingrese el genero de la cancion: ").capitalize())
+                        filterMusicbyGenre(input("Ingrese el genero de la cancion: "))
                      case "4":
                         return menu_principal()
                      case _:

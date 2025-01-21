@@ -44,7 +44,7 @@ def newSong():  #Formulario nueva cancion
         if "ID" in code:
             allIDS.append(code["ID"])
     lastId = allIDS[-1] if allIDS else "MS-0"
-    id = input(f"Ingrese el ID del libro (ultimo codigo: {lastId}): ")
+    id = input(f"Ingrese el ID de la canción (ultimo codigo: {lastId}): ")
     findid = list(filter(lambda peli: peli.get("ID") == id.strip(), watch)) 
     findRepetitionid = list(filter(lambda repe: repe.get("ID") == id.strip(), temporalSongs))
     if(not len(findSongs)) and (not len(findRepetition)) and (not len(findid) and (not len(findRepetitionid))):
@@ -113,7 +113,7 @@ def filterMusicsbyAutor(autor): #Ver canciones por autor
     if dataModify:    
         print(tabulate(dataModify, headers="keys", tablefmt="grid", numalign="center"))
     else:
-        print("No se encontró el libro")
+        print("No se encontró el autor")
     input("Presione enter para continuar -->  ")
 
 def showMusicAutor(): #Ver autores de cancion
@@ -145,7 +145,7 @@ def filterMusicbyCategory(category):  #Ver canciones por categoria
     if dataModify:    
         print(tabulate(dataModify, headers="keys", tablefmt="grid", numalign="center"))
     else:
-        print("No se encontró el libro")
+        print("No se encontró la cancion")
     input("Presione enter para continuar -->  ")
 
 def showMusicCategory(): #Ver categoria de canciones
@@ -180,8 +180,9 @@ def showMusicGenre(): #Ver generos de canciones
                     filtro.add(genero)
                     music_copy = titles.copy()
                     music_copy.pop("Autor")
+                    music_copy.pop("Album")
+                    music_copy.pop("Discografica")
                     music_copy.pop("Titulo")
-                    music_copy.pop("Valoracion")
                     music_copy.pop("Categoria")
                     music_copy["Genero"] = genero
                     dataModify.append(music_copy)
@@ -202,6 +203,6 @@ def filterMusicbyGenre(genero):  #Ver canciones por genero
     if dataModify:    
         print(tabulate(dataModify, headers="keys", tablefmt="grid", numalign="center"))
     else:
-        print("No se encontró el libro con ese género")
+        print("No se encontró la cancion con ese género")
     
     input("Presione enter para continuar -->  ")

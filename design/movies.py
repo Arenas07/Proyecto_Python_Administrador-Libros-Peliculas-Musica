@@ -44,8 +44,8 @@ def newMovie(): #Formulario nueva pelicula
         if "ID" in code:
             allIDS.append(code["ID"])
     lastId = allIDS[-1] if allIDS else "PL-0"
-    id = input(f"Ingrese el ID del libro (ultimo codigo: {lastId}): ")
-    findid = list(filter(lambda libro: libro.get("ID") == id.strip(), watch)) 
+    id = input(f"Ingrese el ID de la pelicula (ultimo codigo: {lastId}): ")
+    findid = list(filter(lambda peli: peli.get("ID") == id.strip(), watch)) 
     findRepetitionid = list(filter(lambda repe: repe.get("ID") == id.strip(), temporalMovies))
     if(not len(findMovies)) and (not len(findRepetition)) and (not len(findid) and (not len(findRepetitionid))):
         newMovie = {
@@ -102,7 +102,6 @@ def showMovieTitles(): #Ver titulos de las peliculas
                 movie_copy.pop("Genero")
                 movie_copy.pop("Producción")
                 movie_copy.pop("Fecha de estreno")
-                movie_copy.pop("Categoria")
                 dataModify.append(movie_copy)
         print(tabulate(dataModify, headers="keys", tablefmt="grid", numalign="center"))
     else:
@@ -133,12 +132,12 @@ def filterMoviesbyDirector(director): #Ver peliculas por director
     data = temporalMovies 
     dataModify = []
     for diccionario in data: 
-        if(diccionario.get("Producción") == director): 
+        if(diccionario.get("Direccion") == director): 
             dataModify.append(diccionario) 
     if dataModify:    
         print(tabulate(dataModify, headers="keys", tablefmt="grid", numalign="center"))
     else:
-        print("No se encontró el libro")
+        print("No se encontró el director")
     input("Presione enter para continuar -->  ")
 
 def showMovieCategory(): #Ver categorias peliculas
@@ -171,7 +170,7 @@ def filterMoviebyCategory(category):  #Ver peliculas por categorias
     if dataModify:    
         print(tabulate(dataModify, headers="keys", tablefmt="grid", numalign="center"))
     else:
-        print("No se encontró el libro")
+        print("No se encontró la pelicula")
     input("Presione enter para continuar -->  ")
 
 def showMovieGenre(): #Ver generos de las peliculas
@@ -188,6 +187,8 @@ def showMovieGenre(): #Ver generos de las peliculas
                     movie_copy.pop("Direccion")
                     movie_copy.pop("Titulo")
                     movie_copy.pop("Valoracion")
+                    movie_copy.pop("Producción")
+                    movie_copy.pop("Fecha de estreno")
                     movie_copy.pop("Categoria")
                     movie_copy["Genero"] = genero
                     dataModify.append(movie_copy)
@@ -208,6 +209,6 @@ def filterMoviebyGenre(genero):  #Ver peliculas por genero
     if dataModify:    
         print(tabulate(dataModify, headers="keys", tablefmt="grid", numalign="center"))
     else:
-        print("No se encontró el libro con ese género")
+        print("No se encontró el la pelicula con ese género")
     
     input("Presione enter para continuar -->  ")
