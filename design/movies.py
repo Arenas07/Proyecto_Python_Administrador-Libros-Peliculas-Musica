@@ -51,17 +51,20 @@ def newMovie(): #Formulario nueva pelicula
     findRepetitionid = list(filter(lambda repe: repe.get("ID") == id.strip(), temporalMovies)) #Buscar ids en la lista temporal
     if(not len(findMovies)) and (not len(findRepetition)) and (not len(findid) and (not len(findRepetitionid))):
         #Si no hay repeticion prosiga con el formulario
-        newMovie = {
+        try:
+            newMovie = {
             "ID": id,
             "Titulo": title,
             "Direccion": input("Ingrese el director de la pelicula: "),
             "Producción": input("Ingrese la producción de la pelicula: "),
-            "Valoracion": input("Ingrese la valoración de la pelicula: "),
+            "Valoracion": float(input("Ingrese la valoración de la pelicula: ")),
             "Genero": [],
             "Fecha de estreno": input("Ingrese la fecha de estreno de la pelicula: "),
             "Categoria": input("Ingrese la categoria de la pelicula: ")
             
-        }
+            }
+        except ValueError:
+            input("\n OPERACION CANCELADA --Escoja entre un rango de 0 a 5-- presione enter para continuar -->")
         while True: #Ciclo para agregar mas de un genero al libro
             genero = input("Ingrese el genero de la pelicula: ").capitalize()
             if genero:

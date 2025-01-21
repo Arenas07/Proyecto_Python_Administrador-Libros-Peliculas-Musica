@@ -19,10 +19,10 @@ def menu_principal():
                 8. Salir
             ===========================================
                 Selecciona una opción (1-8):""")
-   
+   opcion_menu = input("--> ")   
    while True:
+
          try:
-            opcion_menu = input("--> ")
             match opcion_menu:
                case "1":
                   print("""
@@ -36,8 +36,9 @@ def menu_principal():
                         4. Regresar al Menú Principal
                         ===========================================
                            Selecciona una opción (1-4):""")
+                  selection = input("Seleccione la opción que prefiera --> ")
                   try:
-                     selection = input("Seleccione la opción que prefiera --> ")
+               
                      match selection:
                         case "1":
                            newBook()
@@ -64,8 +65,9 @@ def menu_principal():
                         4. Regresar al Menú Principal
                      ===========================================
                         Selecciona una opción (1-4):""")
+                  selection = input("Seleccione la opción que prefiera --> ")
                   try:
-                     selection = input("Seleccione la opción que prefiera --> ")
+                  
                      match selection:
                         case "1":
                            view_temporal_books()
@@ -92,8 +94,9 @@ def menu_principal():
                         4. Regresar al Menú Principal
                      ===========================================
                         Selecciona una opción (1-4):""")
+                  selection = input("Seleccione la opción que prefiera --> ")
                   try:
-                     selection = input("Seleccione la opción que prefiera --> ")
+                     
                      match selection:
                         case "1":
                            print("""
@@ -108,8 +111,9 @@ def menu_principal():
                         ===========================================
                            Selecciona una opción (1-4):"""
                                  )
+                           menu_selection = input("-->")
                            try:
-                              menu_selection = input("-->")
+                              
                               match menu_selection:
                                  case "1":
                                     showBookTitles()
@@ -140,8 +144,9 @@ def menu_principal():
                         ===========================================
                            Selecciona una opción (1-4):"""
                                  )
+                           menu_selection = input("-->")
                            try:
-                              menu_selection = input("-->")
+                           
                               match menu_selection:
                                  case "1":
                                     showBookAutor()
@@ -172,8 +177,9 @@ def menu_principal():
                         ===========================================
                            Selecciona una opción (1-4):"""
                                  )
+                           menu_selection = input("-->")
                            try:
-                              menu_selection = input("-->")
+                              
                               match menu_selection:
                                  case "1":
                                     showBookGenre()
@@ -210,8 +216,9 @@ def menu_principal():
                         4. Regresar al Menú Principal
                      ===========================================
                            Selecciona una opción (1-4):""")
+                  selection = input("Ingrese la opcion --> ")
                   try:
-                     selection = input("Ingrese la opcion --> ")
+                  
                      match selection:
                         case "1":
                            print("""
@@ -227,8 +234,9 @@ def menu_principal():
                            6. Regresar al Menú Principal
                         ===========================================
                               Selecciona una opción (1-6):""")
+                           selection = input("Ingrese la opcion --> ")
                            try:
-                              selection = input("Ingrese la opcion --> ")
+                              
                               match selection:
                                  case "1":
                                     view_temporal_books()
@@ -277,8 +285,9 @@ def menu_principal():
                            7. Regresar al Menú Principal
                         ===========================================
                               Selecciona una opción (1-7):""")
+                           selection = input("Ingrese la opcion --> ")
                            try:
-                              selection = input("Ingrese la opcion --> ")
+                              
                               match selection:
                                  case "1":
                                     view_temporal_movies()
@@ -331,8 +340,9 @@ def menu_principal():
                            7. Regresar al Menú Principal
                         ===========================================
                               Selecciona una opción (1-7):""")
+                           selection = input("Ingrese la opcion --> ")
                            try:
-                              selection = input("Ingrese la opcion --> ")
+                           
                               match selection:
                                  case "1":
                                     view_temporal_songs()
@@ -389,8 +399,9 @@ def menu_principal():
                         3. Regresar al Menú Principal
                      ===========================================
                         Selecciona una opción (1-3):""")
+                  selection = input("Seleccione una opcion --> ")
                   try:
-                     selection = input("Seleccione una opcion --> ")
+                     
                      match selection:
                         case "1":
                            print("""
@@ -404,8 +415,9 @@ def menu_principal():
                            4. Regresar al Menú Principal
                         ===========================================
                               Selecciona una opción (1-4):""")
+                           selection = input("Ingrese la opcion --> ")
                            try:
-                              selection = input("Ingrese la opcion --> ")
+                              
                               match selection:
                                  case "1":
                                     view_temporal_books()
@@ -438,8 +450,9 @@ def menu_principal():
                            4. Regresar al Menú Principal
                         ===========================================
                               Selecciona una opción (1-4):""")
+                           selection = input("Ingrese la opcion --> ")
                            try:
-                              selection = input("Ingrese la opcion --> ")
+                              
                               match selection:
                                  case "1":
                                     view_temporal_books()
@@ -479,8 +492,9 @@ def menu_principal():
                         4. Regresar al Menú Principal
                      ===========================================
                         Selecciona una opción (1-4):""")
+                  selection = input("Ingrese la opcion --> ")
                   try:
-                     selection = input("Ingrese la opcion --> ")
+                     
                      match selection:
                         case "1":
                            showBookCategory()
@@ -510,8 +524,9 @@ def menu_principal():
                         3. Regresar al Menú Principal
                      ===========================================
                         Selecciona una opción (1-3):""")
+                  selection = input("--> ")
                   try:
-                     selection = input("--> ")
+                     
                      match selection:
                         case "1":
                            updateJsonWhenSave()
@@ -523,8 +538,7 @@ def menu_principal():
                            loadJSONBooks()
                            loadJSONMovies()
                            loadJSONSongs()
-                           input("Presione enter para continuar -->")
-
+                           input("Archivos cargados correctamente, presione enter para continuar -->")
                         case "3":
                            return menu_principal()
                         case _:

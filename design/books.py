@@ -19,14 +19,17 @@ def newBook(): #Formulario nuevo libro
     findRepetitionid = list(filter(lambda repe: repe.get("ID") == id.strip(), temporalBooks)) #Buscar ids en la lista temporal
     if(not len(findBooks)) and (not len(findRepetition)) and (not len(findid) and (not len(findRepetitionid))): 
         #Si no hay repeticion prosiga con el formulario
-        newBook = {
+        try:
+            newBook = {
             "ID": id,
             "Titulo": title,
             "Autor": input("Ingrese el nombre del autor: "),
-            "Valoracion": (input("Ingrese la valoracion de la obra: ")),
+            "Valoracion": float(input("Ingrese la valoracion de la obra: ")),
             "Categoria": input("Ingrese la categoria del libro: "),
             "Genero": []
-        }
+            }
+        except ValueError:
+            input("\n OPERACION CANCELADA --Escoja entre un rango de 0 a 5-- presione enter para continuar -->")
         while True: #Ciclo para agregar mas de un genero al libro
             genero = input("Ingrese el genero del libro: ").capitalize()
             if genero:

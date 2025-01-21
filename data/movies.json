@@ -4,7 +4,7 @@
         "Titulo": "Intensamente 2",
         "Direccion": "Kelsey Mann",
         "Producción": "Mark Nielsen",
-        "Valoracion": "4.6",
+        "Valoracion": 4.6,
         "Genero": [
             "Animación",
             "Infantil",
@@ -20,7 +20,7 @@
         "Titulo": "Coco",
         "Direccion": "Lee Unkrich",
         "Producción": "Darla K. Anderson",
-        "Valoracion": "4.8",
+        "Valoracion": 4.8,
         "Genero": [
             "Animación",
             "Familia",
@@ -35,7 +35,7 @@
         "Titulo": "Frozen II",
         "Direccion": "Chris Buck",
         "Producción": "Peter Del Vecho",
-        "Valoracion": "4.4",
+        "Valoracion": 4.4,
         "Genero": [
             "Animación",
             "Fantasía",
@@ -50,7 +50,7 @@
         "Titulo": "Spider-Man: Into the Spider-Verse",
         "Direccion": "Bob Persichetti",
         "Producción": "Avi Arad",
-        "Valoracion": "4.7",
+        "Valoracion": 4.7,
         "Genero": [
             "Animación",
             "Acción",

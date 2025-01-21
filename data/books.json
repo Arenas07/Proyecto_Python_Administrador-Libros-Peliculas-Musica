@@ -3,7 +3,7 @@
         "ID": "LB-1",
         "Titulo": "Cien años de soledad",
         "Autor": "Gabriel Garcia Marquez",
-        "Valoracion": "4.6",
+        "Valoracion": 4.6,
         "Genero": [
             "Novela",
             "Realismo magico",
@@ -15,7 +15,7 @@
         "ID": "LB-2",
         "Titulo": "El amor en los tiempos del cólera",
         "Autor": "Gabriel Garcia Marquez",
-        "Valoracion": "4.5",
+        "Valoracion": 4.5,
         "Genero": [
             "Novela",
             "Realismo magico",
@@ -27,7 +27,7 @@
         "ID": "LB-3",
         "Titulo": "La casa de los espíritus",
         "Autor": "Isabel Allende",
-        "Valoracion": "4.4",
+        "Valoracion": 4.4,
         "Genero": [
             "Novela",
             "Realismo magico",
@@ -39,7 +39,7 @@
         "ID": "LB-4",
         "Titulo": "Ficciones",
         "Autor": "Jorge Luis Borges",
-        "Valoracion": "4.8",
+        "Valoracion": 4.8,
         "Genero": [
             "Ficción",
             "Realismo mágico",
