@@ -1,9 +1,9 @@
 from design.books import  newBook, temporalBooks, view_temporal_books, loadJSONBooks, showBookTitles, filterBooksbyTitle, showBookAutor, showBookCategory, filterBooksbyAutor, filterBooksbyCategory, showBookGenre, filterBooksbyGenre
 from design.movies import newMovie, temporalMovies, view_temporal_movies, loadJSONMovies, showMovieTitles, filterMoviesbyTitle, showMovieCategory, showMovieDirector, filterMoviesbyDirector, filterMoviebyCategory, showMovieGenre, filterMoviebyGenre
 from design.music import newSong,  temporalSongs, view_temporal_songs, loadJSONSongs, showMusicTitles, filterMusicbyTitle, showMusicAutor, showMusicCategory, filterMusicbyCategory, filterMusicsbyAutor, showMusicGenre, filterMusicbyGenre
-from logic.books import saveBooks, editBooksTitle, editTitleJSON, editAutorJSON, editCategoryJSON, editGenreJSON, editRateJSON, editBooksAutor, editBooksGenre, editBooksRate, editBooksCAT, deleteTEMPORAL, updateJsonWhenSave, deleteTEMPORALBookByName
-from logic.movies import saveMovie, editMoviesTitle, editTitleJSONmovies, editMovieDirection, editMovieGenre, editMovieProduction, editMovieRate, editMovieCAT, editDirectionJSONmovies, editProductionJSONmovies, editRateJSONmovies, editCATJSONmovies, editGenreJSONmovies, deleteTEMPORALMovie, deleteTEMPORALMoviebyName, updateJsonWhenSaveMovies
-from logic.music import saveMusic, editMusicTitle, editTitleJSONmusic, editMusicAutor, editMusicAlbum, editMusicGenre, editMusicCAT, editMusicDisc, editAutorJSONmusic, editAlbumJSONmusic, editGeneroJSONmusic, editCATJSONmusic, editDiscJSONmusic, deleteTEMPORALSong, deleteTEMPORALSongbyName, updateJsonWhenSaveMusic
+from logic.books import saveBooks, editBooksTitle,  editBooksAutor, editBooksGenre, editBooksRate, editBooksCAT, deleteTEMPORAL, updateJsonWhenSave, deleteTEMPORALBookByName
+from logic.movies import saveMovie, editMoviesTitle, editMovieDirection, editMovieGenre, editMovieProduction, editMovieRate, editMovieCAT, deleteTEMPORALMovie, deleteTEMPORALMoviebyName, updateJsonWhenSaveMovies
+from logic.music import saveMusic, editMusicTitle, editMusicAutor, editMusicAlbum, editMusicGenre, editMusicCAT, editMusicDisc,   deleteTEMPORALSong, deleteTEMPORALSongbyName, updateJsonWhenSaveMusic
 def menu_principal():
    print("""
             ===========================================
@@ -460,30 +460,10 @@ def menu_principal():
                   updateJsonWhenSave()
                   updateJsonWhenSaveMovies()
                   updateJsonWhenSaveMusic()
-                  editTitleJSON(temporalBooks)
-                  editAutorJSON(temporalBooks)
-                  editRateJSON(temporalBooks)
-                  editGenreJSON(temporalBooks)
-                  editCategoryJSON(temporalBooks)
-                  #separacion
-                  editTitleJSONmovies(temporalMovies)
-                  editDirectionJSONmovies(temporalMovies)
-                  editProductionJSONmovies(temporalMovies) 
-                  editRateJSONmovies(temporalMovies)
-                  editGenreJSONmovies(temporalMovies)
-                  editCATJSONmovies(temporalMovies)
-                  #separacion
-                  editTitleJSONmusic(temporalSongs)
-                  editAutorJSONmusic(temporalSongs)
-                  editAlbumJSONmusic(temporalSongs)
-                  editGeneroJSONmusic(temporalSongs)
-                  editCATJSONmusic(temporalSongs)
-                  editDiscJSONmusic(temporalSongs)
-
                   saveBooks(temporalBooks)
                   saveMusic(temporalSongs)
                   saveMovie(temporalMovies)
-                  
+                  print("Cambios realizados con exito")
                   input("Presione enter para continuar -->")
                case "2":
                   loadJSONBooks()

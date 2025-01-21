@@ -1,7 +1,7 @@
 from tabulate import tabulate
 from logic.movies import seeMovies
 temporalMovies = []
-def view_temporal_movies():
+def view_temporal_movies(): #Ver peliculas en la lista temporal
     if not temporalMovies:
         print("No hay peliculas registradas")
     else:
@@ -22,7 +22,7 @@ def view_temporal_movies():
         print("\n=== Peliculas Temporales Registradas ===")
         print(tabulate(table, headers=headers, tablefmt="fancy_grid"))
 
-def loadJSONMovies():
+def loadJSONMovies(): #Cargar peliculas a la lista temporal
     load = seeMovies()
     existing_titles = set()  
     movies_to_add = [] 
@@ -34,7 +34,7 @@ def loadJSONMovies():
             movies_to_add.append(movie)
     temporalMovies.extend(movies_to_add)
 
-def newMovie():  
+def newMovie(): #Formulario nueva pelicula
     watch = seeMovies() 
     title = input("Ingrese el titulo de la pelicula: ")
     findMovies = list(filter(lambda peli: peli.get("Titulo") == title, watch)) 
@@ -74,7 +74,7 @@ def newMovie():
     else: 
         print("La pelicula ya existe en su coleccion")
 
-def filterMoviesbyTitle(title): 
+def filterMoviesbyTitle(title): #Ver peliculas por titulo
     data = temporalMovies
     dataModify = []
     for diccionario in data: 
@@ -86,7 +86,7 @@ def filterMoviesbyTitle(title):
         print("No se encontró la cancion")
     input("Presione enter para continuar -->  ")
 
-def showMovieTitles():
+def showMovieTitles(): #Ver titulos de las peliculas
     if temporalMovies:
         data = temporalMovies
         dataModify = []
@@ -108,7 +108,7 @@ def showMovieTitles():
     else:
         print("No se encontraron títulos registrados")
 
-def showMovieDirector():
+def showMovieDirector(): #Ver director de las peliculas
     if temporalMovies:
         data = temporalMovies
         dataModify = []
@@ -129,7 +129,7 @@ def showMovieDirector():
     else:
         print("No se encontraron títulos registrados")
 
-def filterMoviesbyDirector(director): 
+def filterMoviesbyDirector(director): #Ver peliculas por director
     data = temporalMovies 
     dataModify = []
     for diccionario in data: 
@@ -141,7 +141,7 @@ def filterMoviesbyDirector(director):
         print("No se encontró el libro")
     input("Presione enter para continuar -->  ")
 
-def showMovieCategory():
+def showMovieCategory(): #Ver categorias peliculas
     if temporalMovies:
         data = temporalMovies
         dataModify = []
@@ -162,7 +162,7 @@ def showMovieCategory():
     else:
         print("No se encontraron títulos registrados")
 
-def filterMoviebyCategory(category): 
+def filterMoviebyCategory(category):  #Ver peliculas por categorias
     data = temporalMovies
     dataModify = []
     for diccionario in data: 
@@ -174,7 +174,7 @@ def filterMoviebyCategory(category):
         print("No se encontró el libro")
     input("Presione enter para continuar -->  ")
 
-def showMovieGenre():
+def showMovieGenre(): #Ver generos de las peliculas
     if temporalMovies:
         data = temporalMovies
         dataModify = []
@@ -198,7 +198,7 @@ def showMovieGenre():
     else:
         print("No se encontraron títulos registrados")
 
-def filterMoviebyGenre(genero): 
+def filterMoviebyGenre(genero):  #Ver peliculas por genero
     data = temporalMovies
     dataModify = [] 
     for diccionario in data:

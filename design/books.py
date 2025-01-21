@@ -1,8 +1,8 @@
 from tabulate import tabulate
-from logic.books import seeBooks, saveBooks
+from logic.books import seeBooks
 temporalBooks = []
 
-def newBook():  
+def newBook(): #Formulario nuevo libro
     watch = seeBooks() 
     title = input("Ingrese el titulo del libro: ")
     findBooks = list(filter(lambda libro: libro.get("Titulo") == title, watch)) 
@@ -40,7 +40,7 @@ def newBook():
         print("El libro o codigo ya existe en su coleccion")
         input("Presione enter para continuar --> ")
 
-def view_temporal_books():
+def view_temporal_books(): #Vew libros en la lista temporal
     if not temporalBooks:
         print("No hay libros registrados")
     else:
@@ -59,7 +59,7 @@ def view_temporal_books():
         print("\n=== Libros Temporales Registrados ===")
         print(tabulate(table, headers=headers, tablefmt="fancy_grid"))
 
-def loadJSONBooks():
+def loadJSONBooks(): #Cargar libros del json a la lista temporal
     load = seeBooks() 
     existing_titles = set()  
     books_to_add = [] 
@@ -73,7 +73,7 @@ def loadJSONBooks():
     temporalBooks.extend(books_to_add)
 
 
-def filterBooksbyTitle(title): 
+def filterBooksbyTitle(title): #Ver libro por titulo
     data = temporalBooks 
     dataModify = []
     for diccionario in data: 
@@ -84,7 +84,7 @@ def filterBooksbyTitle(title):
     else:
         print("No se encontró el libro")
     input("Presione enter para continuar -->  ")
-def showBookTitles():
+def showBookTitles(): #Mostrar titulos de libro
     if temporalBooks:
         data = temporalBooks
         dataModify = []
@@ -103,7 +103,7 @@ def showBookTitles():
     else:
         print("No se encontraron títulos registrados")
 
-def showBookAutor():
+def showBookAutor(): #Mostrar autores libro
     if temporalBooks:
         data = temporalBooks
         dataModify = []
@@ -122,7 +122,7 @@ def showBookAutor():
     else:
         print("No se encontraron títulos registrados")
 
-def filterBooksbyAutor(autor): 
+def filterBooksbyAutor(autor): #Ver libro por autor
     data = temporalBooks 
     dataModify = []
     for diccionario in data: 
@@ -134,7 +134,7 @@ def filterBooksbyAutor(autor):
         print("No se encontró el libro")
     input("Presione enter para continuar -->  ")
     
-def showBookCategory():
+def showBookCategory(): #Mostrar categorias libros
     if temporalBooks:
         data = temporalBooks
         dataModify = []
@@ -153,7 +153,7 @@ def showBookCategory():
     else:
         print("No se encontraron títulos registrados")
 
-def filterBooksbyCategory(category): 
+def filterBooksbyCategory(category):  #Ver libro por categoria
     data = temporalBooks 
     dataModify = []
     for diccionario in data: 
@@ -165,7 +165,7 @@ def filterBooksbyCategory(category):
         print("No se encontró el libro")
     input("Presione enter para continuar -->  ")
 
-def showBookGenre():
+def showBookGenre(): #Ver generos del libro
     if temporalBooks:
         data = temporalBooks
         dataModify = []
@@ -189,7 +189,7 @@ def showBookGenre():
     else:
         print("No se encontraron títulos registrados")
 
-def filterBooksbyGenre(genero): 
+def filterBooksbyGenre(genero): #Ver libros por genero
     data = temporalBooks
     dataModify = [] 
     for diccionario in data:
