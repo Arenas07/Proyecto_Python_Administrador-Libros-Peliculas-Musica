@@ -6,10 +6,10 @@ def seeBooks():
     
 def updateJsonWhenSave():
     from design.books import temporalBooks
-    list = temporalBooks
-    with open("data/books.json", "w", encoding="utf-8") as file:
-        convertJson = json.dumps(list, indent=4, ensure_ascii=False)
-        file.write(convertJson)
+    if temporalBooks:
+        with open("data/books.json", "w", encoding="utf-8") as file:
+            convertJson = json.dumps(temporalBooks, indent=4, ensure_ascii=False)
+            file.write(convertJson)
 
 def saveBooks(temporalBooks):
 
